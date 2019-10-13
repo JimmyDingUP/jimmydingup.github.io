@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Course课程详情页一、数据库建表1、models中ORM，包含一对一、一对多、多对多关系 讲师表  1234567# 讲师表，讲师个人信息class Teachers(models.Model):      user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=&apos;所属用户&apos;)      introducti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dingyifan">
+<meta property="og:url" content="http://yoursite.com/2019/10/13/Course课程详情页/index.html">
+<meta property="og:site_name" content="dingyifan">
+<meta property="og:description" content="Course课程详情页一、数据库建表1、models中ORM，包含一对一、一对多、多对多关系 讲师表  1234567# 讲师表，讲师个人信息class Teachers(models.Model):      user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=&apos;所属用户&apos;)      introducti">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="c:/Users/60952/AppData/Roaming/Typora/typora-user-images/1569561352184.png">
+<meta property="og:updated_time" content="2019-10-03T01:19:11.918Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dingyifan">
+<meta name="twitter:description" content="Course课程详情页一、数据库建表1、models中ORM，包含一对一、一对多、多对多关系 讲师表  1234567# 讲师表，讲师个人信息class Teachers(models.Model):      user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=&apos;所属用户&apos;)      introducti">
+<meta name="twitter:image" content="c:/Users/60952/AppData/Roaming/Typora/typora-user-images/1569561352184.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/13/Course课程详情页/">
+
+
+
+
+
+  <title> | dingyifan</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">dingyifan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/Course课程详情页/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ding YiFan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dingyifan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
+                2019-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Course课程详情页"><a href="#Course课程详情页" class="headerlink" title="Course课程详情页"></a>Course课程详情页</h1><h3 id="一、数据库建表"><a href="#一、数据库建表" class="headerlink" title="一、数据库建表"></a>一、数据库建表</h3><h5 id="1、models中ORM，包含一对一、一对多、多对多关系"><a href="#1、models中ORM，包含一对一、一对多、多对多关系" class="headerlink" title="1、models中ORM，包含一对一、一对多、多对多关系"></a>1、models中ORM，包含一对一、一对多、多对多关系</h5><ul>
+<li>讲师表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 讲师表，讲师个人信息</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teachers</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=<span class="string">'所属用户'</span>)</span><br><span class="line">      introduction = models.CharField(max_length=<span class="number">180</span>,verbose_name=<span class="string">'个人介绍'</span>)</span><br><span class="line">      is_active = models.BooleanField(default=<span class="literal">True</span>,verbose_name=<span class="string">'所属状态'</span>)</span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.user.name</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>课程表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 课程</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Course</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      teacher = models.ForeignKey(Teachers,on_delete=models.CASCADE,verbose_name=<span class="string">'所属讲师'</span>)</span><br><span class="line">      description = models.CharField(max_length=<span class="number">255</span>,verbose_name=<span class="string">'课程描述'</span>)</span><br><span class="line">      title = models.CharField(max_length=<span class="number">30</span>,verbose_name=<span class="string">'课程名称'</span>)</span><br><span class="line">      img = models.ImageField(upload_to=<span class="string">'course_img/'</span>)</span><br><span class="line"></span><br><span class="line">      pay_choices = &#123;</span><br><span class="line">            (<span class="number">1</span>,<span class="string">'免费'</span>),</span><br><span class="line">            (<span class="number">2</span>,<span class="string">'付费'</span>),   <span class="comment"># 付费课程价格为0时为限免</span></span><br><span class="line">            (<span class="number">3</span>,<span class="string">'会员'</span>),</span><br><span class="line">      &#125;</span><br><span class="line">      coursetype = models.ForeignKey(Classtype,models.SET_NULL,null=<span class="literal">True</span>,blank=<span class="literal">True</span>,verbose_name=<span class="string">'课程分类'</span>)</span><br><span class="line">      pay_attr = models.IntegerField(choices=pay_choices,verbose_name=<span class="string">'类别'</span>)</span><br><span class="line">      price = models.DecimalField(decimal_places=<span class="number">2</span>,max_digits=<span class="number">10</span>,default=<span class="number">0</span>,verbose_name=<span class="string">'价格'</span>)</span><br><span class="line">      count = models.IntegerField(default=<span class="number">0</span>,verbose_name=<span class="string">'关注数'</span>)</span><br><span class="line">      learned = models.IntegerField(default=<span class="number">0</span>,verbose_name=<span class="string">'学过数量'</span>)</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.title</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>课程分类表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 课程分类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Classtype</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      name = models.CharField(max_length=<span class="number">100</span>,verbose_name=<span class="string">'课程所属类别'</span>)</span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>课程小节表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 小节表</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoureClass</span><span class="params">(models.Model)</span>:</span></span><br><span class="line"></span><br><span class="line">      title = models.CharField(max_length=<span class="number">30</span>,verbose_name=<span class="string">'小节名'</span>)</span><br><span class="line">      type_choices = (</span><br><span class="line">            (<span class="number">1</span>,<span class="string">'直播'</span>),</span><br><span class="line">            (<span class="number">2</span>,<span class="string">'录播'</span>),</span><br><span class="line">      )</span><br><span class="line"></span><br><span class="line">      types = models.IntegerField(choices=type_choices,verbose_name=<span class="string">'课程类型'</span>)</span><br><span class="line"></span><br><span class="line">      url = models.URLField(verbose_name=<span class="string">'资源地址'</span>)</span><br><span class="line">      course = models.ForeignKey(Course,on_delete=models.CASCADE,verbose_name=<span class="string">'所属课程'</span>)</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.course.title + <span class="string">':'</span>  + str(self.id) + <span class="string">':'</span>+self.title</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>收藏表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LikeCLass</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      user = models.ForeignKey(User,models.CASCADE)</span><br><span class="line">      course = models.ForeignKey(Course,models.CASCADE)</span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.user.name + <span class="string">":"</span> + self.course.title</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、序列化"><a href="#二、序列化" class="headerlink" title="二、序列化"></a>二、序列化</h2><h5 id="1、使用DRF自带的序列化工具"><a href="#1、使用DRF自带的序列化工具" class="headerlink" title="1、使用DRF自带的序列化工具"></a>1、使用DRF自带的序列化工具</h5><blockquote>
+<p>首先在settings里注册rest_framework</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'rest_framework'</span>,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在子应用根目录下创建py文件</p>
+</blockquote>
+<p>serializer.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> serializers</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">            model = models.User</span><br><span class="line">            fields = <span class="string">'__all__'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TeachersSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">      <span class="comment"># teachercourse = UserSerializer(many=True)</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">            model = models.Teachers</span><br><span class="line">            fields = <span class="string">'__all__'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClasstypeSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">            model = models.Classtype</span><br><span class="line">            fields = <span class="string">'__all__'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CourseSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">      <span class="comment"># courses = TeachersSerializer(many=True)</span></span><br><span class="line">      <span class="comment"># coursetypes = ClasstypeSerializer(many=True)</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">            model = models.Course</span><br><span class="line">            fields = <span class="string">'__all__'</span></span><br><span class="line">            depth = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>注意当表中有外键而我们需要对外键做序列化时候，可以使用depth来申明外键关联的层级数，使用时可以直接用“键值.外键关联字段”的方式。例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//vue页面</span></span><br><span class="line">&#123;&#123;cdata.teacher.user.name&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、Vue"><a href="#三、Vue" class="headerlink" title="三、Vue"></a>三、Vue</h3><h5 id="1、单页面开发——父子组件嵌套"><a href="#1、单页面开发——父子组件嵌套" class="headerlink" title="1、单页面开发——父子组件嵌套"></a>1、单页面开发——父子组件嵌套</h5><ul>
+<li>父子组件传参示例</li>
+</ul>
+<blockquote>
+<p>父组件向子组件传参时，子组件用props接收</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">      data() &#123;</span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;  </span></span><br><span class="line">            &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;  </span><br><span class="line">      &#125;,</span><br><span class="line">      watch:&#123;</span><br><span class="line">      &#125;,</span><br><span class="line">      props:&#123;</span><br><span class="line">            choices:&#123;</span><br><span class="line"><span class="javascript">                  type:<span class="built_in">Object</span>,</span></span><br><span class="line"><span class="javascript">                  required:<span class="literal">true</span>,</span></span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>父组件传递参数数据初始化，data内设置数据对象</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">choices:&#123;</span><br><span class="line">    pay_choice:<span class="string">''</span>,</span><br><span class="line">    language_choice:<span class="string">''</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、course父组件"><a href="#2、course父组件" class="headerlink" title="2、course父组件"></a>2、course父组件</h5><ul>
+<li>标签多选功能</li>
+</ul>
+<img src="C:\Users\60952\AppData\Roaming\Typora\typora-user-images\1569561352184.png" alt="1569561352184" style="zoom:60%;">
+
+
+
+<blockquote>
+<p>绑定鼠标点击事件</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">get_pay_choice(id_)&#123;</span><br><span class="line">              <span class="keyword">if</span>(<span class="keyword">this</span>.choices.pay_choice == id_)&#123;</span><br><span class="line">                <span class="keyword">this</span>.choices.pay_choice = <span class="string">''</span></span><br><span class="line">              &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                  <span class="keyword">this</span>.choices.pay_choice = id_</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">get_language_choice(id_)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.choices.language_choice == id_)&#123;</span><br><span class="line">                <span class="keyword">this</span>.choices.language_choice = <span class="string">''</span></span><br><span class="line">              &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                  <span class="keyword">this</span>.choices.language_choice = id_</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>实现标签点击效果</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-for</span>=<span class="string">'pay in pay_type'</span> <span class="attr">:class</span>=<span class="string">"&#123;'active':pay.id==choices.pay_choice&#125;"</span> @<span class="attr">click.prevent</span>=<span class="string">"get_pay_choice(pay.id)"</span>&gt;</span>&#123;&#123;pay.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>  <span class="attr">v-for</span>=<span class="string">'course in course_type'</span> <span class="attr">:class</span>=<span class="string">"&#123;'active':course.id==choices.language_choice&#125;"</span> @<span class="attr">click</span>=<span class="string">"get_language_choice(course.id)"</span>  &gt;</span>&#123;&#123;course.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件watch监听属性检测数据（choices.pay_choice、choices.language_choice）变化，向后端发起请求获取对应数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">            choices:&#123;</span><br><span class="line">                  handler(oldval,newval)&#123;</span><br><span class="line">                        // console.log(this.choices.pay_choice)</span><br><span class="line">                        // console.log(this.choices.language_choice)</span><br><span class="line">                        let form_data = new FormData()</span><br><span class="line">                        form_data.append(&apos;pay_id&apos;,this.choices.pay_choice)</span><br><span class="line">                        form_data.append(&apos;language_id&apos;,this.choices.language_choice)</span><br><span class="line">                        axios(&#123;</span><br><span class="line">                              url:&apos;http://127.0.0.1:8000/api/user/getcourse/&apos;,</span><br><span class="line">                              method:&apos;post&apos;,</span><br><span class="line">                              data:form_data</span><br><span class="line">                        &#125;).then(res=&gt;&#123;</span><br><span class="line">                              this.course_data = res.data.course_data</span><br><span class="line">                        &#125;)</span><br><span class="line">                  &#125;,</span><br><span class="line">                  deep:true, </span><br><span class="line">            &#125;,</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>deep:true代表检测深层数据内部变化，例如：列表等</p>
+<h3 id="四、Django"><a href="#四、Django" class="headerlink" title="四、Django"></a>四、Django</h3><h5 id="1、课程页展示数据"><a href="#1、课程页展示数据" class="headerlink" title="1、课程页展示数据"></a>1、课程页展示数据</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> serializer</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Course</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            <span class="comment"># 获取request里头部数据</span></span><br><span class="line">            <span class="comment"># token = request.META.get('HTTP_AUTHORIZATION')</span></span><br><span class="line">            name = models.Classtype.objects.all()</span><br><span class="line">            name_data = serializer.ClasstypeSerializer(name,many=<span class="literal">True</span>)</span><br><span class="line">            </span><br><span class="line">            courses = models.Course.objects.all()</span><br><span class="line">            course_data = serializer.CourseSerializer(courses,many=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                  <span class="string">'course_data'</span>:course_data.data,</span><br><span class="line">                  <span class="string">'course_type'</span>:name_data.data,</span><br><span class="line">                  <span class="string">'pay_type'</span>: [</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">1</span>,<span class="string">'name'</span>:<span class="string">'免费'</span>&#125;,</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">2</span>,<span class="string">'name'</span>:<span class="string">'限免'</span>&#125;,</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">3</span>,<span class="string">'name'</span>:<span class="string">'会员'</span>&#125;,</span><br><span class="line">                        ]</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coursedetail</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            cid = request.query_params.get(<span class="string">'cid'</span>)</span><br><span class="line">            <span class="comment"># print(cid)</span></span><br><span class="line">            <span class="keyword">return</span> Response(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Getcourse</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            pay_id = request.data.get(<span class="string">'pay_id'</span>,<span class="string">''</span>)</span><br><span class="line">            language_id = request.data.get(<span class="string">'language_id'</span>,<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> pay_id <span class="keyword">and</span> <span class="keyword">not</span> language_id:</span><br><span class="line">                  courses = models.Course.objects.all()</span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> language_id <span class="keyword">and</span> pay_id:</span><br><span class="line">                  courses = models.Course.objects.filter(pay_attr=pay_id)</span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> pay_id <span class="keyword">and</span> language_id:</span><br><span class="line">                  courses = models.Course.objects.filter(coursetype__id = language_id)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  courses = models.Course.objects.filter(pay_attr=pay_id,coursetype__id = language_id)</span><br><span class="line">            course_data = serializer.CourseSerializer(courses,many=<span class="literal">True</span>)      </span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                  <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                  <span class="string">'course_data'</span>:course_data.data</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/13/Celery异步发送邮件/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/13/Docker+fastDFS/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Ding YiFan">
+          <p class="site-author-name" itemprop="name">Ding YiFan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Course课程详情页"><span class="nav-number">1.</span> <span class="nav-text">Course课程详情页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、数据库建表"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、数据库建表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、models中ORM，包含一对一、一对多、多对多关系"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">1、models中ORM，包含一对一、一对多、多对多关系</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#二、序列化"><span class="nav-number">1.1.</span> <span class="nav-text">二、序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、使用DRF自带的序列化工具"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1、使用DRF自带的序列化工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Vue"><span class="nav-number">1.1.1.</span> <span class="nav-text">三、Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、单页面开发——父子组件嵌套"><span class="nav-number">1.1.1.0.1.</span> <span class="nav-text">1、单页面开发——父子组件嵌套</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、course父组件"><span class="nav-number">1.1.1.0.2.</span> <span class="nav-text">2、course父组件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Django"><span class="nav-number">1.1.2.</span> <span class="nav-text">四、Django</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、课程页展示数据"><span class="nav-number">1.1.2.0.1.</span> <span class="nav-text">1、课程页展示数据</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ding YiFan</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

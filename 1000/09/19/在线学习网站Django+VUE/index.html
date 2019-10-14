@@ -94,13 +94,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="TcFans&#39;s blog">
-<meta property="og:url" content="http://dingyifan.tech/page/2/index.html">
+<meta name="description" content="一、开发环境及相关软件win10 python3.7 django2.0.4 vue2.9.6 阿里云服务器+XShell+memcache … 二、需求分析1、网站模板参考实验楼：https://www.shiyanlou.com 菜鸟教程：https://www.runoob.com 2、功能 注册    输入邮箱（未做验证） 输入密码（未做验证） 在验证码输入框内，输入从邮箱获取到的验证码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在线学习网站Django+VUE">
+<meta property="og:url" content="http://dingyifan.tech/1000/09/19/在线学习网站Django+VUE/index.html">
 <meta property="og:site_name" content="TcFans&#39;s blog">
+<meta property="og:description" content="一、开发环境及相关软件win10 python3.7 django2.0.4 vue2.9.6 阿里云服务器+XShell+memcache … 二、需求分析1、网站模板参考实验楼：https://www.shiyanlou.com 菜鸟教程：https://www.runoob.com 2、功能 注册    输入邮箱（未做验证） 输入密码（未做验证） 在验证码输入框内，输入从邮箱获取到的验证码">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://dingyifan.tech/1000/09/19/在线学习网站Django+VUE/注册功能.png">
+<meta property="og:image" content="http://dingyifan.tech/1000/09/19/在线学习网站Django+VUE/登录功能.png">
+<meta property="og:image" content="http://dingyifan.tech/1000/09/19/在线学习网站Django+VUE/表结构.png">
+<meta property="og:updated_time" content="2019-10-14T03:14:11.902Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TcFans&#39;s blog">
+<meta name="twitter:title" content="在线学习网站Django+VUE">
+<meta name="twitter:description" content="一、开发环境及相关软件win10 python3.7 django2.0.4 vue2.9.6 阿里云服务器+XShell+memcache … 二、需求分析1、网站模板参考实验楼：https://www.shiyanlou.com 菜鸟教程：https://www.runoob.com 2、功能 注册    输入邮箱（未做验证） 输入密码（未做验证） 在验证码输入框内，输入从邮箱获取到的验证码">
+<meta name="twitter:image" content="http://dingyifan.tech/1000/09/19/在线学习网站Django+VUE/注册功能.png">
 
 
 
@@ -129,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://dingyifan.tech/page/2/">
+  <link rel="canonical" href="http://dingyifan.tech/1000/09/19/在线学习网站Django+VUE/">
 
 
 
 
 
-  <title>TcFans's blog</title>
+  <title>在线学习网站Django+VUE | TcFans's blog</title>
   
 
 
@@ -160,9 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,272 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2017/11/01/Course课程详情页/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ding YiFan">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/kobe.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TcFans's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/01/Course课程详情页/" itemprop="url">Course课程详情页</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-01T00:00:00+08:00">
-                2017-11-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          一、数据库建表1、models中ORM，包含一对一、一对多、多对多关系
-讲师表
-
-1234567# 讲师表，讲师个人信息class Teachers(models.Model):      user = models.OneToOneField(User,on_delete=models.CASCA
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/01/Course课程详情页/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2017/09/19/前期准备/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ding YiFan">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/kobe.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TcFans's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/19/前期准备/" itemprop="url">前期准备</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-19T08:14:11+08:00">
-                2017-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          前期准备一、创建Vue文件1、node.js前往node.js官网下载windows版本
-https://nodejs.org/en/download/
-2、下载vue在cmd命令窗口内输入
-1npm install vue --save
-
-下载完成后可以在cmd查看vue版本
-1vue -V
-
-3
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/19/前期准备/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -540,9 +283,7 @@ https://nodejs.org/en/download/
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/1000/09/19/在线学习网站Django+VUE/" itemprop="url">在线学习网站Django+VUE</a></h1>
+          <h1 class="post-title" itemprop="name headline">在线学习网站Django+VUE</h1>
         
 
         <div class="post-meta">
@@ -592,27 +333,35 @@ https://nodejs.org/en/download/
       
 
       
-        
-          
-          一、开发环境及相关软件win10
-python3.7
-django2.0.4
-vue2.9.6
-阿里云服务器+XShell+memcache
-…
-二、需求分析1、网站模板参考实验楼：https://www.shiyanlou.com
-菜鸟教程：https://www.runoob.com
-2、功能
+        <h3 id="一、开发环境及相关软件"><a href="#一、开发环境及相关软件" class="headerlink" title="一、开发环境及相关软件"></a>一、开发环境及相关软件</h3><p>win10</p>
+<p>python3.7</p>
+<p>django2.0.4</p>
+<p>vue2.9.6</p>
+<p>阿里云服务器+XShell+memcache</p>
+<p>…</p>
+<h3 id="二、需求分析"><a href="#二、需求分析" class="headerlink" title="二、需求分析"></a>二、需求分析</h3><h5 id="1、网站模板参考"><a href="#1、网站模板参考" class="headerlink" title="1、网站模板参考"></a>1、网站模板参考</h5><p>实验楼：<a href="https://www.shiyanlou.com/" target="_blank" rel="noopener">https://www.shiyanlou.com</a></p>
+<p>菜鸟教程：<a href="https://www.runoob.com/" target="_blank" rel="noopener">https://www.runoob.com</a></p>
+<h5 id="2、功能"><a href="#2、功能" class="headerlink" title="2、功能"></a>2、功能</h5><ul>
+<li>注册</li>
+</ul>
+<img src="/1000/09/19/在线学习网站Django+VUE/注册功能.png" title="注册功能">
 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/1000/09/19/在线学习网站Django+VUE/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<p>输入邮箱（未做验证）</p>
+<p>输入密码（未做验证）</p>
+<p>在验证码输入框内，输入从邮箱获取到的验证码</p>
+<p>点击&lt;发送邮件&gt;按钮，向输入的邮箱发送验证码</p>
+<p>点击注册按钮完成注册</p>
+<ul>
+<li>登录</li>
+</ul>
+<img src="/1000/09/19/在线学习网站Django+VUE/登录功能.png" title="登录功能">
+
+<p>输入邮箱和密码登录（未做提示）</p>
+<p>Django后台生成自定义token用于前端做客户端自认证</p>
+<ul>
+<li>表结构</li>
+</ul>
+<img src="/1000/09/19/在线学习网站Django+VUE/表结构.png" title="表结构">
       
     </div>
     
@@ -629,12 +378,28 @@ vue2.9.6
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/19/前期准备/" rel="prev" title="前期准备">
+                前期准备 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -644,14 +409,11 @@ vue2.9.6
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -659,6 +421,10 @@ vue2.9.6
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -679,8 +445,17 @@ vue2.9.6
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/kobe.jpg" alt="Ding YiFan">
           <p class="site-author-name" itemprop="name">Ding YiFan</p>
@@ -722,6 +497,22 @@ vue2.9.6
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、开发环境及相关软件"><span class="nav-number">1.</span> <span class="nav-text">一、开发环境及相关软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、需求分析"><span class="nav-number">2.</span> <span class="nav-text">二、需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、网站模板参考"><span class="nav-number">2.0.1.</span> <span class="nav-text">1、网站模板参考</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、功能"><span class="nav-number">2.0.2.</span> <span class="nav-text">2、功能</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -842,10 +633,10 @@ vue2.9.6
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

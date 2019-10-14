@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -95,12 +95,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="dingyifan">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="dingyifan">
-<meta property="og:locale" content="en">
+<meta property="og:title" content="TcFans&#39;s blog">
+<meta property="og:url" content="http://dingyifan.tech/index.html">
+<meta property="og:site_name" content="TcFans&#39;s blog">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dingyifan">
+<meta name="twitter:title" content="TcFans&#39;s blog">
 
 
 
@@ -108,14 +108,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://dingyifan.tech/">
 
 
 
 
 
-  <title>dingyifan</title>
+  <title>TcFans's blog</title>
   
 
 
@@ -153,7 +153,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -173,7 +173,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">dingyifan</span>
+        <span class="site-title">TcFans's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -203,7 +203,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            Home
+            首页
           </a>
         </li>
       
@@ -213,7 +213,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -223,7 +223,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -260,16 +260,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/注册功能/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2019/08/19/微博三方登录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/kobe.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
+      <meta itemprop="name" content="TcFans's blog">
     </span>
 
     
@@ -279,7 +279,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/13/注册功能/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2019/08/19/微博三方登录/" itemprop="url">微博三方登录</a></h1>
         
 
         <div class="post-meta">
@@ -289,10 +289,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-19T00:00:00+08:00">
+                2019-08-19
               </time>
             
 
@@ -331,175 +331,20 @@
       
         
           
-            <h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><img src="C:\Users\60952\Desktop\blog\imgs\Snipaste_2019-09-22_11-05-58.png" alt="Snipaste_2019-09-22_11-05-58" style="zoom:60%;">
+          一、创建微博我的应用1、注册微博开放平台账号
+创建账户
 
-<h3 id="一、Vue部分"><a href="#一、Vue部分" class="headerlink" title="一、Vue部分"></a>一、Vue部分</h3><h5 id="1、模板转换"><a href="#1、模板转换" class="headerlink" title="1、模板转换"></a>1、模板转换</h5><p>我们在components里将HelloWorld.vue修改为Index.vue，并将模板文件里的代码拷贝进template下div标签里</p>
-<h5 id="2、配置文件"><a href="#2、配置文件" class="headerlink" title="2、配置文件"></a>2、配置文件</h5><ol>
-<li><p>跨域：本次项目是前后端分离的，因此涉及到跨域问题，在这里我们使用axios来实现跨域功能。cmd进入vue文件下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios --save</span><br></pre></td></tr></table></figure>
+注册开发者平台 登录上去 点击左上角第一个下拉框 点击其他 输入项目名称 下拉框选择网页应用 点击确认 点击我的项目 进入我的项目 拿到key和id
 
-<p>在编辑器中打开vue文件，打开config文件夹下的index.js，修改proxyTable配置为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;  <span class="comment">//使用"/api"来代替"http://f.apiplus.c"</span></span><br><span class="line">      target: <span class="string">'http://127.0.0.1:8000/'</span>, <span class="comment">//源地址</span></span><br><span class="line">      changeOrigin: <span class="literal">true</span>, <span class="comment">//改变源 </span></span><br><span class="line">      pathRewrite: &#123;</span><br><span class="line">        <span class="string">'^/api'</span>: <span class="string">''</span> <span class="comment">//路径重写</span></span><br><span class="line">        			&#125;</span><br><span class="line">    			&#125;</span><br><span class="line">  			&#125;,</span><br></pre></td></tr></table></figure>
-
-<p>打开src文件夹下的main.js，添加代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line">Vue.prototype.axios = axios</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>路由：打开router下的index.js修改代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Index <span class="keyword">from</span> <span class="string">'@/components/Index'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  mode:<span class="string">'history'</span>,</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/'</span>,</span><br><span class="line">      name: <span class="string">'index'</span>,</span><br><span class="line">      component: Index</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>修改mode为’history’，为我们的主页index配置路由’/‘</p>
-</li>
-<li></li>
-<li></li>
-</ol>
-<h5 id="3、Index-vue完成注册功能"><a href="#3、Index-vue完成注册功能" class="headerlink" title="3、Index.vue完成注册功能"></a>3、Index.vue完成注册功能</h5><ol>
-<li><p>启动vue项目，用Chrome浏览器打开index主页，找到注册弹窗所在标签，用v-model绑定用户输入信息。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">v-model</span>=<span class="string">"register_email"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"请输入邮箱"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">v-model</span>=<span class="string">"register_password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>验证码功能绑定点击事件，发送邮件按钮，验证码输入框实现鼠标移除对验证码做判断功能</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 验证码验证用鼠标光标移除实现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> @<span class="attr">blur</span>=<span class="string">"verify_email_token"</span> <span class="attr">v-model</span>=<span class="string">"register_verify"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"请输入验证码"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-show</span>=<span class="string">"is_register"</span> <span class="attr">class</span>=<span class="string">'help-block text-left'</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-show</span>=<span class="string">"is_unregister"</span> <span class="attr">class</span>=<span class="string">'help-block text-left'</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"btn btn-info"</span> @<span class="attr">click</span>=<span class="string">'send_verify_email'</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"发送邮件"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>导入axios完成跨域，在data()里构建初始数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"></span><br><span class="line">data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        register_email:<span class="string">''</span>,</span><br><span class="line">        register_password:<span class="string">''</span>,</span><br><span class="line">        register_verify:<span class="string">''</span>,</span><br><span class="line"></span><br><span class="line">        message :<span class="string">''</span>,</span><br><span class="line">        is_register : <span class="literal">false</span>, <span class="comment">//做全局验证验证码判断使用</span></span><br><span class="line">        is_unregister : <span class="literal">true</span> ,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>注意：data()必须是函数具有返回值是因为javascipt只有函数构成作用域(注意理解作用域,只有<code>函数的{}</code>构成作用域,<code>对象的{}</code>以及 <code>if(){}</code>都不构成作用域)，data是一个函数时，每个组件实例都有自己的作用域，每个实例相互独立,不会相互影响</p>
-</li>
-</ol>
-<ol start="4">
-<li><p>修改form表单提交事件，绑定函数register</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> @<span class="attr">submit.prevent</span>=<span class="string">"register"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>methods内写register函数，将要向后端传递的参数放在Formdata()里，因为django只识别Formdata里的数据，构建跨域axios函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">register()&#123;</span><br><span class="line">            <span class="comment">// 如果验证校验失败 </span></span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">this</span>.is_register) &#123;</span><br><span class="line">                <span class="keyword">this</span>.message = <span class="string">'验证码未通过'</span></span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">//   创建一个form_data列表存储要传递到后端数据，django只支持form_data表单数据类型</span></span><br><span class="line">            <span class="keyword">let</span> form_data = <span class="keyword">new</span> FormData()</span><br><span class="line">        <span class="comment">//   form_data.append('register_verify')</span></span><br><span class="line">            form_data.append(<span class="string">'register_email'</span>,<span class="keyword">this</span>.register_email)</span><br><span class="line">            form_data.append(<span class="string">'register_password'</span>,<span class="keyword">this</span>.register_password)</span><br><span class="line">            axios(&#123;</span><br><span class="line">                url:<span class="string">'http://127.0.0.1:8000/api/user/register/'</span>,</span><br><span class="line">                methods:<span class="string">'post'</span>,</span><br><span class="line">                data:form_data</span><br><span class="line">            &#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (res.data.code == <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">this</span>.message = res.data.message</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">console</span>.log(res.data)</span><br><span class="line">            &#125;).catch(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            &#125;)</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="5">
-<li><p>发送邮件函数send_verify_email</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">send_verify_email()&#123;</span><br><span class="line">        <span class="comment">//   alert(this.register_email)</span></span><br><span class="line">          <span class="keyword">if</span> (!<span class="keyword">this</span>.register_email)&#123;</span><br><span class="line">              <span class="keyword">return</span></span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              <span class="keyword">let</span> form_data = <span class="keyword">new</span> FormData()</span><br><span class="line">              form_data.append(<span class="string">'register_email'</span>,<span class="keyword">this</span>.register_email)</span><br><span class="line">              axios(&#123;</span><br><span class="line">                  url:<span class="string">'http://127.0.0.1:8000/api/user/verifyemail/'</span>,</span><br><span class="line">                  method:<span class="string">'post'</span>,</span><br><span class="line">                  data:form_data,</span><br><span class="line">              &#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                  <span class="built_in">console</span>.log(res.data)</span><br><span class="line">              &#125;).catch(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">              &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="6">
-<li><p>验证邮件验证码函数verify_email_token</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">verify_email_token()&#123;</span><br><span class="line">            <span class="comment">// 校验表单中的验证码是否正确</span></span><br><span class="line">            <span class="keyword">let</span> form_data = <span class="keyword">new</span> FormData()</span><br><span class="line">            form_data.append(<span class="string">'register_email'</span>,<span class="keyword">this</span>.register_email)</span><br><span class="line">            form_data.append(<span class="string">'register_verify'</span>,<span class="keyword">this</span>.register_verify)</span><br><span class="line">            axios(&#123;</span><br><span class="line">                url:<span class="string">'http://127.0.0.1:8000/api/user/verifytoken/'</span>,</span><br><span class="line">                method:<span class="string">'post'</span>,</span><br><span class="line">                data:form_data,</span><br><span class="line"></span><br><span class="line">            &#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (res.data.code == <span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="keyword">this</span>.message = res.data.message</span><br><span class="line">                    <span class="keyword">this</span>.is_register = <span class="literal">true</span></span><br><span class="line">                    <span class="keyword">this</span>.is_unregister = <span class="literal">false</span></span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">this</span>.message = res.data.message</span><br><span class="line">                    <span class="keyword">this</span>.is_register = <span class="literal">false</span></span><br><span class="line">                    <span class="keyword">this</span>.is_unregister = <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).catch(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;)</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="7">
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-</li>
-<li></li>
-</ol>
-<h3 id="二、Django部分"><a href="#二、Django部分" class="headerlink" title="二、Django部分"></a>二、Django部分</h3><h5 id="1、配置文件"><a href="#1、配置文件" class="headerlink" title="1、配置文件"></a>1、配置文件</h5><ol>
-<li><p>在settings文件中注册子项目</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'userapp'</span>,</span><br></pre></td></tr></table></figure>
-
-<p>​    </p>
-</li>
-<li><p>在settings里添加发送邮件配置代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EMAIL_USE_SSL = <span class="literal">True</span> <span class="comment"># Secure Sockets Layer 安全套接层, 取决于邮件服务器是否开启加密协议</span></span><br><span class="line">EMAIL_HOST = <span class="string">'smtp.qq.com'</span>  <span class="comment"># 邮件服务器地址</span></span><br><span class="line">EMAIL_PORT = <span class="number">465</span> <span class="comment"># 邮件服务器端口 </span></span><br><span class="line">EMAIL_HOST_USER = <span class="string">'374345224@qq.com'</span> <span class="comment"># 登陆邮件服务器的账号</span></span><br><span class="line">EMAIL_HOST_PASSWORD = <span class="string">'teyiisvqknicbidc'</span>  <span class="comment"># 登陆邮件服务器的密码</span></span><br><span class="line">DEFAULT_FROM_EMAIL = EMAIL_HOST_USER <span class="comment"># 邮件的发送者</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>设置跨域头部CORS中间件，添加到common中间件上方</p>
-<ul>
-<li>注册corsheaders</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'corsheaders'</span>,</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>将CORS中间件添加到common中间件上方</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'corsheaders.middleware.CorsMiddleware'</span>,  <span class="comment">#跨域中间件 cors</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>添加配置</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CORS_ORIGIN_ALLOW_ALL = <span class="literal">True</span> <span class="comment"># 其他人都可以跨域访问</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="4">
-<li></li>
-</ol>
-<h5 id="2、ORM存储数据models"><a href="#2、ORM存储数据models" class="headerlink" title="2、ORM存储数据models"></a>2、ORM存储数据models</h5><p>​        在子应用userapp的models.py文件中创建User类</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      email = models.EmailField(verbose_name=<span class="string">'邮箱'</span>)</span><br><span class="line">      password = models.CharField(max_length=<span class="number">30</span>,verbose_name=<span class="string">'密码'</span>)</span><br><span class="line">	  <span class="comment"># 用于超级管理员后台admin显示数据名称</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.email</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、配置路由"><a href="#3、配置路由" class="headerlink" title="3、配置路由"></a>3、配置路由</h5><ul>
-<li>主路由urls.py中</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path,include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">'api/'</span>,include(<span class="string">'userapp.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>子路由userapp/urls.py中</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">      path(<span class="string">'user/verifyemail/'</span>,views.EmailVerify.as_view(),name=<span class="string">'verifyemail'</span>),</span><br><span class="line">      path(<span class="string">'user/verifytoken/'</span>,views.TokenVerify.as_view(),name=<span class="string">'verifytoken'</span>),</span><br><span class="line">      path(<span class="string">'user/register/'</span>,views.Register.as_view(),name=<span class="string">'register'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h5 id="4、子应用userapp，view-py编写业务逻辑代码"><a href="#4、子应用userapp，view-py编写业务逻辑代码" class="headerlink" title="4、子应用userapp，view.py编写业务逻辑代码"></a>4、子应用userapp，view.py编写业务逻辑代码</h5><ul>
-<li><p>memcache里存储验证码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> memcache</span><br><span class="line"><span class="comment">#构建memcache连接，Client里放入主机地址</span></span><br><span class="line">mem = memcache.Client([<span class="string">'116.62.188.230'</span>],debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建生成随机6位验证码函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_random_str</span><span class="params">()</span>:</span></span><br><span class="line">      <span class="comment"># 字母a-z A-Z 0-9</span></span><br><span class="line">      a_ = list([chr(var) <span class="keyword">for</span> var <span class="keyword">in</span> range(<span class="number">97</span>,<span class="number">123</span>)])</span><br><span class="line">      A_ = list([chr(var) <span class="keyword">for</span> var <span class="keyword">in</span> range(<span class="number">65</span>,<span class="number">91</span>)])</span><br><span class="line">      num_ = list(str(range(<span class="number">0</span>,<span class="number">9</span>)))</span><br><span class="line">      <span class="comment"># 从我们构建的列表中取出6位字符</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">''</span>.join(random.sample(a_+A_+num_,<span class="number">6</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>发送邮件EmailVerify</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.views <span class="keyword">import</span> View</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> send_mail</span><br><span class="line"><span class="keyword">from</span> eduapi.settings <span class="keyword">import</span> DEFAULT_FROM_EMAIL</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmailVerify</span><span class="params">(View)</span>:</span></span><br><span class="line">      <span class="string">"""</span></span><br><span class="line"><span class="string">      1、先检查，对应邮件是否在mamcache里已经存在了验证码</span></span><br><span class="line"><span class="string">      2、发现没有存在，那么需要生成6位随机字符</span></span><br><span class="line"><span class="string">      3、存储到mamcache里，并设置60s过期时间</span></span><br><span class="line"><span class="string">            email 6str 60s</span></span><br><span class="line"><span class="string">      """</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            register_email = request.POST.get(<span class="string">'register_email'</span>)</span><br><span class="line">            <span class="comment"># 从memcache里取出我们需要的值</span></span><br><span class="line">            token = mem.get(register_email)</span><br><span class="line">            <span class="comment"># 如果存在验证码则不需要发送邮件</span></span><br><span class="line">            <span class="keyword">if</span> token:</span><br><span class="line">                  <span class="keyword">return</span> JsonResponse(&#123;</span><br><span class="line">                        <span class="string">'code'</span>: <span class="number">0</span> ,</span><br><span class="line">                        <span class="string">'message'</span> :<span class="string">'该邮箱已存在验证码'</span></span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  <span class="comment"># 生成token存储到memcache里，发送邮件验证码</span></span><br><span class="line">                  token = get_random_str()   <span class="comment">#生成的验证码</span></span><br><span class="line">             </span><br><span class="line">                  mem.set(register_email,token,<span class="number">60</span>)  <span class="comment"># 存入memcache里</span></span><br><span class="line"></span><br><span class="line">                  subject = <span class="string">'欢迎来到实验楼'</span></span><br><span class="line">                  message = <span class="string">'你的验证码是：%s'</span>%token</span><br><span class="line"></span><br><span class="line">                  send_mail(subject,message,DEFAULT_FROM_EMAIL,[register_email])</span><br><span class="line">                  <span class="keyword">return</span> JsonResponse(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'验证码已发送'</span></span><br><span class="line">                  &#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>验证码验证TokenVerify</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.views <span class="keyword">import</span> APIView</span><br><span class="line"><span class="keyword">from</span> rest_framework.response <span class="keyword">import</span> Response</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TokenVerify</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            register_email = request.data[<span class="string">'register_email'</span>]</span><br><span class="line">            register_verify = request.data[<span class="string">'register_verify'</span>]</span><br><span class="line"></span><br><span class="line">            token = mem.get(register_email)</span><br><span class="line">            <span class="keyword">if</span> token <span class="keyword">and</span> token == register_verify:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span> : <span class="number">1</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'校验成功'</span></span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">else</span> :</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">0</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'校验失败'</span></span><br><span class="line">                  &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>注意：我们在这里使用DRF（django-rest-framework），需要在settings里注册rest_framework</p>
-</li>
-</ul>
-<ul>
-<li><p>注册Register</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.hashers <span class="keyword">import</span> make_password,check_password</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Register</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            register_email = request.data[<span class="string">'register_email'</span>]</span><br><span class="line">            register_password = request.data[<span class="string">'register_password'</span>]</span><br><span class="line">      </span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                  models.User.objects.get(</span><br><span class="line">                        email = register_email</span><br><span class="line">                  )</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                  models.User.objects.create(</span><br><span class="line">                        email = register_email,</span><br><span class="line">                        password = make_password(register_password)</span><br><span class="line">                  )</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                        <span class="string">'messsage'</span>:<span class="string">'注册成功'</span>,</span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">0</span>,</span><br><span class="line">                        <span class="string">'messsage'</span>:<span class="string">'邮箱已被占用'</span>,</span><br><span class="line">                  &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>注意：我们使用了django自带的加密方式make_password，当然我们也可以使用sha1、sha256</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="comment"># 密码加密</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_password</span><span class="params">(str_)</span>:</span></span><br><span class="line">      s = hashlib.sha1()</span><br><span class="line">      s.update(str_.encode())</span><br><span class="line">      <span class="keyword">return</span> s.hexdigest()</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
+https://open.weibo.com/?sudaref=www.baidu.com
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/19/微博三方登录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -546,16 +391,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/在线学习网站Django+VUE/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2019/04/05/三方支付-支付宝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/kobe.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
+      <meta itemprop="name" content="TcFans's blog">
     </span>
 
     
@@ -565,7 +410,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/13/在线学习网站Django+VUE/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2019/04/05/三方支付-支付宝/" itemprop="url">Django配置支付宝沙箱支付功能</a></h1>
         
 
         <div class="post-meta">
@@ -575,10 +420,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T00:00:00+08:00">
+                2019-04-05
               </time>
             
 
@@ -617,29 +462,36 @@
       
         
           
-            <h1 id="在线学习网站Django-VUE"><a href="#在线学习网站Django-VUE" class="headerlink" title="在线学习网站Django+VUE"></a>在线学习网站Django+VUE</h1><h3 id="一、开发环境及相关软件"><a href="#一、开发环境及相关软件" class="headerlink" title="一、开发环境及相关软件"></a>一、开发环境及相关软件</h3><p>win10</p>
-<p>python3.7</p>
-<p>django2.0.4</p>
-<p>vue2.9.6</p>
-<p>阿里云服务器+XShell+memcache</p>
-<p>…</p>
-<h3 id="二、需求分析"><a href="#二、需求分析" class="headerlink" title="二、需求分析"></a>二、需求分析</h3><h5 id="1、网站模板参考"><a href="#1、网站模板参考" class="headerlink" title="1、网站模板参考"></a>1、网站模板参考</h5><p>实验楼：<a href="https://www.shiyanlou.com/" target="_blank" rel="noopener">https://www.shiyanlou.com</a></p>
-<p>菜鸟教程：<a href="https://www.runoob.com/" target="_blank" rel="noopener">https://www.runoob.com</a></p>
-<h5 id="2、功能"><a href="#2、功能" class="headerlink" title="2、功能"></a>2、功能</h5><p>2.1 注册</p>
-<img src="C:\Users\60952\Desktop\blog\imgs\Snipaste_2019-09-22_11-05-58.png" style="zoom:60%;">
-
-<p>输入邮箱（未做验证）</p>
-<p>输入密码（未做验证）</p>
-<p>在验证码输入框内，输入从邮箱获取到的验证码</p>
-<p>点击&lt;发送邮件&gt;按钮，向输入的邮箱发送验证码</p>
-<p>点击注册按钮完成注册</p>
-<p>2.2 登录</p>
-<img src="C:\Users\60952\Desktop\blog\imgs\Snipaste_2019-09-23_19-44-51.png" alt="Snipaste_2019-09-23_19-44-51" style="zoom:60%;">
-
-<p>输入邮箱和密码登录（未做提示）</p>
-<p>Django后台生成自定义token用于前端做客户端自认证</p>
-
           
+支付宝沙箱环境测试支付功能
+
+1、下载Android版本支付宝沙箱app
+支付宝开放文档
+
+
+点击沙箱工具，扫码下载沙箱app
+
+
+登录支付宝开放平台-进入开发者中心-获得沙箱账号
+
+
+
+
+用账号密码登录沙箱app，沙箱app只有支付功能
+
+2、配置支付宝沙箱
+生成沙箱密钥
+
+
+使用支付宝密钥生成
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/05/三方支付-支付宝/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -686,16 +538,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/微博三方登录/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2019/03/05/跨域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/kobe.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
+      <meta itemprop="name" content="TcFans's blog">
     </span>
 
     
@@ -705,7 +557,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/13/微博三方登录/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2019/03/05/跨域/" itemprop="url">配置跨域的方式（Vue-Django）</a></h1>
         
 
         <div class="post-meta">
@@ -715,10 +567,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T00:00:00+08:00">
+                2019-03-05
               </time>
             
 
@@ -757,56 +609,16 @@
       
         
           
-            <h3 id="微博三方登录"><a href="#微博三方登录" class="headerlink" title="微博三方登录"></a>微博三方登录</h3><h3 id="一、创建微博我的应用"><a href="#一、创建微博我的应用" class="headerlink" title="一、创建微博我的应用"></a>一、创建微博我的应用</h3><h5 id="1、注册微博开放平台账号"><a href="#1、注册微博开放平台账号" class="headerlink" title="1、注册微博开放平台账号"></a>1、注册微博开放平台账号</h5><ol>
-<li><p>创建账户</p>
-<blockquote>
-<p>注册开发者平台 登录上去 点击左上角第一个下拉框 点击其他 输入项目名称 下拉框选择网页应用 点击确认 点击我的项目 进入我的项目 拿到key和id</p>
-</blockquote>
-<p><a href="https://open.weibo.com/?sudaref=www.baidu.com&amp;display=0&amp;retcode=6102" target="_blank" rel="noopener">https://open.weibo.com/?sudaref=www.baidu.com&amp;display=0&amp;retcode=6102</a></p>
-</li>
-</ol>
-<ol start="2">
-<li><p>获取APP KEY 和 APP Secret</p>
-<img src="C:\Users\60952\Desktop\blog\imgs\Snipaste_2019-09-25_08-10-15.png" alt="Snipaste_2019-09-25_08-10-15" style="zoom:80%;">
-</li>
-<li><p>在应用信息的高级信息里设置回调<img src="C:%5CUsers%5C60952%5CDesktop%5Cblog%5Cimgs%5CSnipaste_2019-09-25_08-14-59.png" alt="Snipaste_2019-09-25_08-14-59"></p>
-</li>
-<li><p>#</p>
-</li>
-</ol>
-<h3 id="二、三方交互逻辑"><a href="#二、三方交互逻辑" class="headerlink" title="二、三方交互逻辑"></a>二、三方交互逻辑</h3><h5 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h5><img src="C:\Users\60952\Desktop\blog\imgs\Snipaste_2019-09-28_15-35-29.png" alt="无标题" style="zoom:60%;">
-
-<blockquote>
-<p>逻辑：</p>
-<p>1、用户通过页面点击链接（带client-id和redirect-url的微博链接），vue向微博三方登录接口发起请求，微博用户登录成功后，获得code码，将code码拼接在链接中返回。</p>
-<p>2、vue将链接中的code码通过this.$route.query.code得到，封装在formdata中以post方式发送给后端验证接口。</p>
-<p>3、Djang拿到前端传递过来的code码，请求微博’<a href="https://api.weibo.com/oauth2/access_token&#39;（使用requests模块，post请求，封装data，用json.loads取accesstoken）。" target="_blank" rel="noopener">https://api.weibo.com/oauth2/access_token&#39;（使用requests模块，post请求，封装data，用json.loads取accesstoken）。</a></p>
-<p>4、Django拿到access-token，请求微博’<a href="https://api.weibo.com/oauth2/get_token_info&#39;（同理requests模块，post请求，json.loads获取uid）" target="_blank" rel="noopener">https://api.weibo.com/oauth2/get_token_info&#39;（同理requests模块，post请求，json.loads获取uid）</a></p>
-<p>5、Django拿到uid进入数据库Social表中对比openid字段是否重复，进一步判断是否需要注册本地用户，如无需注册直接登录，将判断结果返回给前端。</p>
-</blockquote>
-<h3 id="三、Vue"><a href="#三、Vue" class="headerlink" title="三、Vue"></a>三、Vue</h3><h5 id="1、修改微博icon链接地址"><a href="#1、修改微博icon链接地址" class="headerlink" title="1、修改微博icon链接地址"></a>1、修改微博icon链接地址</h5><p>在微博三方认证请求链接后拼接client_id和rediect_uri地址</p>
-<blockquote>
-<p><a href="https://api.weibo.com/oauth2/authorize?client_id=&amp;redirect_uri=" target="_blank" rel="noopener">https://api.weibo.com/oauth2/authorize?client_id=&amp;redirect_uri=</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://api.weibo.com/oauth2/authorize?client_id=" target="_blank" rel="noopener">https://api.weibo.com/oauth2/authorize?client_id=</a></p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://api.weibo.com/oauth2/authorize?client_id=xxx&amp;redirect_uri=http://127.0.0.1:8080/xxx"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-weibo"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="2、请求页面"><a href="#2、请求页面" class="headerlink" title="2、请求页面"></a>2、请求页面</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">      name:<span class="string">'weibo'</span>,</span><br><span class="line">      data()&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      mounted()&#123;</span><br><span class="line">            <span class="comment">// 拿到微博返回的code码，被拼接在了链接中</span></span><br><span class="line">            <span class="keyword">let</span> code = <span class="keyword">this</span>.$route.query.code</span><br><span class="line">            <span class="keyword">let</span> form_data = <span class="keyword">new</span> FormData()</span><br><span class="line">            form_data.append(<span class="string">'code'</span>,code)</span><br><span class="line">            axios(&#123;</span><br><span class="line">				  url:<span class="string">'http://127.0.0.1:8000/api/user/weibo/'</span>,</span><br><span class="line">                  method:<span class="string">'post'</span>,</span><br><span class="line">                  data:form_data</span><br><span class="line">            &#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                  <span class="keyword">if</span>(res.data.code==<span class="number">0</span>)&#123;</span><br><span class="line">                        <span class="keyword">let</span> uid = res.data.uid</span><br><span class="line">                        <span class="keyword">this</span>.$router.push(&#123;</span><br><span class="line">                              name:<span class="string">'bindweibo'</span>,</span><br><span class="line">                              query:&#123;<span class="string">'uid'</span>:uid&#125;</span><br><span class="line">                        &#125;)</span><br><span class="line">                  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="keyword">let</span> token = res.data.token</span><br><span class="line">      					<span class="built_in">window</span>.localStorage.setItem(<span class="string">'token'</span>,token)</span><br><span class="line">                        <span class="keyword">this</span>.$router.push(&#123;</span><br><span class="line">                              name:<span class="string">'course'</span></span><br><span class="line">                        &#125;)</span><br><span class="line">                  &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、绑定页面（如果未绑定过账户则跳转）"><a href="#3、绑定页面（如果未绑定过账户则跳转）" class="headerlink" title="3、绑定页面（如果未绑定过账户则跳转）"></a>3、绑定页面（如果未绑定过账户则跳转）</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">      name:<span class="string">'bindweibo'</span>,</span><br><span class="line">      data()&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                  email:<span class="string">''</span>,</span><br><span class="line">                  password:<span class="string">''</span>,</span><br><span class="line">                  message:<span class="string">''</span>,</span><br><span class="line">                  keyi_bind:<span class="literal">false</span>,</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      methods:&#123;</span><br><span class="line">            checkemail()&#123;</span><br><span class="line">                  <span class="keyword">let</span> form_data = <span class="keyword">new</span> FormData()</span><br><span class="line">                  form_data.append(<span class="string">'email'</span>,<span class="keyword">this</span>.email)</span><br><span class="line">                  axios(&#123;</span><br><span class="line">                        url:<span class="string">'http://127.0.0.1:8000/api/user/checkemail/'</span>,</span><br><span class="line">                        data:form_data,</span><br><span class="line">                        method:<span class="string">'post'</span></span><br><span class="line">                  &#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                        <span class="keyword">if</span> (res.data.code==<span class="number">1</span>)&#123;</span><br><span class="line">                              <span class="keyword">this</span>.keyi_bind = <span class="literal">true</span></span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">this</span>.message = res.data.message</span><br><span class="line">                  &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">            bindwb()&#123;</span><br><span class="line">                  <span class="keyword">if</span> (!<span class="keyword">this</span>.keyi_bind)&#123;</span><br><span class="line">                        <span class="keyword">return</span></span><br><span class="line">                  &#125;</span><br><span class="line">                  <span class="keyword">let</span> form_data = <span class="keyword">new</span> FormData()</span><br><span class="line">                  form_data.append(<span class="string">'email'</span>,<span class="keyword">this</span>.email)</span><br><span class="line">                  form_data.append(<span class="string">'passwd'</span>,<span class="keyword">this</span>.password)</span><br><span class="line">                  form_data.append(<span class="string">'uid'</span>,<span class="keyword">this</span>.$route.query.uid)</span><br><span class="line">                  axios(&#123;</span><br><span class="line">                        url:<span class="string">'http://127.0.0.1:8000/api/user/bindweibo/'</span>,</span><br><span class="line">                        data:form_data,</span><br><span class="line">                        method:<span class="string">'post'</span></span><br><span class="line">                  &#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                        <span class="keyword">if</span>(res.data.code==<span class="number">1</span>)&#123;</span><br><span class="line">                              <span class="built_in">window</span>.localStorage.setItem(<span class="string">'token'</span>,res.data.token)</span><br><span class="line">                              <span class="keyword">this</span>.$router.push(&#123;</span><br><span class="line">                                    name:<span class="string">'course'</span></span><br><span class="line">                              &#125;)</span><br><span class="line">                        &#125;</span><br><span class="line">                  &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="四、Django"><a href="#四、Django" class="headerlink" title="四、Django"></a>四、Django</h3><h5 id="1、models里创建Social表"><a href="#1、models里创建Social表" class="headerlink" title="1、models里创建Social表"></a>1、models里创建Social表</h5><p>用于页面上的选择框标签，需要先提供一个二维的二元元组，第一个元素表示存在数据库内真实的值，第二个表示页面上显示的具体内容。在浏览器页面上将显示第二个元素的值。要获取一个choices的第二元素的值，可以使用<code>get_xxx_display()</code>方法，其中的xxx用字段名代替。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Social</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      user = models.ForeignKey(User,on_delete=models.CASCADE)</span><br><span class="line">      plantform_choices = (</span><br><span class="line">            (<span class="number">1</span>,<span class="string">'QQ'</span>),</span><br><span class="line">            (<span class="number">2</span>,<span class="string">'微信'</span>),</span><br><span class="line">            (<span class="number">3</span>,<span class="string">'微博'</span>),</span><br><span class="line">            (<span class="number">4</span>,<span class="string">'支付宝'</span>),</span><br><span class="line">      )</span><br><span class="line">      plantform = models.IntegerField(choices=plantform_choices,verbose_name=<span class="string">'社交平台'</span>)</span><br><span class="line">      open_id = models.CharField(max_length=<span class="number">180</span>,verbose_name=<span class="string">'uid'</span>)	<span class="comment">#微博返回的uid</span></span><br><span class="line"></span><br><span class="line">      update_time = models.DateTimeField(auto_now=<span class="literal">True</span>)</span><br><span class="line">      create_time = models.DateTimeField(auto_now_add=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.user.email</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、微博三方认证接口"><a href="#2、微博三方认证接口" class="headerlink" title="2、微博三方认证接口"></a>2、微博三方认证接口</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_access_token</span><span class="params">(code)</span>:</span></span><br><span class="line">      <span class="comment"># code是用户扫码跳转得到的</span></span><br><span class="line"></span><br><span class="line">      url = <span class="string">'https://api.weibo.com/oauth2/access_token'</span></span><br><span class="line"></span><br><span class="line">      data = &#123;</span><br><span class="line">            <span class="string">'client_id'</span>: <span class="number">1943026369</span> ,</span><br><span class="line">            <span class="string">'client_secret'</span> : <span class="string">'d9caf6bbe27bfefd44a2da978108167e'</span>,</span><br><span class="line">            <span class="string">'grant_type'</span> : <span class="string">'authorization_code'</span>,</span><br><span class="line">            <span class="string">'code'</span> :code,</span><br><span class="line">            <span class="string">'redirect_uri'</span>:<span class="string">'http://127.0.0.1:8080/weibo_callback'</span>,</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment"># 调用requests模块对链接发起post请求</span></span><br><span class="line">      rep =requests.post(url=url,data=data).text</span><br><span class="line">      <span class="comment"># print(rep)</span></span><br><span class="line">      <span class="keyword">return</span> json.loads(rep)[<span class="string">'access_token'</span>]</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_weibo_user</span><span class="params">(access_token)</span>:</span></span><br><span class="line">      <span class="comment"># https://api.weibo.com/oauth2/get_token_info</span></span><br><span class="line">      <span class="string">'''</span></span><br><span class="line"><span class="string">      &#123;</span></span><br><span class="line"><span class="string">       "uid": 1073880650,</span></span><br><span class="line"><span class="string">       "appkey": 1352222456,</span></span><br><span class="line"><span class="string">       "scope": null,</span></span><br><span class="line"><span class="string">       "create_at": 1352267591,</span></span><br><span class="line"><span class="string">       "expire_in": 157679471</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">      '''</span></span><br><span class="line">      url = <span class="string">'https://api.weibo.com/oauth2/get_token_info'</span></span><br><span class="line">      data = &#123;</span><br><span class="line">            <span class="string">'access_token'</span>:access_token</span><br><span class="line">      &#125;</span><br><span class="line">      rep = requests.post(data=data,url=url).text</span><br><span class="line">      <span class="comment"># print(rep)</span></span><br><span class="line">      <span class="keyword">return</span> json.loads(rep)[<span class="string">'uid'</span>]</span><br><span class="line">    </span><br><span class="line"><span class="comment">#拿着access token 去请求微博 拿到用户的uid</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Weibo</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,requests)</span>:</span></span><br><span class="line">            code = requests.data[<span class="string">'code'</span>]</span><br><span class="line">            access_token = get_access_token(code)</span><br><span class="line">            uid = get_weibo_user(access_token)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                  user = models.Social.objects.get(open_id=uid,plantform=<span class="number">3</span>)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>: <span class="number">0</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'请绑定实验楼账户'</span>,</span><br><span class="line">                        <span class="string">'uid'</span>:uid</span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  data = &#123;</span><br><span class="line">                        <span class="string">'id'</span>:user.user.id,</span><br><span class="line">                        <span class="string">'expire'</span>:time.time()+ EXPIRE</span><br><span class="line">                  &#125;</span><br><span class="line">                  token = encrypt_oracle(json.dumps(data))</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'登录成功'</span>,</span><br><span class="line">                        <span class="string">'token'</span>:token</span><br><span class="line">                  &#125;)</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、未登录用户绑定接口"><a href="#3、未登录用户绑定接口" class="headerlink" title="3、未登录用户绑定接口"></a>3、未登录用户绑定接口</h5><p>对用户输入的邮箱做验证，如果绑定过则提示邮箱已被占用</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checkemail</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,requests)</span>:</span></span><br><span class="line">            email = requests.data[<span class="string">'email'</span>]</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                  user = models.User.objects.get(email=email)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'邮箱可以使用'</span></span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">0</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'邮箱已被占用'</span></span><br><span class="line">                  &#125;)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bindweibo</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,requests)</span>:</span></span><br><span class="line">            email = requests.data[<span class="string">'email'</span>]</span><br><span class="line">            passwd = requests.data[<span class="string">'passwd'</span>]</span><br><span class="line">            uid = requests.data[<span class="string">'uid'</span>]</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                  user = models.User.objects.create(</span><br><span class="line">                        email = email,</span><br><span class="line">                        password = make_password(passwd)</span><br><span class="line">                  )</span><br><span class="line">                  s = models.Social.objects.create(</span><br><span class="line">                        user=user,</span><br><span class="line">                        plantform =<span class="number">3</span>,</span><br><span class="line">                        open_id = uid</span><br><span class="line">                  )</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">0</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'绑定失败'</span></span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  data = &#123;</span><br><span class="line">                        <span class="string">'id'</span>:user.id,</span><br><span class="line">                        <span class="string">'expire'</span>:time.time()+ EXPIRE</span><br><span class="line">                  &#125;</span><br><span class="line">                  token = encrypt_oracle(json.dumps(data))</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'绑定成功'</span>,</span><br><span class="line">                        <span class="string">'token'</span>:token,</span><br><span class="line">                        <span class="string">'email'</span>:user.email   <span class="comment"># 欢迎你XXX</span></span><br><span class="line">                  &#125;)</span><br></pre></td></tr></table></figure>
-
-
-          
+          一、Vue跨域1、在settings里设置进入vue&gt;config&gt;index.js文件
+12345678proxyTable: &#123;      '/api': &#123;  //使用"/api"来代替"http://f.apiplus.c"      target: 'htt
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/05/跨域/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -853,16 +665,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/三方支付-支付宝/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/kobe.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
+      <meta itemprop="name" content="TcFans's blog">
     </span>
 
     
@@ -872,7 +684,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/13/三方支付-支付宝/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/12/01/Celery异步发送邮件/" itemprop="url">Celery异步发送邮件</a></h1>
         
 
         <div class="post-meta">
@@ -882,10 +694,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-01T00:00:00+08:00">
+                2018-12-01
               </time>
             
 
@@ -924,63 +736,24 @@
       
         
           
-            <h2 id="Django配置支付宝沙箱支付功能"><a href="#Django配置支付宝沙箱支付功能" class="headerlink" title="Django配置支付宝沙箱支付功能"></a>Django配置支付宝沙箱支付功能</h2><blockquote>
-<p>支付宝沙箱环境测试支付功能</p>
-</blockquote>
-<h5 id="1、下载Android版本支付宝沙箱app"><a href="#1、下载Android版本支付宝沙箱app" class="headerlink" title="1、下载Android版本支付宝沙箱app"></a>1、下载Android版本支付宝沙箱app</h5><ul>
-<li>支付宝开放文档</li>
-</ul>
-<blockquote>
-<p>点击沙箱工具，扫码下载沙箱app</p>
-</blockquote>
-<ul>
-<li>登录支付宝开放平台-进入开发者中心-获得沙箱账号</li>
-</ul>
-<img src="C:\Users\60952\Desktop\blog\imgs\1570605282422.png" alt="1570605282422" style="zoom:50%;">
+          一、安装
+异步邮件验证需要使用celery以及django的celery框架
 
-<blockquote>
-<p>用账号密码登录沙箱app，沙箱app只有支付功能</p>
-</blockquote>
-<h5 id="2、配置支付宝沙箱"><a href="#2、配置支付宝沙箱" class="headerlink" title="2、配置支付宝沙箱"></a>2、配置支付宝沙箱</h5><ul>
-<li>生成沙箱密钥</li>
-</ul>
-<blockquote>
-<p>使用支付宝密钥生成工具生成公钥和私钥.</p>
-<p>注意python要选择非java适用</p>
-</blockquote>
-<img src="C:\Users\60952\Desktop\blog\imgs\1570606310755.png" alt="1570606310755" style="zoom: 67%;">
+12pip install celery  #版本3.1.15pip install django-celery
 
-<ul>
-<li>上传应用公钥到支付宝沙箱配置</li>
-</ul>
-<img src="C:\Users\60952\Desktop\blog\imgs\1570606532381.png" alt="1570606532381" style="zoom: 67%;">
 
-<img src="C:\Users\60952\Desktop\blog\imgs\1570606898281.png" alt="1570606898281" style="zoom:67%;">
+celery需要中间任务队列支持，这里使用rabbitmq
 
-<ul>
-<li>将本地文件里的公钥替换为获得的支付宝公钥</li>
-<li>配置应用网关为<a href="https://127.0.0.1:8000" target="_blank" rel="noopener">https://127.0.0.1:8000</a></li>
-<li>配置授权回调地址为<a href="http://127.0.0.1:8000/api/user/pay_result/" target="_blank" rel="noopener">http://127.0.0.1:8000/api/user/pay_result/</a></li>
-</ul>
-<h5 id="3、Django完成与alipay连接"><a href="#3、Django完成与alipay连接" class="headerlink" title="3、Django完成与alipay连接"></a>3、Django完成与alipay连接</h5><ul>
-<li>下载alipay SDK 或者 下载源码</li>
-</ul>
-<blockquote>
-<p>pip install alipay-sdk-python</p>
-<p>或者使用api源码pay1.py</p>
-</blockquote>
-<ul>
-<li>views.py</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> eduapi.settings <span class="keyword">import</span> BASE_DIR</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">APPID = <span class="number">2016100200644078</span></span><br><span class="line"><span class="keyword">from</span> .pay1 <span class="keyword">import</span> AliPay</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apay</span><span class="params">()</span>:</span></span><br><span class="line">      <span class="keyword">return</span> AliPay(</span><br><span class="line">            appid=str(APPID),</span><br><span class="line">            app_notify_url=<span class="string">'http://127.0.0.1:8000/api/user/pay_result/'</span>,</span><br><span class="line">            app_private_key_path = os.path.join(BASE_DIR,<span class="string">'./keys/private.txt'</span>),</span><br><span class="line">            alipay_public_key_path = os.path.join(BASE_DIR,<span class="string">'./keys/public.txt'</span>),</span><br><span class="line">            return_url = <span class="string">'http://127.0.0.1:8000/api/user/pay_result/'</span>,</span><br><span class="line">            debug= <span class="literal">True</span>,</span><br><span class="line">      )</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testpay</span><span class="params">(request)</span>:</span></span><br><span class="line">      ap=apay()</span><br><span class="line">      price=<span class="number">1000</span></span><br><span class="line">      subject=<span class="string">'aaa'</span></span><br><span class="line">      ordering_str=ap.direct_pay(</span><br><span class="line">            subject=subject, <span class="comment">#商品名称</span></span><br><span class="line">            out_trade_no=<span class="string">'aaa12321'</span>, <span class="comment">#订单号</span></span><br><span class="line">            total_amount=price,	<span class="comment">#金额</span></span><br><span class="line">      )</span><br><span class="line">      print(ordering_str)</span><br><span class="line">      pay_url = <span class="string">'https://openapi.alipaydev.com/gateway.do?'</span>+ ordering_str</span><br><span class="line">      print(pay_url)</span><br><span class="line">      <span class="keyword">return</span> Response(&#123;</span><br><span class="line">            <span class="string">'pay_url'</span>:pay_url</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意:</p>
-<p>1.生成连接要复制到浏览器里打开</p>
-<p>2.APPID要转成字符串格式</p>
-</blockquote>
-
-          
+rabbitmq
+MQ全称为Messag
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/01/Celery异步发送邮件/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1027,16 +800,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/前期准备/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2018/11/10/Docker+fastDFS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/kobe.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
+      <meta itemprop="name" content="TcFans's blog">
     </span>
 
     
@@ -1046,7 +819,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/13/前期准备/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/11/10/Docker+fastDFS/" itemprop="url">Docker+fastDFS</a></h1>
         
 
         <div class="post-meta">
@@ -1056,10 +829,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T00:00:00+08:00">
+                2018-11-10
               </time>
             
 
@@ -1098,65 +871,21 @@
       
         
           
-            <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><h3 id="一、创建Vue文件"><a href="#一、创建Vue文件" class="headerlink" title="一、创建Vue文件"></a>一、创建Vue文件</h3><h5 id="1、node-js"><a href="#1、node-js" class="headerlink" title="1、node.js"></a>1、node.js</h5><p>前往node.js官网下载windows版本</p>
-<p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
-<h5 id="2、下载vue"><a href="#2、下载vue" class="headerlink" title="2、下载vue"></a>2、下载vue</h5><p>在cmd命令窗口内输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue --save</span><br></pre></td></tr></table></figure>
-
-<p>下载完成后可以在cmd查看vue版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -V</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、创建项目"><a href="#3、创建项目" class="headerlink" title="3、创建项目"></a>3、创建项目</h5><p>新建一个存储此次项目的文件夹，用cmd进入该文件夹目录下输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack xxx(项目名称：edu)</span><br></pre></td></tr></table></figure>
-
-<p>cd到项目目录下（cd edu）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>最后启动vue项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<p>如果显示<a href="http://127.0.0.1:8080就说明我们vue项目创建成功了" target="_blank" rel="noopener">http://127.0.0.1:8080就说明我们vue项目创建成功了</a></p>
-<h5 id="4、模板转换"><a href="#4、模板转换" class="headerlink" title="4、模板转换"></a>4、模板转换</h5><p>我们拿到本次项目的html模板文件需要将其转换为vue脚手架支持的vue格式。</p>
-<p>用编辑器打开我们刚才新建好的vue项目（名称为：edu），文件目录下有一个index.html，我们将css引用样式和js引用都粘贴进在这个html文件里。</p>
-<p>注意：css样式引用需要放在<head><meta name="generator" content="Hexo 3.9.0"></head>标签里，在<body></body>标签里可以放script即js引用，此外这个div里的内容切记要保留，我们在components里写的vue文件会被引用到这个标签里。</p>
-<img src="C:\Users\60952\Desktop\blog\imgs\Snipaste_2019-09-22_11-59-26.png" alt="Snipaste_2019-09-22_11-59-26" style="zoom:60%;">
+          docker
+什么是docker：小海腾
+KVM、Xen、VMware、VirtualBox、Hyper-V
+VMM
 
 
-
-<h3 id="二、创建Django文件"><a href="#二、创建Django文件" class="headerlink" title="二、创建Django文件"></a>二、创建Django文件</h3><h5 id="1、下载django"><a href="#1、下载django" class="headerlink" title="1、下载django"></a>1、下载django</h5><p>确保电脑已经预装好python3.7，并且设置了环境变量。可以打开cmd输入python检查。</p>
-<p>在cmd里输入pip insall django 下载django</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、创建django项目"><a href="#2、创建django项目" class="headerlink" title="2、创建django项目"></a>2、创建django项目</h5><p>新建一个存储此次项目的文件夹，用cmd进入该文件夹目录下输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject xxx(项目名称：eduapi)</span><br></pre></td></tr></table></figure>
-
-<p>cd 进入eduapi文件下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd eduapi</span><br></pre></td></tr></table></figure>
-
-<p>创建子项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp xxx(项目名称：userapp)</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、连接阿里云服务器"><a href="#三、连接阿里云服务器" class="headerlink" title="三、连接阿里云服务器"></a>三、连接阿里云服务器</h3><p>我们使用XShell连接阿里云服务器（centos），在ssh远程操作页面里下载memcache并启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install memcached</span><br></pre></td></tr></table></figure>
-
-<p>起动memcached</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start memcached</span><br></pre></td></tr></table></figure>
-
-<p>查看memcached运行情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status memcached</span><br></pre></td></tr></table></figure>
-
-<p>关闭memcached</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop memcached</span><br></pre></td></tr></table></figure>
-
-<p>注意：需要将买的服务器加入安全组里然后进行设置才可以使用</p>
-<ol>
-<li><p>进入控制台，点击云服务器ECS，点击左侧实例，点击右侧管理，点击本实例安全组，点击配置规则，点击添加安全组规则</p>
-</li>
-<li><p>设置为如下内容：</p>
-<img src="C:\Users\60952\Desktop\blog\imgs\Snipaste_2019-09-22_22-15-21.png" alt="Snipaste_2019-09-22_22-15-21" style="zoom:60%;"></li>
-</ol>
-
-          
+容器技术：在计算机的世界中, 容器拥有一段漫长且传奇的历史。容器与管理程序虚拟化 (hypervisor virtualization，HV)有所不同，管理程序虚拟化通过中间层将
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/10/Docker+fastDFS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1203,16 +932,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/跨域/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2017/12/20/登录功能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/kobe.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
+      <meta itemprop="name" content="TcFans's blog">
     </span>
 
     
@@ -1222,7 +951,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/13/跨域/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/12/20/登录功能/" itemprop="url">登录</a></h1>
         
 
         <div class="post-meta">
@@ -1232,10 +961,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T00:00:00+08:00">
+                2017-12-20
               </time>
             
 
@@ -1274,32 +1003,21 @@
       
         
           
-            <h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><h3 id="一、Vue跨域"><a href="#一、Vue跨域" class="headerlink" title="一、Vue跨域"></a>一、Vue跨域</h3><h5 id="1、在settings里设置"><a href="#1、在settings里设置" class="headerlink" title="1、在settings里设置"></a>1、在settings里设置</h5><p>进入vue&gt;config&gt;index.js文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;  <span class="comment">//使用"/api"来代替"http://f.apiplus.c"</span></span><br><span class="line">      target: <span class="string">'http://127.0.0.1:8000/'</span>, <span class="comment">//源地址</span></span><br><span class="line">      changeOrigin: <span class="literal">true</span>, <span class="comment">//改变源 </span></span><br><span class="line">      pathRewrite: &#123;</span><br><span class="line">        <span class="string">'^/api'</span>: <span class="string">''</span> <span class="comment">//路径重写</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、Django跨域"><a href="#二、Django跨域" class="headerlink" title="二、Django跨域"></a>二、Django跨域</h3><h5 id="1、跨域中间件CORS"><a href="#1、跨域中间件CORS" class="headerlink" title="1、跨域中间件CORS"></a>1、跨域中间件CORS</h5><ol>
-<li><p>settings中INSTALLED_APPS注册corsheaders</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'corsheaders'</span>,</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>settings中MIDDLEWARE中注册</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'corsheaders.middleware.CorsMiddleware'</span>,  <span class="comment">#跨域中间件 cors</span></span><br></pre></td></tr></table></figure>
-
-<p>放在common上面</p>
-</li>
-</ol>
-<ol start="3">
-<li><p>settings底部任意位置添加</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CORS_ORIGIN_ALLOW_ALL = <span class="literal">True</span> <span class="comment"># 其他人都可以跨域访问</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
           
+
+一、Vue部分1、Index.vue里完成登录功能
+v-model绑定用户输入以及按钮&lt;进入实验楼&gt;
+
+在methods里构建login方法
+123456789101112131415161718login()&#123;	let form_data = new FormData()
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/20/登录功能/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1346,16 +1064,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/登录功能/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2017/12/15/注册功能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/kobe.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
+      <meta itemprop="name" content="TcFans's blog">
     </span>
 
     
@@ -1365,7 +1083,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/13/登录功能/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/12/15/注册功能/" itemprop="url">注册</a></h1>
         
 
         <div class="post-meta">
@@ -1375,10 +1093,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-15T00:00:00+08:00">
+                2017-12-15
               </time>
             
 
@@ -1417,56 +1135,20 @@
       
         
           
-            <h1 id="登录功能"><a href="#登录功能" class="headerlink" title="登录功能"></a>登录功能</h1><img src="C:\Users\60952\Desktop\blog\imgs\Snipaste_2019-09-23_19-44-51.png" alt="Snipaste_2019-09-23_19-44-51" style="zoom:60%;">
-
-<h3 id="一、Vue部分"><a href="#一、Vue部分" class="headerlink" title="一、Vue部分"></a>一、Vue部分</h3><h5 id="1、Index-vue里完成登录功能"><a href="#1、Index-vue里完成登录功能" class="headerlink" title="1、Index.vue里完成登录功能"></a>1、Index.vue里完成登录功能</h5><ol>
-<li><p>v-model绑定用户输入以及按钮&lt;进入实验楼&gt;</p>
-</li>
-<li><p>在methods里构建login方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">login()&#123;</span><br><span class="line">	<span class="keyword">let</span> form_data = <span class="keyword">new</span> FormData()</span><br><span class="line">	form_data.append(<span class="string">'email'</span>,<span class="keyword">this</span>.login_email)</span><br><span class="line">    form_data.append(<span class="string">'passwd'</span>,<span class="keyword">this</span>.login_pass)</span><br><span class="line">    axios(&#123;</span><br><span class="line">	url:<span class="string">'http://127.0.0.1:8000/api/user/login/'</span>,</span><br><span class="line">    method:<span class="string">'post'</span>,</span><br><span class="line">    data:form_data,</span><br><span class="line">		&#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">        	<span class="keyword">if</span> (res.data.code == <span class="number">1</span>)&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(res.data.token);</span><br><span class="line">                <span class="built_in">window</span>.sessionStorage.setItem(<span class="string">'token'</span>,res.data.token)</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).catch(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;)</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-</li>
-</ol>
-<h3 id="二、Django功能"><a href="#二、Django功能" class="headerlink" title="二、Django功能"></a>二、Django功能</h3><h5 id="1、配置路由"><a href="#1、配置路由" class="headerlink" title="1、配置路由"></a>1、配置路由</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'user/login/'</span>,views.Login.as_view(),name=<span class="string">'login'</span>),</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、登录逻辑"><a href="#2、登录逻辑" class="headerlink" title="2、登录逻辑"></a>2、登录逻辑</h5><blockquote>
-<p>在这里我们用JWT客户端自认证的方式判断用户登录状态，由后端生成token值，传递给前端存储在sessionStorage里。Django中JWT的生成方式有很多种，例如：python自带jwt模块，django自带jwt包，isdangerous模块生成等等，为了加深对jwt理解，在这里我们用AES加密的ECB来实现“自定义”jwt。</p>
-</blockquote>
-<ol>
-<li><p>构造函数分别基于16位和32位补全要加密的文本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#基于16位加密</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">be_16</span><span class="params">(value)</span>:</span></span><br><span class="line">      <span class="keyword">while</span> len(value) % <span class="number">16</span> != <span class="number">0</span>:</span><br><span class="line">            value += <span class="string">'\0'</span></span><br><span class="line">      <span class="keyword">return</span> str.encode(value)</span><br><span class="line"><span class="comment">#基于32位加密</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">be_32</span><span class="params">(value)</span>:</span></span><br><span class="line">      <span class="keyword">while</span> len(value) % <span class="number">32</span> != <span class="number">0</span>:</span><br><span class="line">            value += <span class="string">'\0'</span></span><br><span class="line">      <span class="keyword">return</span> str.encode(value)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义密钥和过期时间</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AES_KEY = <span class="string">'JIMMYD'</span></span><br><span class="line">EXPIRE = <span class="number">1800</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义加密解密方式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_oracle</span><span class="params">(text)</span>:</span></span><br><span class="line">      <span class="string">'''</span></span><br><span class="line"><span class="string">      text: 待加密文本</span></span><br><span class="line"><span class="string">      '''</span></span><br><span class="line">      aes = AES.new(be_32(AES_KEY),AES.MODE_ECB) <span class="comment"># 初始化加密器</span></span><br><span class="line">      encrpyt_aes = aes.encrypt(be_16(text))  <span class="comment"># aex ECB加密 必须内容是进制流</span></span><br><span class="line">      encrpyted_text = str(base64.encodebytes(encrpyt_aes),encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">      <span class="keyword">return</span> encrpyted_text</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt_oracle</span><span class="params">(text)</span>:</span></span><br><span class="line">      <span class="string">'''</span></span><br><span class="line"><span class="string">      text: 密文</span></span><br><span class="line"><span class="string">      '''</span></span><br><span class="line">      aes = AES.new(be_32(AES_KEY),AES.MODE_ECB)</span><br><span class="line">      base64_decrypted = base64.decodebytes(text.encode(encoding=<span class="string">'utf-8'</span>))</span><br><span class="line">      decrypted_text = str(aes.decrypt(base64_decrypted),encoding=<span class="string">'utf-8'</span>).replace(<span class="string">'\0'</span>,<span class="string">''</span>)</span><br><span class="line">      <span class="keyword">return</span> decrypted_text</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>login类视图完成登录功能</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Login</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            email = request.data[<span class="string">'email'</span>]</span><br><span class="line">            passwd = request.data[<span class="string">'passwd'</span>]</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                  user = models.User.objects.get(</span><br><span class="line">                        email = email</span><br><span class="line">                  )</span><br><span class="line">                  <span class="keyword">if</span> check_password(user.password,passwd):</span><br><span class="line">                        <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                  <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  data = &#123;</span><br><span class="line">                        <span class="string">'id'</span> : <span class="number">1</span>,</span><br><span class="line">                        <span class="string">'expire'</span> : time.time() + EXPIRE</span><br><span class="line">                  &#125;</span><br><span class="line">                  token = encrypt_oracle(json.dumps(data))</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span> : <span class="number">1</span> ,</span><br><span class="line">                        <span class="string">'message'</span> : <span class="string">'登录成功'</span>,</span><br><span class="line">                        <span class="string">'token'</span>:token,</span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                  <span class="string">'code'</span>:<span class="number">0</span>,</span><br><span class="line">                  <span class="string">'message'</span>:<span class="string">'登录失败'</span>,</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>在这里我们假设登录的用户记录‘id’为1，’expire’为过期时间，生成token值以后我们传递给前端</p>
-</li>
-<li><p>#</p>
-</li>
-</ol>
-<h5 id="3、自定义中间件拦截token未认证或token已过期的用户"><a href="#3、自定义中间件拦截token未认证或token已过期的用户" class="headerlink" title="3、自定义中间件拦截token未认证或token已过期的用户"></a>3、自定义中间件拦截token未认证或token已过期的用户</h5><blockquote>
-<p>为提高我们代码的复用率，可以使用django中间件来实现用户拦截的功能。我们自定义中间件LoginRequired，重写process_request方法，在该方法中完成token值获取以及验证，将验证结果返回给前端。</p>
-</blockquote>
-<ol>
-<li><p>在子应用（userapp）下新建文件middleware.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> reverse</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> decrypt_oracle   <span class="comment">#导入view.py里我们自定义的解码函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要登录的页面列表，反向解析得到连接 </span></span><br><span class="line">LOGIN_REQUIRE_LIST = [reverse(var) <span class="keyword">for</span> var <span class="keyword">in</span> [<span class="string">'course'</span>,]]</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginRequired</span><span class="params">(MiddlewareMixin)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    如果token不存在或者已过期返回对应code码</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> request.path <span class="keyword">in</span> LOGIN_REQUIRE_LIST:</span><br><span class="line">                  token = request.META.get(<span class="string">'HTTP_AUTHORIZATION'</span>)</span><br><span class="line">                    <span class="comment"># js空值用null表示，python会识别为字符串</span></span><br><span class="line">                  <span class="keyword">if</span> <span class="keyword">not</span> token <span class="keyword">or</span> token == <span class="string">'null'</span>:</span><br><span class="line">                        <span class="keyword">return</span> JsonResponse(&#123;</span><br><span class="line">                              <span class="string">'code'</span> : <span class="number">6207</span>,</span><br><span class="line">                              <span class="string">'message'</span> : <span class="string">'未认证'</span></span><br><span class="line">                        &#125;)</span><br><span class="line">                  <span class="keyword">else</span>:</span><br><span class="line">                        token_data = decrypt_oracle(token)</span><br><span class="line">                        <span class="comment"># eval()函数会将字符串转换为可用python数据类型，相对于的函数repr()</span></span><br><span class="line">                        <span class="keyword">if</span> eval(token_data)[<span class="string">'expire'</span>] &lt; time.time():</span><br><span class="line">                              <span class="keyword">return</span> JsonResponse(&#123;</span><br><span class="line">                                    <span class="string">'code'</span>: <span class="number">70001</span>,</span><br><span class="line">                                    <span class="string">'message'</span> : <span class="string">'token过期'</span></span><br><span class="line">                              &#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-
           
+
+一、Vue部分1、模板转换我们在components里将HelloWorld.vue修改为Index.vue，并将模板文件里的代码拷贝进template下div标签里
+2、配置文件
+跨域：本次项目是前后端分离的，因此涉及到跨域问题，在这里我们使用axios来实现跨域功能。cmd进入vue文件下
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/15/注册功能/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1513,16 +1195,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/vue+xterm.js 实现Linux command界面/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2017/11/19/vue+xterm.js 实现Linux command界面/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/kobe.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
+      <meta itemprop="name" content="TcFans's blog">
     </span>
 
     
@@ -1532,7 +1214,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/13/vue+xterm.js 实现Linux command界面/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/11/19/vue+xterm.js 实现Linux command界面/" itemprop="url">vue+xterm.js 实现Linux command界面</a></h1>
         
 
         <div class="post-meta">
@@ -1542,10 +1224,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-19T17:44:11+08:00">
+                2017-11-19
               </time>
             
 
@@ -1584,581 +1266,31 @@
       
         
           
-            <h1 id="vue-xterm-js-实现Linux-command界面"><a href="#vue-xterm-js-实现Linux-command界面" class="headerlink" title="vue+xterm.js 实现Linux command界面"></a>vue+xterm.js 实现Linux command界面</h1><h5 id="交互逻辑"><a href="#交互逻辑" class="headerlink" title="交互逻辑"></a>交互逻辑</h5><p><img src="C:%5CUsers%5C60952%5CDesktop%5Cblog%5Cimgs%5Cpage1.png" alt></p>
-<h5 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h5><blockquote>
-<p>下载paramiko、dwebsocket</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install paramiko</span><br><span class="line">pip install dwebsocket</span><br></pre></td></tr></table></figure>
+          交互逻辑
 
-<ul>
-<li>在INSTALLED_APPS注册dwebsocket</li>
-</ul>
-<blockquote>
-<p>​    ‘dwebsocket’,</p>
-</blockquote>
-<ul>
-<li>views.py里</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">使用paramiko建立于ssh的连接，完成数据交互</span></span><br><span class="line"><span class="string">建立2个线程，分别用于接收用户输入和返回ssh服务器信息到客户端</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> dwebsocket <span class="keyword">import</span> accept_websocket</span><br><span class="line"><span class="keyword">import</span> paramiko</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ssh_channle</span><span class="params">(host=<span class="string">'xxx'</span>,username=<span class="string">'root'</span>, password=<span class="string">'xxx'</span>)</span>:</span></span><br><span class="line">    sh = paramiko.SSHClient() <span class="comment"># 初始化一个带连接对象</span></span><br><span class="line">    sh.set_missing_host_key_policy(paramiko.AutoAddPolicy) <span class="comment"># 自动添加密钥规则</span></span><br><span class="line">    sh.connect(host,username=username,password=password) <span class="comment"># 连接</span></span><br><span class="line">    channle = sh.invoke_shell(term=<span class="string">'xterm'</span>)</span><br><span class="line">    <span class="keyword">return</span> channle <span class="comment"># 接收命令 和发送命令 是xterm样式的</span></span><br><span class="line"></span><br><span class="line">FLAG = [<span class="literal">True</span>,]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cmd_response</span><span class="params">(ws, channle)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> FLAG[<span class="number">0</span>]:</span><br><span class="line">            result = channle.recv(<span class="number">1024</span>) <span class="comment"># 接收linux返回</span></span><br><span class="line">            ws.send(result)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span>  <span class="comment"># 终止了线程任务</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@accept_websocket # 只能被ws请求所访问</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">webssh</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.is_websocket:</span><br><span class="line">        channle = get_ssh_channle()</span><br><span class="line">        <span class="comment"># channle.recv()</span></span><br><span class="line">        <span class="comment"># channle.send()</span></span><br><span class="line">        ws = request.websocket</span><br><span class="line">        t = threading.Thread(target=cmd_response, args=(ws, channle))</span><br><span class="line">        t.start()</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            cmd = ws.wait() <span class="comment"># 接收WS里发来的shell命令</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> cmd:</span><br><span class="line">                <span class="comment"># 连接断开</span></span><br><span class="line">                FLAG[<span class="number">0</span>] = <span class="literal">False</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            channle.send(cmd) <span class="comment"># linux发过去</span></span><br><span class="line">        t.join()</span><br><span class="line">        ws.close()</span><br><span class="line">        channle.close()</span><br></pre></td></tr></table></figure>
+Django
+下载paramiko、dwebsocket
 
-<h5 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#125;,</span><br><span class="line">"dependencies": &#123;</span><br><span class="line">  "axios": "^0.19.0",</span><br><span class="line">  "vue": "^2.5.2",</span><br><span class="line">  "vue-router": "^3.0.1",</span><br><span class="line">  "xterm":"^3.1.0"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+12pip install paramikopip install dwebsocket
 
-<ul>
-<li>下载xterm</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install xterm --save</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>src下的main.js里导入xtrem的css样式</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'xterm/dist/xterm.css'</span></span><br></pre></td></tr></table></figure>
+在INSTALLED_APPS注册dwebsocket
 
-<ul>
-<li>新建Console.vue模板</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">      &lt;div id=&apos;terminal&apos;&gt;</span><br><span class="line">            </span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; Terminal &#125; from &apos;xterm&apos;</span><br><span class="line">import * as fit from &apos;xterm/lib/addons/fit/fit&apos;</span><br><span class="line">import * as attach from &apos;xterm/lib/addons/attach/attach&apos;</span><br><span class="line">Terminal.applyAddon(attach)</span><br><span class="line">Terminal.applyAddon(fit)</span><br><span class="line">export default &#123;</span><br><span class="line">      mounted()&#123;</span><br><span class="line">            let terminalContainer = document.getElementById(&apos;terminal&apos;);</span><br><span class="line">            this.term = new Terminal(this.terminal);</span><br><span class="line">            this.term.open(terminalContainer);</span><br><span class="line">            // 绑定后端流接口</span><br><span class="line">            this.ws = new WebSocket(&apos;ws://127.0.0.1:8000/api/user/webssh/&apos;)</span><br><span class="line">            // 用attach将websocket绑定到黑窗口上</span><br><span class="line">            this.term.attach(this.ws)</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>配置路由后就可以在页面上看到了</li>
-</ul>
+​    ‘dwebsocket’,
 
-          
-        
-      
-    </div>
-    
-    
-    
 
-    
+views.py里
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/Docker+fastDFS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ding YiFan">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/13/Docker+fastDFS/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><ul>
-<li>什么是docker：小海腾<ul>
-<li>KVM、Xen、VMware、VirtualBox、Hyper-V</li>
-<li>VMM</li>
-</ul>
-</li>
-<li>容器技术：在计算机的世界中, 容器拥有一段漫长且传奇的历史。容器与管理程序虚拟化 (hypervisor virtualization，HV)有所不同，管理程序虚拟化通过中间层将一台或者多台独立 的机器虚拟运行与物理硬件之上，而容器则是直接运行在操作系统内核之上的用户空间。因 此，容器虚拟化也被称为“操作系统级虚拟化”，容器技术可以让多个独立的用户空间运行 在同一台宿主机上。</li>
-<li>docker-ee：收费的</li>
-<li>docker-ce：免费的</li>
-</ul>
-<h3 id="docker特点"><a href="#docker特点" class="headerlink" title="docker特点"></a>docker特点</h3><ul>
-<li><p>上手快：用户只需要几分钟，就可以把自己的程序“Docker 化”。Docker 依赖于“写时复制” (copy-on-write)模型，使修改应用程序也非常迅速，可以说达到“随心所致，代码即改” 的境界；随后，就可以创建容器来运行应用程序了。大多数 Docker 容器只需要不到 1 秒中即可 启动。由于去除了管理程序的开销，Docker 容器拥有很高的性能，同时同一台宿主机中也 可以运行更多的容器，使用户尽可能的充分利用系统资源</p>
-</li>
-<li><p>职责的逻辑分类：使用 Docker，开发人员只需要关心容器中运行的应用程序，而运维人员只需要关心如 何管理容器。Docker 设计的目的就是要加强开发人员写代码的开发环境与应用程序要部署 的生产环境一致性。从而降低那种“开发时一切正常，肯定是运维的问题(测试环境都是正 常的，上线后出了问题就归结为肯定是运维的问题)”</p>
-</li>
-</ul>
-<ul>
-<li>快速高效的开发生命周期：Docker 的目标之一就是缩短代码从开发、测试到部署、上线运行的周期，让你的应用 程序具备可移植性，易于构建，并易于协作。(通俗一点说，Docker 就像一个盒子，里面 可以装很多物件，如果需要这些物件的可以直接将该大盒子拿走，而不需要从该盒子中一件 件的取。)</li>
-</ul>
-<ul>
-<li>鼓励使用面向服务的架构：Docker 还鼓励面向服务的体系结构和微服务架构。Docker 推荐单个容器只运行一个应 用程序或进程，这样就形成了一个分布式的应用程序模型，在这种模型下，应用程序或者服 务都可以表示为一系列内部互联的容器，从而使分布式部署应用程序，扩展或调试应用程序 都变得非常简单，同时也提高了程序的内省性。(当然，可以在一个容器中运行多个应用程 序)</li>
-</ul>
-<h3 id="Docker客户端和服务器"><a href="#Docker客户端和服务器" class="headerlink" title="Docker客户端和服务器"></a>Docker客户端和服务器</h3><ul>
-<li>Docker 是一个客户端-服务器(C/S)架构程序。Docker 客户端只需要向 Docker 服务器 或者守护进程发出请求，服务器或者守护进程将完成所有工作并返回结果。Docker 提供了 一个命令行工具 Docker 以及一整套 RESTful API。你可以在同一台宿主机上运行 Docker 守护 进程和客户端，也可以从本地的 Docker 客户端连接到运行在另一台宿主机上的远程 Docker 守护进程</li>
-</ul>
-<h3 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h3><ul>
-<li>镜像是构建 Docker 的基石。用户基于镜像来运行自己的容器，镜像也是 Docker 生命周 期中的“构建”部分。镜像是基于联合文件系统的一种层式结构，由一系列指令一步一步构 建出来。例如:<ul>
-<li>添加一个文件;</li>
-<li>执行一个命令;</li>
-<li>打开一个窗口。</li>
-</ul>
-</li>
-<li>也可以将镜像当作容器的“源代码”。镜像体积很小，非常“便携”，易于分享、存储和更新</li>
-</ul>
-<h3 id="Registry镜像注册"><a href="#Registry镜像注册" class="headerlink" title="Registry镜像注册"></a>Registry镜像注册</h3><ul>
-<li>Docker 用 Registry 来保存用户构建的镜像。</li>
-<li>Registry 分为公共和私有两种。Docker 公司 运营公共的 Registry 叫做 Docker Hub</li>
-<li>用户可以在 Docker Hub 注册账号，分享并保存自己的 镜像(说明:在 Docker Hub 下载镜像巨慢，可以自己构建私有的 Registry）</li>
-</ul>
-<h3 id="Docker容器"><a href="#Docker容器" class="headerlink" title="Docker容器"></a>Docker容器</h3><ul>
-<li>Docker 可以帮助你构建和部署容器，你只需要把自己的应用程序或者服务打包放进容 器即可</li>
-<li>容器是基于镜像启动起来的，容器中可以运行一个或多个进程</li>
-<li>我们可以认为，镜像是Docker生命周期中的构建或者打包阶段，而容器则是启动或者执行阶段。容器基于 镜像启动，一旦容器启动完成后，我们就可以登录到容器中安装自己需要的软件或者服务</li>
-<li>安装好的一个虚拟机</li>
-</ul>
-<h3 id="Docker镜像-1"><a href="#Docker镜像-1" class="headerlink" title="Docker镜像"></a>Docker镜像</h3><ul>
-<li>Docker 把应用程序及其依赖，打包在 image 文件里面</li>
-<li>只有通过这个文件，才能生成 Docker 容器。image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例</li>
-<li>image 是二进制文件。实际开发中，一个 image 文件往往通过继承另一个 image 文件，加上一些个性化设置而生成。举例来说，你可以在自己操作系统所使用的image 基础上，往里面加入 Apache 服务器，形成你的image</li>
-<li>就是一个操作系统文件</li>
-</ul>
-<h3 id="Docker容器操作"><a href="#Docker容器操作" class="headerlink" title="Docker容器操作"></a>Docker容器操作</h3><h4 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [option] 镜像名</span><br><span class="line">-i 表示以“交互模式”运行容器</span><br><span class="line">-t 表示容器启动后会进入其命令行。加入这两个参数后，容器创建就能登录进去。即 分配一个伪终端。</span><br><span class="line">–name 为创建的容器命名</span><br><span class="line">-v 表示目录映射关系(前者是宿主机目录，后者是映射到宿主机上的目录，即 宿主机目录:容器中目录)，可以使 用多个-v 做多个目录或文件映射。注意:最好做目录映射，在宿主机上做修改，然后 共享到容器上。</span><br><span class="line">-d 在run后面加上-d参数,则会创建一个守护式容器在后台运行(这样创建容器后不 会自动登录容器，如果只加-i -t 两个参数，创建后就会自动进去容器)。</span><br><span class="line">-p 表示端口映射，前者是宿主机端口，后者是容器内的映射端口。可以使用多个-p 做多个端口映射</span><br><span class="line">-e 为容器设置环境变量</span><br><span class="line">–network=host 表示将主机的网络环境映射到容器中，容器的网络与主机相同</span><br></pre></td></tr></table></figure>
-
-<h4 id="停止或启动容器"><a href="#停止或启动容器" class="headerlink" title="停止或启动容器"></a>停止或启动容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container stop 容器名或ID</span><br></pre></td></tr></table></figure>
-
-<h3 id="FastDFS"><a href="#FastDFS" class="headerlink" title="FastDFS"></a>FastDFS</h3><ul>
-<li>FastDFS 是用 c 语言编写的一款开源的分布式文件系统。FastDFS 为互联网量身定制， 充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用 FastDFS 很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务</li>
-<li>FastDFS架构包括 <strong>Tracker server</strong> 和 <strong>Storage server</strong>。客户端请求Trackerserver进行过文件上传、下载<ul>
-<li>通过<code>Tracker server</code>调度最终由Storage server完成文件上传、下载</li>
-</ul>
-</li>
-<li><strong>Tracker server</strong><ul>
-<li>作用是负载均衡和调度,通过Tracker server在文件上传时可以根据一些策略找到Storage server提供文件上传服务。可以将tracker称为<strong>追踪服务器</strong>或 <strong>调度服务器</strong></li>
-</ul>
-</li>
-<li><strong>Storage server</strong><ul>
-<li>作用是文件存储,客户端上传的文件最终存储在Storage存储器上,Storageserver没有实现自己的文件系统而是利用操作系统的文件系统来管理文件。可以将storage称为<strong>存储服务器</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="centos部署docker"><a href="#centos部署docker" class="headerlink" title="centos部署docker"></a>centos部署docker</h3><ul>
-<li>安装docker</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install yum-utils</span><br><span class="line">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span> 添加docker-repo源</span><br><span class="line">yum install docker-ce</span><br><span class="line"><span class="meta">#</span> 尝试安装docker-ce</span><br><span class="line">yum erase docker-common-2:1.13.1-96.gitb2f74b2.el7.centos.x86_64</span><br><span class="line"><span class="meta">#</span> 删除已安装的docker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>开启docker服务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看docker镜像<ul>
-<li>REPOSITORY：镜像所在的仓库名称</li>
-<li>TAG：镜像标签</li>
-<li>IMAGEID：镜像ID</li>
-<li>CREATED：镜像的创建日期(不是获取该镜像的日期)</li>
-<li>SIZE：镜像大小</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker image ls</span><br><span class="line">docker  rm</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>拉取镜像及删除镜像</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker image pull delron/fastdfs</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>上面代码中，docker image pull是抓取 image 文件的命令。delron/fastdfs是 image 文件在仓库里面的位置，其中delron是 image 文件所在的组，fastdfs是 image 文件的名字</p>
-</blockquote>
-<ul>
-<li>开启fastdfs的tracker服务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dti --network=host --name tracker -v /var/fdfs/tracker:/var/fdfs delron/fastdfs tracker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>开启fastdfs的storage服务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dti --network=host --name storage -e TRACKER_SERVER=116.62.213.171:22122 -v /var/fdfs/storage:/var/fdfs delron/fastdfs storage</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>关闭/开启docker容器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop/start container_id</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动docker容器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container start storage/tracker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看当前运行的容器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除容器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f 容器id</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看容器ID</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除文件夹递归</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf fdfs(文件夹)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>无法启动storage问题</li>
-</ul>
-<p>删除/var/fdfs/storage/data目录下的fdfs_storage.pid文件然后重启storage</p>
-<h2 id="Fastdfs使用"><a href="#Fastdfs使用" class="headerlink" title="Fastdfs使用"></a>Fastdfs使用</h2><h3 id="python客户端"><a href="#python客户端" class="headerlink" title="python客户端"></a>python客户端</h3><ul>
-<li>下载安装<code>fastdfs</code>的<code>python</code>客户端</li>
-</ul>
-<blockquote>
-<p><a href="https://github.com/JaceHo/fdfs_client-py" target="_blank" rel="noopener">https://github.com/JaceHo/fdfs_client-py</a></p>
-</blockquote>
-<ul>
-<li>windows兼容问题</li>
-</ul>
-<blockquote>
-<p>解压下载好的压缩包，提取fdfs_client文件夹</p>
-</blockquote>
-<ul>
-<li>将该文件夹放入python的三方包目录下</li>
-</ul>
-<blockquote>
-<p>C:\Python37\Lib\site-packages</p>
-</blockquote>
-<ul>
-<li>安装所需的两个额外模块</li>
-</ul>
-<blockquote>
-<p>pip install mutagen<br>pip isntall requests </p>
-</blockquote>
-<ul>
-<li>注释fdfs_client/storage_client.py文件中的第十二行</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#from fdfs_client.sendfile import *</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>创建client.conf文件到django下</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># project/client.conf</span></span><br><span class="line"><span class="comment"># connect timeout in seconds</span></span><br><span class="line"><span class="comment"># default value is 30s</span></span><br><span class="line">connect_timeout=<span class="number">30</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># network timeout in seconds</span></span><br><span class="line"><span class="comment"># default value is 30s</span></span><br><span class="line">network_timeout=<span class="number">60</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the base path to store log files</span></span><br><span class="line">base_path=\static <span class="comment">#FastDFS客户端存放日志文件的目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tracker_server can ocur more than once, and tracker_server format is</span></span><br><span class="line"><span class="comment">#  "host:port", host can be hostname or ip address</span></span><br><span class="line">tracker_server=<span class="number">123.57</span><span class="number">.61</span><span class="number">.168</span>:<span class="number">22122</span> <span class="comment">#运行tracker服务的机器IP地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#standard log level as syslog, case insensitive, value list:</span></span><br><span class="line"><span class="comment">### emerg for emergency</span></span><br><span class="line"><span class="comment">### alert</span></span><br><span class="line"><span class="comment">### crit for critical</span></span><br><span class="line"><span class="comment">### error</span></span><br><span class="line"><span class="comment">### warn for warning</span></span><br><span class="line"><span class="comment">### notice</span></span><br><span class="line"><span class="comment">### info</span></span><br><span class="line"><span class="comment">### debug</span></span><br><span class="line">log_level=info</span><br><span class="line"></span><br><span class="line"><span class="comment"># if use connection pool</span></span><br><span class="line"><span class="comment"># default value is false</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line">use_connection_pool = false</span><br><span class="line"></span><br><span class="line"><span class="comment"># connections whose the idle time exceeds this time will be closed</span></span><br><span class="line"><span class="comment"># unit: second</span></span><br><span class="line"><span class="comment"># default value is 3600</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line">connection_pool_max_idle_time = <span class="number">3600</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if load FastDFS parameters from tracker server</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line"><span class="comment"># default value is false</span></span><br><span class="line">load_fdfs_parameters_from_tracker=false</span><br><span class="line"></span><br><span class="line"><span class="comment"># if use storage ID instead of IP address</span></span><br><span class="line"><span class="comment"># same as tracker.conf</span></span><br><span class="line"><span class="comment"># valid only when load_fdfs_parameters_from_tracker is false</span></span><br><span class="line"><span class="comment"># default value is false</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line">use_storage_id = false</span><br><span class="line"></span><br><span class="line"><span class="comment"># specify storage ids filename, can use relative or absolute path</span></span><br><span class="line"><span class="comment"># same as tracker.conf</span></span><br><span class="line"><span class="comment"># valid only when load_fdfs_parameters_from_tracker is false</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line">storage_ids_filename = storage_ids.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#HTTP settings</span></span><br><span class="line">http.tracker_server_port=<span class="number">80</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#use "#include" directive to include HTTP other settiongs</span></span><br><span class="line"><span class="comment">##include http.conf</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>上传测试代码</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#client.upload_by_filename(文件名)</span></span><br><span class="line"><span class="comment">#client.upload_by_buffer(文件bytes数据)</span></span><br><span class="line"><span class="keyword">from</span> fdfs_client.client <span class="keyword">import</span> Fdfs_client</span><br><span class="line">client = Fdfs_client(<span class="string">"client.conf"</span>)</span><br><span class="line"></span><br><span class="line">ret = client.upload_by_filename(<span class="string">'1.jpg'</span>)</span><br><span class="line">print(ret)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>其中返回结果中的Remote file_id就是上传成功的保存文件名</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	'Group name': 'group1', </span><br><span class="line">	'Remote file_id': 'group1\\M00/00/00/rBEUWlz_HzSAPPzBAAQ2UAPajsU035.jpg', </span><br><span class="line">	'Status': 'Upload successed.', </span><br><span class="line">	'Local file name': '1.jpg', </span><br><span class="line">	'Uploaded size': '269.00KB', </span><br><span class="line">	'Storage IP': '123.57.61.168\x008'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Django文件引擎"><a href="#Django文件引擎" class="headerlink" title="Django文件引擎"></a><code>Django</code>文件引擎</h3><ul>
-<li>重构<code>django</code>文件上传引擎</li>
-</ul>
-<blockquote>
-<p> 存储类中必须实现_open()和_save()方法,以及任何后续使用中可能用到的其他方法。</p>
-</blockquote>
-<ul>
-<li><code>_open(name, mode = ‘rb’)</code>：被<code>Storage.open()</code>调用,在打开文件时被调用</li>
-<li><code>save(name, content)</code>：被<code>Storage.save()</code>调用,name是传入的文件名,<code>content</code>是<code>Django</code>接收到的文件内容,该方法需要将<code>content</code>文件内容保存。<code>Django</code>会将该方法的返回值保存到数据库中对应的文件字段,也就是说该方法应该返回要保存在数据库中的文件名信息。</li>
-<li><code>exists(name)</code>：如果名为<code>name</code>的文件在文件系统中存在，按返回<code>True</code>，否则返回<code>False</code></li>
-<li><code>url(name)</code>：返回文件的完整访问<code>URL</code></li>
-<li><code>delete(name)</code>：删除<code>name</code>文件</li>
-<li><code>listdir(path)</code>：列出指定路径的文件</li>
-<li><code>size(name)</code>：返回<code>name</code>文件的总大小</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"><span class="keyword">from</span> django.core.files.storage <span class="keyword">import</span> Storage</span><br><span class="line"><span class="keyword">from</span> fdfs_client.client <span class="keyword">import</span> Fdfs_client</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FastDFSStroage</span><span class="params">(Storage)</span>:</span></span><br><span class="line">    <span class="string">"""定义FastDFS客户端类"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, base_url = None, client_conf = None)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        初始化对象</span></span><br><span class="line"><span class="string">        :param base_url:</span></span><br><span class="line"><span class="string">        :param client_conf:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> base_url <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            base_url = settings.FDAS_URL</span><br><span class="line">            <span class="comment"># 'http://123.57.61.168:8888' </span></span><br><span class="line">        self.base_url = base_url</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> client_conf <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            client_conf = settings.FDFS_CLIENT_CONF</span><br><span class="line">            <span class="comment"># FDFS_CLIENT_CONF = os.path.join(BASE_DIR, 'client.conf')</span></span><br><span class="line">        self.client_conf = client_conf</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_open</span><span class="params">(self, name, mode = <span class="string">'rb'</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        打开文件</span></span><br><span class="line"><span class="string">        :param name:</span></span><br><span class="line"><span class="string">        :param mode:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_save</span><span class="params">(self, name, content)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        保存文件</span></span><br><span class="line"><span class="string">        :param name: 传入文件名</span></span><br><span class="line"><span class="string">        :param content: 文件内容</span></span><br><span class="line"><span class="string">        :return:保存到数据库中的FastDFSDE文件名</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        client = Fdfs_client(self.client_conf)</span><br><span class="line">        ret = client.upload_by_buffer(content.read())</span><br><span class="line">        <span class="keyword">if</span> ret.get(<span class="string">"Status"</span>) != <span class="string">"Upload successed."</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">"upload file failed"</span>)</span><br><span class="line">        file_name = ret.get(<span class="string">"Remote file_id"</span>)</span><br><span class="line">        <span class="keyword">return</span> file_name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">exists</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        检查文件是否重复, FastDFS自动区分重复文件</span></span><br><span class="line"><span class="string">        :param name:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">url</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取name文件的完整url</span></span><br><span class="line"><span class="string">        :param name:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.base_url + name</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>将文件引擎设置到settings中</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#settings.py</span></span><br><span class="line">DEFAULT_FILE_STORAGE = <span class="string">'goods.views.FastDFSStorage'</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>上传成功后的访问地址</li>
-</ul>
-<blockquote>
-<p>在服务器IP地址的<code>8888</code>端口，记得打开对应阿里云的端口规则</p>
-</blockquote>
-<ul>
-<li>注意：在新版本的Remote file_id，由<code>\\</code>斜杠变为了<code>/</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'Remote file_id'</span>].replace(<span class="string">'\\'</span>,<span class="string">'/'</span>)</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/Course课程详情页/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ding YiFan">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dingyifan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/13/Course课程详情页/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T20:52:21+08:00">
-                2019-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Course课程详情页"><a href="#Course课程详情页" class="headerlink" title="Course课程详情页"></a>Course课程详情页</h1><h3 id="一、数据库建表"><a href="#一、数据库建表" class="headerlink" title="一、数据库建表"></a>一、数据库建表</h3><h5 id="1、models中ORM，包含一对一、一对多、多对多关系"><a href="#1、models中ORM，包含一对一、一对多、多对多关系" class="headerlink" title="1、models中ORM，包含一对一、一对多、多对多关系"></a>1、models中ORM，包含一对一、一对多、多对多关系</h5><ul>
-<li>讲师表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 讲师表，讲师个人信息</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teachers</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=<span class="string">'所属用户'</span>)</span><br><span class="line">      introduction = models.CharField(max_length=<span class="number">180</span>,verbose_name=<span class="string">'个人介绍'</span>)</span><br><span class="line">      is_active = models.BooleanField(default=<span class="literal">True</span>,verbose_name=<span class="string">'所属状态'</span>)</span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.user.name</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>课程表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 课程</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Course</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      teacher = models.ForeignKey(Teachers,on_delete=models.CASCADE,verbose_name=<span class="string">'所属讲师'</span>)</span><br><span class="line">      description = models.CharField(max_length=<span class="number">255</span>,verbose_name=<span class="string">'课程描述'</span>)</span><br><span class="line">      title = models.CharField(max_length=<span class="number">30</span>,verbose_name=<span class="string">'课程名称'</span>)</span><br><span class="line">      img = models.ImageField(upload_to=<span class="string">'course_img/'</span>)</span><br><span class="line"></span><br><span class="line">      pay_choices = &#123;</span><br><span class="line">            (<span class="number">1</span>,<span class="string">'免费'</span>),</span><br><span class="line">            (<span class="number">2</span>,<span class="string">'付费'</span>),   <span class="comment"># 付费课程价格为0时为限免</span></span><br><span class="line">            (<span class="number">3</span>,<span class="string">'会员'</span>),</span><br><span class="line">      &#125;</span><br><span class="line">      coursetype = models.ForeignKey(Classtype,models.SET_NULL,null=<span class="literal">True</span>,blank=<span class="literal">True</span>,verbose_name=<span class="string">'课程分类'</span>)</span><br><span class="line">      pay_attr = models.IntegerField(choices=pay_choices,verbose_name=<span class="string">'类别'</span>)</span><br><span class="line">      price = models.DecimalField(decimal_places=<span class="number">2</span>,max_digits=<span class="number">10</span>,default=<span class="number">0</span>,verbose_name=<span class="string">'价格'</span>)</span><br><span class="line">      count = models.IntegerField(default=<span class="number">0</span>,verbose_name=<span class="string">'关注数'</span>)</span><br><span class="line">      learned = models.IntegerField(default=<span class="number">0</span>,verbose_name=<span class="string">'学过数量'</span>)</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.title</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>课程分类表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 课程分类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Classtype</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      name = models.CharField(max_length=<span class="number">100</span>,verbose_name=<span class="string">'课程所属类别'</span>)</span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>课程小节表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 小节表</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoureClass</span><span class="params">(models.Model)</span>:</span></span><br><span class="line"></span><br><span class="line">      title = models.CharField(max_length=<span class="number">30</span>,verbose_name=<span class="string">'小节名'</span>)</span><br><span class="line">      type_choices = (</span><br><span class="line">            (<span class="number">1</span>,<span class="string">'直播'</span>),</span><br><span class="line">            (<span class="number">2</span>,<span class="string">'录播'</span>),</span><br><span class="line">      )</span><br><span class="line"></span><br><span class="line">      types = models.IntegerField(choices=type_choices,verbose_name=<span class="string">'课程类型'</span>)</span><br><span class="line"></span><br><span class="line">      url = models.URLField(verbose_name=<span class="string">'资源地址'</span>)</span><br><span class="line">      course = models.ForeignKey(Course,on_delete=models.CASCADE,verbose_name=<span class="string">'所属课程'</span>)</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.course.title + <span class="string">':'</span>  + str(self.id) + <span class="string">':'</span>+self.title</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>收藏表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LikeCLass</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">      user = models.ForeignKey(User,models.CASCADE)</span><br><span class="line">      course = models.ForeignKey(Course,models.CASCADE)</span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> self.user.name + <span class="string">":"</span> + self.course.title</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、序列化"><a href="#二、序列化" class="headerlink" title="二、序列化"></a>二、序列化</h2><h5 id="1、使用DRF自带的序列化工具"><a href="#1、使用DRF自带的序列化工具" class="headerlink" title="1、使用DRF自带的序列化工具"></a>1、使用DRF自带的序列化工具</h5><blockquote>
-<p>首先在settings里注册rest_framework</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'rest_framework'</span>,</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在子应用根目录下创建py文件</p>
-</blockquote>
-<p>serializer.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> serializers</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">            model = models.User</span><br><span class="line">            fields = <span class="string">'__all__'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TeachersSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">      <span class="comment"># teachercourse = UserSerializer(many=True)</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">            model = models.Teachers</span><br><span class="line">            fields = <span class="string">'__all__'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClasstypeSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">            model = models.Classtype</span><br><span class="line">            fields = <span class="string">'__all__'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CourseSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">      <span class="comment"># courses = TeachersSerializer(many=True)</span></span><br><span class="line">      <span class="comment"># coursetypes = ClasstypeSerializer(many=True)</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">            model = models.Course</span><br><span class="line">            fields = <span class="string">'__all__'</span></span><br><span class="line">            depth = <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<p>注意当表中有外键而我们需要对外键做序列化时候，可以使用depth来申明外键关联的层级数，使用时可以直接用“键值.外键关联字段”的方式。例如</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//vue页面</span></span><br><span class="line">&#123;&#123;cdata.teacher.user.name&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、Vue"><a href="#三、Vue" class="headerlink" title="三、Vue"></a>三、Vue</h3><h5 id="1、单页面开发——父子组件嵌套"><a href="#1、单页面开发——父子组件嵌套" class="headerlink" title="1、单页面开发——父子组件嵌套"></a>1、单页面开发——父子组件嵌套</h5><ul>
-<li>父子组件传参示例</li>
-</ul>
-<blockquote>
-<p>父组件向子组件传参时，子组件用props接收</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">      data() &#123;</span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;  </span></span><br><span class="line">            &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;  </span><br><span class="line">      &#125;,</span><br><span class="line">      watch:&#123;</span><br><span class="line">      &#125;,</span><br><span class="line">      props:&#123;</span><br><span class="line">            choices:&#123;</span><br><span class="line"><span class="javascript">                  type:<span class="built_in">Object</span>,</span></span><br><span class="line"><span class="javascript">                  required:<span class="literal">true</span>,</span></span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>父组件传递参数数据初始化，data内设置数据对象</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">choices:&#123;</span><br><span class="line">    pay_choice:<span class="string">''</span>,</span><br><span class="line">    language_choice:<span class="string">''</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、course父组件"><a href="#2、course父组件" class="headerlink" title="2、course父组件"></a>2、course父组件</h5><ul>
-<li>标签多选功能</li>
-</ul>
-<img src="C:\Users\60952\AppData\Roaming\Typora\typora-user-images\1569561352184.png" alt="1569561352184" style="zoom:60%;">
-
-
-
-<blockquote>
-<p>绑定鼠标点击事件</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">get_pay_choice(id_)&#123;</span><br><span class="line">              <span class="keyword">if</span>(<span class="keyword">this</span>.choices.pay_choice == id_)&#123;</span><br><span class="line">                <span class="keyword">this</span>.choices.pay_choice = <span class="string">''</span></span><br><span class="line">              &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                  <span class="keyword">this</span>.choices.pay_choice = id_</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">get_language_choice(id_)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.choices.language_choice == id_)&#123;</span><br><span class="line">                <span class="keyword">this</span>.choices.language_choice = <span class="string">''</span></span><br><span class="line">              &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                  <span class="keyword">this</span>.choices.language_choice = id_</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;,</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>实现标签点击效果</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-for</span>=<span class="string">'pay in pay_type'</span> <span class="attr">:class</span>=<span class="string">"&#123;'active':pay.id==choices.pay_choice&#125;"</span> @<span class="attr">click.prevent</span>=<span class="string">"get_pay_choice(pay.id)"</span>&gt;</span>&#123;&#123;pay.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>  <span class="attr">v-for</span>=<span class="string">'course in course_type'</span> <span class="attr">:class</span>=<span class="string">"&#123;'active':course.id==choices.language_choice&#125;"</span> @<span class="attr">click</span>=<span class="string">"get_language_choice(course.id)"</span>  &gt;</span>&#123;&#123;course.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>子组件watch监听属性检测数据（choices.pay_choice、choices.language_choice）变化，向后端发起请求获取对应数据</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">            choices:&#123;</span><br><span class="line">                  handler(oldval,newval)&#123;</span><br><span class="line">                        // console.log(this.choices.pay_choice)</span><br><span class="line">                        // console.log(this.choices.language_choice)</span><br><span class="line">                        let form_data = new FormData()</span><br><span class="line">                        form_data.append(&apos;pay_id&apos;,this.choices.pay_choice)</span><br><span class="line">                        form_data.append(&apos;language_id&apos;,this.choices.language_choice)</span><br><span class="line">                        axios(&#123;</span><br><span class="line">                              url:&apos;http://127.0.0.1:8000/api/user/getcourse/&apos;,</span><br><span class="line">                              method:&apos;post&apos;,</span><br><span class="line">                              data:form_data</span><br><span class="line">                        &#125;).then(res=&gt;&#123;</span><br><span class="line">                              this.course_data = res.data.course_data</span><br><span class="line">                        &#125;)</span><br><span class="line">                  &#125;,</span><br><span class="line">                  deep:true, </span><br><span class="line">            &#125;,</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>deep:true代表检测深层数据内部变化，例如：列表等</p>
-<h3 id="四、Django"><a href="#四、Django" class="headerlink" title="四、Django"></a>四、Django</h3><h5 id="1、课程页展示数据"><a href="#1、课程页展示数据" class="headerlink" title="1、课程页展示数据"></a>1、课程页展示数据</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> serializer</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Course</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            <span class="comment"># 获取request里头部数据</span></span><br><span class="line">            <span class="comment"># token = request.META.get('HTTP_AUTHORIZATION')</span></span><br><span class="line">            name = models.Classtype.objects.all()</span><br><span class="line">            name_data = serializer.ClasstypeSerializer(name,many=<span class="literal">True</span>)</span><br><span class="line">            </span><br><span class="line">            courses = models.Course.objects.all()</span><br><span class="line">            course_data = serializer.CourseSerializer(courses,many=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                  <span class="string">'course_data'</span>:course_data.data,</span><br><span class="line">                  <span class="string">'course_type'</span>:name_data.data,</span><br><span class="line">                  <span class="string">'pay_type'</span>: [</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">1</span>,<span class="string">'name'</span>:<span class="string">'免费'</span>&#125;,</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">2</span>,<span class="string">'name'</span>:<span class="string">'限免'</span>&#125;,</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">3</span>,<span class="string">'name'</span>:<span class="string">'会员'</span>&#125;,</span><br><span class="line">                        ]</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coursedetail</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            cid = request.query_params.get(<span class="string">'cid'</span>)</span><br><span class="line">            <span class="comment"># print(cid)</span></span><br><span class="line">            <span class="keyword">return</span> Response(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Getcourse</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            pay_id = request.data.get(<span class="string">'pay_id'</span>,<span class="string">''</span>)</span><br><span class="line">            language_id = request.data.get(<span class="string">'language_id'</span>,<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> pay_id <span class="keyword">and</span> <span class="keyword">not</span> language_id:</span><br><span class="line">                  courses = models.Course.objects.all()</span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> language_id <span class="keyword">and</span> pay_id:</span><br><span class="line">                  courses = models.Course.objects.filter(pay_attr=pay_id)</span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> pay_id <span class="keyword">and</span> language_id:</span><br><span class="line">                  courses = models.Course.objects.filter(coursetype__id = language_id)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  courses = models.Course.objects.filter(pay_attr=pay_id,coursetype__id = language_id)</span><br><span class="line">            course_data = serializer.CourseSerializer(courses,many=<span class="literal">True</span>)      </span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                  <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                  <span class="string">'course_data'</span>:course_data.data</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
-
-
-          
+12345
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/19/vue+xterm.js 实现Linux command界面/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2229,7 +1361,7 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Ding YiFan">
+          <img class="site-author-image" itemprop="image" src="/images/kobe.jpg" alt="Ding YiFan">
           <p class="site-author-name" itemprop="name">Ding YiFan</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -2240,8 +1372,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -2295,13 +1427,13 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Gemini
   </a>
 </div>
 
@@ -2380,6 +1512,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
     <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>

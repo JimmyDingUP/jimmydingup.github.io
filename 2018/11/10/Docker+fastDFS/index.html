@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="docker 什么是docker：小海腾 KVM、Xen、VMware、VirtualBox、Hyper-V VMM   容器技术：在计算机的世界中, 容器拥有一段漫长且传奇的历史。容器与管理程序虚拟化 (hypervisor virtualization，HV)有所不同，管理程序虚拟化通过中间层将一台或者多台独立 的机器虚拟运行与物理硬件之上，而容器则是直接运行在操作系统内核之上的用户空间。因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker+fastDFS">
+<meta property="og:url" content="http://dingyifan.tech/2018/11/10/Docker+fastDFS/index.html">
+<meta property="og:site_name" content="TcFans&#39;s blog">
+<meta property="og:description" content="docker 什么是docker：小海腾 KVM、Xen、VMware、VirtualBox、Hyper-V VMM   容器技术：在计算机的世界中, 容器拥有一段漫长且传奇的历史。容器与管理程序虚拟化 (hypervisor virtualization，HV)有所不同，管理程序虚拟化通过中间层将一台或者多台独立 的机器虚拟运行与物理硬件之上，而容器则是直接运行在操作系统内核之上的用户空间。因">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-14T00:55:59.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker+fastDFS">
+<meta name="twitter:description" content="docker 什么是docker：小海腾 KVM、Xen、VMware、VirtualBox、Hyper-V VMM   容器技术：在计算机的世界中, 容器拥有一段漫长且传奇的历史。容器与管理程序虚拟化 (hypervisor virtualization，HV)有所不同，管理程序虚拟化通过中间层将一台或者多台独立 的机器虚拟运行与物理硬件之上，而容器则是直接运行在操作系统内核之上的用户空间。因">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dingyifan.tech/2018/11/10/Docker+fastDFS/">
+
+
+
+
+
+  <title>Docker+fastDFS | TcFans's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TcFans's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2018/11/10/Docker+fastDFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ding YiFan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/kobe.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TcFans's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Docker+fastDFS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T00:00:00+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><ul>
+<li>什么是docker：小海腾<ul>
+<li>KVM、Xen、VMware、VirtualBox、Hyper-V</li>
+<li>VMM</li>
+</ul>
+</li>
+<li>容器技术：在计算机的世界中, 容器拥有一段漫长且传奇的历史。容器与管理程序虚拟化 (hypervisor virtualization，HV)有所不同，管理程序虚拟化通过中间层将一台或者多台独立 的机器虚拟运行与物理硬件之上，而容器则是直接运行在操作系统内核之上的用户空间。因 此，容器虚拟化也被称为“操作系统级虚拟化”，容器技术可以让多个独立的用户空间运行 在同一台宿主机上。</li>
+<li>docker-ee：收费的</li>
+<li>docker-ce：免费的</li>
+</ul>
+<h3 id="docker特点"><a href="#docker特点" class="headerlink" title="docker特点"></a>docker特点</h3><ul>
+<li><p>上手快：用户只需要几分钟，就可以把自己的程序“Docker 化”。Docker 依赖于“写时复制” (copy-on-write)模型，使修改应用程序也非常迅速，可以说达到“随心所致，代码即改” 的境界；随后，就可以创建容器来运行应用程序了。大多数 Docker 容器只需要不到 1 秒中即可 启动。由于去除了管理程序的开销，Docker 容器拥有很高的性能，同时同一台宿主机中也 可以运行更多的容器，使用户尽可能的充分利用系统资源</p>
+</li>
+<li><p>职责的逻辑分类：使用 Docker，开发人员只需要关心容器中运行的应用程序，而运维人员只需要关心如 何管理容器。Docker 设计的目的就是要加强开发人员写代码的开发环境与应用程序要部署 的生产环境一致性。从而降低那种“开发时一切正常，肯定是运维的问题(测试环境都是正 常的，上线后出了问题就归结为肯定是运维的问题)”</p>
+</li>
+</ul>
+<ul>
+<li>快速高效的开发生命周期：Docker 的目标之一就是缩短代码从开发、测试到部署、上线运行的周期，让你的应用 程序具备可移植性，易于构建，并易于协作。(通俗一点说，Docker 就像一个盒子，里面 可以装很多物件，如果需要这些物件的可以直接将该大盒子拿走，而不需要从该盒子中一件 件的取。)</li>
+</ul>
+<ul>
+<li>鼓励使用面向服务的架构：Docker 还鼓励面向服务的体系结构和微服务架构。Docker 推荐单个容器只运行一个应 用程序或进程，这样就形成了一个分布式的应用程序模型，在这种模型下，应用程序或者服 务都可以表示为一系列内部互联的容器，从而使分布式部署应用程序，扩展或调试应用程序 都变得非常简单，同时也提高了程序的内省性。(当然，可以在一个容器中运行多个应用程 序)</li>
+</ul>
+<h3 id="Docker客户端和服务器"><a href="#Docker客户端和服务器" class="headerlink" title="Docker客户端和服务器"></a>Docker客户端和服务器</h3><ul>
+<li>Docker 是一个客户端-服务器(C/S)架构程序。Docker 客户端只需要向 Docker 服务器 或者守护进程发出请求，服务器或者守护进程将完成所有工作并返回结果。Docker 提供了 一个命令行工具 Docker 以及一整套 RESTful API。你可以在同一台宿主机上运行 Docker 守护 进程和客户端，也可以从本地的 Docker 客户端连接到运行在另一台宿主机上的远程 Docker 守护进程</li>
+</ul>
+<h3 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h3><ul>
+<li>镜像是构建 Docker 的基石。用户基于镜像来运行自己的容器，镜像也是 Docker 生命周 期中的“构建”部分。镜像是基于联合文件系统的一种层式结构，由一系列指令一步一步构 建出来。例如:<ul>
+<li>添加一个文件;</li>
+<li>执行一个命令;</li>
+<li>打开一个窗口。</li>
+</ul>
+</li>
+<li>也可以将镜像当作容器的“源代码”。镜像体积很小，非常“便携”，易于分享、存储和更新</li>
+</ul>
+<h3 id="Registry镜像注册"><a href="#Registry镜像注册" class="headerlink" title="Registry镜像注册"></a>Registry镜像注册</h3><ul>
+<li>Docker 用 Registry 来保存用户构建的镜像。</li>
+<li>Registry 分为公共和私有两种。Docker 公司 运营公共的 Registry 叫做 Docker Hub</li>
+<li>用户可以在 Docker Hub 注册账号，分享并保存自己的 镜像(说明:在 Docker Hub 下载镜像巨慢，可以自己构建私有的 Registry）</li>
+</ul>
+<h3 id="Docker容器"><a href="#Docker容器" class="headerlink" title="Docker容器"></a>Docker容器</h3><ul>
+<li>Docker 可以帮助你构建和部署容器，你只需要把自己的应用程序或者服务打包放进容 器即可</li>
+<li>容器是基于镜像启动起来的，容器中可以运行一个或多个进程</li>
+<li>我们可以认为，镜像是Docker生命周期中的构建或者打包阶段，而容器则是启动或者执行阶段。容器基于 镜像启动，一旦容器启动完成后，我们就可以登录到容器中安装自己需要的软件或者服务</li>
+<li>安装好的一个虚拟机</li>
+</ul>
+<h3 id="Docker镜像-1"><a href="#Docker镜像-1" class="headerlink" title="Docker镜像"></a>Docker镜像</h3><ul>
+<li>Docker 把应用程序及其依赖，打包在 image 文件里面</li>
+<li>只有通过这个文件，才能生成 Docker 容器。image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例</li>
+<li>image 是二进制文件。实际开发中，一个 image 文件往往通过继承另一个 image 文件，加上一些个性化设置而生成。举例来说，你可以在自己操作系统所使用的image 基础上，往里面加入 Apache 服务器，形成你的image</li>
+<li>就是一个操作系统文件</li>
+</ul>
+<h3 id="Docker容器操作"><a href="#Docker容器操作" class="headerlink" title="Docker容器操作"></a>Docker容器操作</h3><h4 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [option] 镜像名</span><br><span class="line">-i 表示以“交互模式”运行容器</span><br><span class="line">-t 表示容器启动后会进入其命令行。加入这两个参数后，容器创建就能登录进去。即 分配一个伪终端。</span><br><span class="line">–name 为创建的容器命名</span><br><span class="line">-v 表示目录映射关系(前者是宿主机目录，后者是映射到宿主机上的目录，即 宿主机目录:容器中目录)，可以使 用多个-v 做多个目录或文件映射。注意:最好做目录映射，在宿主机上做修改，然后 共享到容器上。</span><br><span class="line">-d 在run后面加上-d参数,则会创建一个守护式容器在后台运行(这样创建容器后不 会自动登录容器，如果只加-i -t 两个参数，创建后就会自动进去容器)。</span><br><span class="line">-p 表示端口映射，前者是宿主机端口，后者是容器内的映射端口。可以使用多个-p 做多个端口映射</span><br><span class="line">-e 为容器设置环境变量</span><br><span class="line">–network=host 表示将主机的网络环境映射到容器中，容器的网络与主机相同</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止或启动容器"><a href="#停止或启动容器" class="headerlink" title="停止或启动容器"></a>停止或启动容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container stop 容器名或ID</span><br></pre></td></tr></table></figure>
+
+<h3 id="FastDFS"><a href="#FastDFS" class="headerlink" title="FastDFS"></a>FastDFS</h3><ul>
+<li>FastDFS 是用 c 语言编写的一款开源的分布式文件系统。FastDFS 为互联网量身定制， 充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用 FastDFS 很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务</li>
+<li>FastDFS架构包括 <strong>Tracker server</strong> 和 <strong>Storage server</strong>。客户端请求Trackerserver进行过文件上传、下载<ul>
+<li>通过<code>Tracker server</code>调度最终由Storage server完成文件上传、下载</li>
+</ul>
+</li>
+<li><strong>Tracker server</strong><ul>
+<li>作用是负载均衡和调度,通过Tracker server在文件上传时可以根据一些策略找到Storage server提供文件上传服务。可以将tracker称为<strong>追踪服务器</strong>或 <strong>调度服务器</strong></li>
+</ul>
+</li>
+<li><strong>Storage server</strong><ul>
+<li>作用是文件存储,客户端上传的文件最终存储在Storage存储器上,Storageserver没有实现自己的文件系统而是利用操作系统的文件系统来管理文件。可以将storage称为<strong>存储服务器</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="centos部署docker"><a href="#centos部署docker" class="headerlink" title="centos部署docker"></a>centos部署docker</h3><ul>
+<li>安装docker</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install yum-utils</span><br><span class="line">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span> 添加docker-repo源</span><br><span class="line">yum install docker-ce</span><br><span class="line"><span class="meta">#</span> 尝试安装docker-ce</span><br><span class="line">yum erase docker-common-2:1.13.1-96.gitb2f74b2.el7.centos.x86_64</span><br><span class="line"><span class="meta">#</span> 删除已安装的docker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>开启docker服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看docker镜像<ul>
+<li>REPOSITORY：镜像所在的仓库名称</li>
+<li>TAG：镜像标签</li>
+<li>IMAGEID：镜像ID</li>
+<li>CREATED：镜像的创建日期(不是获取该镜像的日期)</li>
+<li>SIZE：镜像大小</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker image ls</span><br><span class="line">docker  rm</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>拉取镜像及删除镜像</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker image pull delron/fastdfs</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面代码中，docker image pull是抓取 image 文件的命令。delron/fastdfs是 image 文件在仓库里面的位置，其中delron是 image 文件所在的组，fastdfs是 image 文件的名字</p>
+</blockquote>
+<ul>
+<li>开启fastdfs的tracker服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dti --network=host --name tracker -v /var/fdfs/tracker:/var/fdfs delron/fastdfs tracker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>开启fastdfs的storage服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dti --network=host --name storage -e TRACKER_SERVER=116.62.213.171:22122 -v /var/fdfs/storage:/var/fdfs delron/fastdfs storage</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关闭/开启docker容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop/start container_id</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动docker容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container start storage/tracker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看当前运行的容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f 容器id</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看容器ID</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除文件夹递归</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf fdfs(文件夹)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>无法启动storage问题</li>
+</ul>
+<p>删除/var/fdfs/storage/data目录下的fdfs_storage.pid文件然后重启storage</p>
+<h2 id="Fastdfs使用"><a href="#Fastdfs使用" class="headerlink" title="Fastdfs使用"></a>Fastdfs使用</h2><h3 id="python客户端"><a href="#python客户端" class="headerlink" title="python客户端"></a>python客户端</h3><ul>
+<li>下载安装<code>fastdfs</code>的<code>python</code>客户端</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/JaceHo/fdfs_client-py" target="_blank" rel="noopener">https://github.com/JaceHo/fdfs_client-py</a></p>
+</blockquote>
+<ul>
+<li>windows兼容问题</li>
+</ul>
+<blockquote>
+<p>解压下载好的压缩包，提取fdfs_client文件夹</p>
+</blockquote>
+<ul>
+<li>将该文件夹放入python的三方包目录下</li>
+</ul>
+<blockquote>
+<p>C:\Python37\Lib\site-packages</p>
+</blockquote>
+<ul>
+<li>安装所需的两个额外模块</li>
+</ul>
+<blockquote>
+<p>pip install mutagen<br>pip isntall requests </p>
+</blockquote>
+<ul>
+<li>注释fdfs_client/storage_client.py文件中的第十二行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#from fdfs_client.sendfile import *</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建client.conf文件到django下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># project/client.conf</span></span><br><span class="line"><span class="comment"># connect timeout in seconds</span></span><br><span class="line"><span class="comment"># default value is 30s</span></span><br><span class="line">connect_timeout=<span class="number">30</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># network timeout in seconds</span></span><br><span class="line"><span class="comment"># default value is 30s</span></span><br><span class="line">network_timeout=<span class="number">60</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the base path to store log files</span></span><br><span class="line">base_path=\static <span class="comment">#FastDFS客户端存放日志文件的目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tracker_server can ocur more than once, and tracker_server format is</span></span><br><span class="line"><span class="comment">#  "host:port", host can be hostname or ip address</span></span><br><span class="line">tracker_server=<span class="number">123.57</span><span class="number">.61</span><span class="number">.168</span>:<span class="number">22122</span> <span class="comment">#运行tracker服务的机器IP地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#standard log level as syslog, case insensitive, value list:</span></span><br><span class="line"><span class="comment">### emerg for emergency</span></span><br><span class="line"><span class="comment">### alert</span></span><br><span class="line"><span class="comment">### crit for critical</span></span><br><span class="line"><span class="comment">### error</span></span><br><span class="line"><span class="comment">### warn for warning</span></span><br><span class="line"><span class="comment">### notice</span></span><br><span class="line"><span class="comment">### info</span></span><br><span class="line"><span class="comment">### debug</span></span><br><span class="line">log_level=info</span><br><span class="line"></span><br><span class="line"><span class="comment"># if use connection pool</span></span><br><span class="line"><span class="comment"># default value is false</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line">use_connection_pool = false</span><br><span class="line"></span><br><span class="line"><span class="comment"># connections whose the idle time exceeds this time will be closed</span></span><br><span class="line"><span class="comment"># unit: second</span></span><br><span class="line"><span class="comment"># default value is 3600</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line">connection_pool_max_idle_time = <span class="number">3600</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if load FastDFS parameters from tracker server</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line"><span class="comment"># default value is false</span></span><br><span class="line">load_fdfs_parameters_from_tracker=false</span><br><span class="line"></span><br><span class="line"><span class="comment"># if use storage ID instead of IP address</span></span><br><span class="line"><span class="comment"># same as tracker.conf</span></span><br><span class="line"><span class="comment"># valid only when load_fdfs_parameters_from_tracker is false</span></span><br><span class="line"><span class="comment"># default value is false</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line">use_storage_id = false</span><br><span class="line"></span><br><span class="line"><span class="comment"># specify storage ids filename, can use relative or absolute path</span></span><br><span class="line"><span class="comment"># same as tracker.conf</span></span><br><span class="line"><span class="comment"># valid only when load_fdfs_parameters_from_tracker is false</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line">storage_ids_filename = storage_ids.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#HTTP settings</span></span><br><span class="line">http.tracker_server_port=<span class="number">80</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#use "#include" directive to include HTTP other settiongs</span></span><br><span class="line"><span class="comment">##include http.conf</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上传测试代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#client.upload_by_filename(文件名)</span></span><br><span class="line"><span class="comment">#client.upload_by_buffer(文件bytes数据)</span></span><br><span class="line"><span class="keyword">from</span> fdfs_client.client <span class="keyword">import</span> Fdfs_client</span><br><span class="line">client = Fdfs_client(<span class="string">"client.conf"</span>)</span><br><span class="line"></span><br><span class="line">ret = client.upload_by_filename(<span class="string">'1.jpg'</span>)</span><br><span class="line">print(ret)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中返回结果中的Remote file_id就是上传成功的保存文件名</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	'Group name': 'group1', </span><br><span class="line">	'Remote file_id': 'group1\\M00/00/00/rBEUWlz_HzSAPPzBAAQ2UAPajsU035.jpg', </span><br><span class="line">	'Status': 'Upload successed.', </span><br><span class="line">	'Local file name': '1.jpg', </span><br><span class="line">	'Uploaded size': '269.00KB', </span><br><span class="line">	'Storage IP': '123.57.61.168\x008'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Django文件引擎"><a href="#Django文件引擎" class="headerlink" title="Django文件引擎"></a><code>Django</code>文件引擎</h3><ul>
+<li>重构<code>django</code>文件上传引擎</li>
+</ul>
+<blockquote>
+<p> 存储类中必须实现_open()和_save()方法,以及任何后续使用中可能用到的其他方法。</p>
+</blockquote>
+<ul>
+<li><code>_open(name, mode = ‘rb’)</code>：被<code>Storage.open()</code>调用,在打开文件时被调用</li>
+<li><code>save(name, content)</code>：被<code>Storage.save()</code>调用,name是传入的文件名,<code>content</code>是<code>Django</code>接收到的文件内容,该方法需要将<code>content</code>文件内容保存。<code>Django</code>会将该方法的返回值保存到数据库中对应的文件字段,也就是说该方法应该返回要保存在数据库中的文件名信息。</li>
+<li><code>exists(name)</code>：如果名为<code>name</code>的文件在文件系统中存在，按返回<code>True</code>，否则返回<code>False</code></li>
+<li><code>url(name)</code>：返回文件的完整访问<code>URL</code></li>
+<li><code>delete(name)</code>：删除<code>name</code>文件</li>
+<li><code>listdir(path)</code>：列出指定路径的文件</li>
+<li><code>size(name)</code>：返回<code>name</code>文件的总大小</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"><span class="keyword">from</span> django.core.files.storage <span class="keyword">import</span> Storage</span><br><span class="line"><span class="keyword">from</span> fdfs_client.client <span class="keyword">import</span> Fdfs_client</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FastDFSStroage</span><span class="params">(Storage)</span>:</span></span><br><span class="line">    <span class="string">"""定义FastDFS客户端类"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, base_url = None, client_conf = None)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        初始化对象</span></span><br><span class="line"><span class="string">        :param base_url:</span></span><br><span class="line"><span class="string">        :param client_conf:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> base_url <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            base_url = settings.FDAS_URL</span><br><span class="line">            <span class="comment"># 'http://123.57.61.168:8888' </span></span><br><span class="line">        self.base_url = base_url</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> client_conf <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            client_conf = settings.FDFS_CLIENT_CONF</span><br><span class="line">            <span class="comment"># FDFS_CLIENT_CONF = os.path.join(BASE_DIR, 'client.conf')</span></span><br><span class="line">        self.client_conf = client_conf</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_open</span><span class="params">(self, name, mode = <span class="string">'rb'</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        打开文件</span></span><br><span class="line"><span class="string">        :param name:</span></span><br><span class="line"><span class="string">        :param mode:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_save</span><span class="params">(self, name, content)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        保存文件</span></span><br><span class="line"><span class="string">        :param name: 传入文件名</span></span><br><span class="line"><span class="string">        :param content: 文件内容</span></span><br><span class="line"><span class="string">        :return:保存到数据库中的FastDFSDE文件名</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        client = Fdfs_client(self.client_conf)</span><br><span class="line">        ret = client.upload_by_buffer(content.read())</span><br><span class="line">        <span class="keyword">if</span> ret.get(<span class="string">"Status"</span>) != <span class="string">"Upload successed."</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">"upload file failed"</span>)</span><br><span class="line">        file_name = ret.get(<span class="string">"Remote file_id"</span>)</span><br><span class="line">        <span class="keyword">return</span> file_name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">exists</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        检查文件是否重复, FastDFS自动区分重复文件</span></span><br><span class="line"><span class="string">        :param name:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">url</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取name文件的完整url</span></span><br><span class="line"><span class="string">        :param name:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.base_url + name</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将文件引擎设置到settings中</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#settings.py</span></span><br><span class="line">DEFAULT_FILE_STORAGE = <span class="string">'goods.views.FastDFSStorage'</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上传成功后的访问地址</li>
+</ul>
+<blockquote>
+<p>在服务器IP地址的<code>8888</code>端口，记得打开对应阿里云的端口规则</p>
+</blockquote>
+<ul>
+<li>注意：在新版本的Remote file_id，由<code>\\</code>斜杠变为了<code>/</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'Remote file_id'</span>].replace(<span class="string">'\\'</span>,<span class="string">'/'</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/20/登录功能/" rel="next" title="登录">
+                <i class="fa fa-chevron-left"></i> 登录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/01/Celery异步发送邮件/" rel="prev" title="Celery异步发送邮件">
+                Celery异步发送邮件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/kobe.jpg" alt="Ding YiFan">
+          <p class="site-author-name" itemprop="name">Ding YiFan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker"><span class="nav-number">1.</span> <span class="nav-text">docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker特点"><span class="nav-number">1.1.</span> <span class="nav-text">docker特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker客户端和服务器"><span class="nav-number">1.2.</span> <span class="nav-text">Docker客户端和服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker镜像"><span class="nav-number">1.3.</span> <span class="nav-text">Docker镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Registry镜像注册"><span class="nav-number">1.4.</span> <span class="nav-text">Registry镜像注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker容器"><span class="nav-number">1.5.</span> <span class="nav-text">Docker容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker镜像-1"><span class="nav-number">1.6.</span> <span class="nav-text">Docker镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker容器操作"><span class="nav-number">1.7.</span> <span class="nav-text">Docker容器操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建容器"><span class="nav-number">1.7.1.</span> <span class="nav-text">创建容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#停止或启动容器"><span class="nav-number">1.7.2.</span> <span class="nav-text">停止或启动容器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FastDFS"><span class="nav-number">1.8.</span> <span class="nav-text">FastDFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#centos部署docker"><span class="nav-number">1.9.</span> <span class="nav-text">centos部署docker</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastdfs使用"><span class="nav-number">2.</span> <span class="nav-text">Fastdfs使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python客户端"><span class="nav-number">2.1.</span> <span class="nav-text">python客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django文件引擎"><span class="nav-number">2.2.</span> <span class="nav-text">Django文件引擎</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ding YiFan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

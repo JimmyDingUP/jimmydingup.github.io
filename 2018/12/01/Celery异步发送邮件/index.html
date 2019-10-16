@@ -101,14 +101,14 @@
 <meta property="og:site_name" content="TcFans&#39;s blog">
 <meta property="og:description" content="一、安装 异步邮件验证需要使用celery以及django的celery框架  12pip install celery  #版本3.1.15pip install django-celery   celery需要中间任务队列支持，这里使用rabbitmq  rabbitmq MQ全称为Message Queue, 是一种分布式应用程序的的通信方法 它是消费-生产者模型的一个典型的代表，produ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160728150635559.png">
-<meta property="og:image" content="http://yoursite.com/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160702162151906.png">
-<meta property="og:image" content="http://yoursite.com/2018/12/01/Celery异步发送邮件/C:%5CUsers%5C60952%5CDesktop%5Cblog%5Cimgs%5CSnipaste_2019-09-28_08-13-22.png">
+<meta property="og:image" content="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160728150635559.png">
+<meta property="og:image" content="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160702162151906.png">
+<meta property="og:image" content="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5C60952%5CDesktop%5Cblog%5Cimgs%5CSnipaste_2019-09-28_08-13-22.png">
 <meta property="og:updated_time" content="2019-10-14T00:58:59.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Celery异步发送邮件">
 <meta name="twitter:description" content="一、安装 异步邮件验证需要使用celery以及django的celery框架  12pip install celery  #版本3.1.15pip install django-celery   celery需要中间任务队列支持，这里使用rabbitmq  rabbitmq MQ全称为Message Queue, 是一种分布式应用程序的的通信方法 它是消费-生产者模型的一个典型的代表，produ">
-<meta name="twitter:image" content="http://yoursite.com/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160728150635559.png">
+<meta name="twitter:image" content="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160728150635559.png">
 
 
 
@@ -360,7 +360,7 @@
 <p><code>Rabbitmq</code>系统最核心的组件是<code>Exchange</code>和<code>Queue</code></p>
 <p><code>Exchange</code>和<code>Queue</code>是在<code>rabbitmq server</code>（又叫做<code>broker</code>）端，<code>producer</code>和<code>consumer</code>在应用端</p>
 </blockquote>
-<p><img src="//yoursite.com/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160728150635559.png" alt></p>
+<p><img src="//dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160728150635559.png" alt></p>
 <blockquote>
 <p>消息发送端先将消息发送给交换机，交换机再将消息发送到绑定的消息队列</p>
 <p>而后每个接收端(consumer)都能从各自的消息队列里接收到信息。</p>
@@ -399,7 +399,7 @@
 <h4 id="celery"><a href="#celery" class="headerlink" title="celery"></a>celery</h4><blockquote>
 <p>Celery是基于Python开发的一个分布式任务队列框架，支持使用任务队列的方式在分布的机器/进程/线程上执行任务调度</p>
 </blockquote>
-<p><img src="//yoursite.com/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160702162151906.png" alt></p>
+<p><img src="//dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160702162151906.png" alt></p>
 <blockquote>
 <p>Celery的架构，采用典型的生产者-消费者模式</p>
 <p>主要由三部分组成：broker（消息队列）、workers（消费者：处理任务）、backend（存储结果）</p>
@@ -474,7 +474,7 @@
 <blockquote>
 <p>报错总结链接 <a href="https://blog.csdn.net/sanyuedexuanlv/article/details/88052884" target="_blank" rel="noopener">https://blog.csdn.net/sanyuedexuanlv/article/details/88052884</a> </p>
 </blockquote>
-<p><img src="//yoursite.com/2018/12/01/Celery异步发送邮件/C:%5CUsers%5C60952%5CDesktop%5Cblog%5Cimgs%5CSnipaste_2019-09-28_08-13-22.png" alt="Snipaste_2019-09-28_08-13-22"></p>
+<p><img src="//dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5C60952%5CDesktop%5Cblog%5Cimgs%5CSnipaste_2019-09-28_08-13-22.png" alt="Snipaste_2019-09-28_08-13-22"></p>
 <p>rabbit-mq密码输入错误，初始密码为guest</p>
 <h3 id="二、Django后台"><a href="#二、Django后台" class="headerlink" title="二、Django后台"></a>二、Django后台</h3><h5 id="1、配置文件"><a href="#1、配置文件" class="headerlink" title="1、配置文件"></a>1、配置文件</h5><ul>
 <li>tasks.py</li>
@@ -614,7 +614,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

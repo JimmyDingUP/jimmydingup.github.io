@@ -94,22 +94,17 @@
 
 
 
-<meta name="description" content="支付宝沙箱环境测试支付功能  1、下载Android版本支付宝沙箱app 支付宝开放文档   点击沙箱工具，扫码下载沙箱app   登录支付宝开放平台-进入开发者中心-获得沙箱账号     用账号密码登录沙箱app，沙箱app只有支付功能  2、配置支付宝沙箱 生成沙箱密钥   使用支付宝密钥生成工具生成公钥和私钥. 注意python要选择非java适用     上传应用公钥到支付宝沙箱配置">
+<meta name="description" content="1、悲观锁和乐观锁是什么？分别在什么场景下使用 悲观锁 每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁  应用：更新丢失：最后的更新覆盖了其他事务之前的更新，而事务之间并不知道，发生更新丢失。更新丢失，可以完全避免，应用对访问的数据加锁即可。脏读：(针对未提交的数据)一个事务在更新一条记录，未提交前，第二个事务读到了第一个事务更新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django配置支付宝沙箱支付功能">
-<meta property="og:url" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/index.html">
+<meta property="og:title" content="MySql知识点（面试）">
+<meta property="og:url" content="http://dingyifan.tech/2019/10/16/MySql面试/index.html">
 <meta property="og:site_name" content="TcFans&#39;s blog">
-<meta property="og:description" content="支付宝沙箱环境测试支付功能  1、下载Android版本支付宝沙箱app 支付宝开放文档   点击沙箱工具，扫码下载沙箱app   登录支付宝开放平台-进入开发者中心-获得沙箱账号     用账号密码登录沙箱app，沙箱app只有支付功能  2、配置支付宝沙箱 生成沙箱密钥   使用支付宝密钥生成工具生成公钥和私钥. 注意python要选择非java适用     上传应用公钥到支付宝沙箱配置">
+<meta property="og:description" content="1、悲观锁和乐观锁是什么？分别在什么场景下使用 悲观锁 每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁  应用：更新丢失：最后的更新覆盖了其他事务之前的更新，而事务之间并不知道，发生更新丢失。更新丢失，可以完全避免，应用对访问的数据加锁即可。脏读：(针对未提交的数据)一个事务在更新一条记录，未提交前，第二个事务读到了第一个事务更新">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/沙箱账号.png">
-<meta property="og:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/生成公钥私钥.png">
-<meta property="og:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/上传公钥.png">
-<meta property="og:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/获取支付宝公钥.png">
-<meta property="og:updated_time" content="2019-10-14T02:56:43.931Z">
+<meta property="og:updated_time" content="2019-10-16T03:45:27.737Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django配置支付宝沙箱支付功能">
-<meta name="twitter:description" content="支付宝沙箱环境测试支付功能  1、下载Android版本支付宝沙箱app 支付宝开放文档   点击沙箱工具，扫码下载沙箱app   登录支付宝开放平台-进入开发者中心-获得沙箱账号     用账号密码登录沙箱app，沙箱app只有支付功能  2、配置支付宝沙箱 生成沙箱密钥   使用支付宝密钥生成工具生成公钥和私钥. 注意python要选择非java适用     上传应用公钥到支付宝沙箱配置">
-<meta name="twitter:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/沙箱账号.png">
+<meta name="twitter:title" content="MySql知识点（面试）">
+<meta name="twitter:description" content="1、悲观锁和乐观锁是什么？分别在什么场景下使用 悲观锁 每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁  应用：更新丢失：最后的更新覆盖了其他事务之前的更新，而事务之间并不知道，发生更新丢失。更新丢失，可以完全避免，应用对访问的数据加锁即可。脏读：(针对未提交的数据)一个事务在更新一条记录，未提交前，第二个事务读到了第一个事务更新">
 
 
 
@@ -138,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://dingyifan.tech/2019/04/05/三方支付-支付宝/">
+  <link rel="canonical" href="http://dingyifan.tech/2019/10/16/MySql面试/">
 
 
 
 
 
-  <title>Django配置支付宝沙箱支付功能 | TcFans's blog</title>
+  <title>MySql知识点（面试） | TcFans's blog</title>
   
 
 
@@ -267,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2019/04/05/三方支付-支付宝/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2019/10/16/MySql面试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
@@ -284,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Django配置支付宝沙箱支付功能</h1>
+          <h1 class="post-title" itemprop="name headline">MySql知识点（面试）</h1>
         
 
         <div class="post-meta">
@@ -296,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T00:00:00+08:00">
-                2019-04-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-16T11:32:41+08:00">
+                2019-10-16
               </time>
             
 
@@ -334,61 +329,54 @@
       
 
       
-        <blockquote>
-<p>支付宝沙箱环境测试支付功能</p>
-</blockquote>
-<h5 id="1、下载Android版本支付宝沙箱app"><a href="#1、下载Android版本支付宝沙箱app" class="headerlink" title="1、下载Android版本支付宝沙箱app"></a>1、下载Android版本支付宝沙箱app</h5><ul>
-<li>支付宝开放文档</li>
-</ul>
-<blockquote>
-<p>点击沙箱工具，扫码下载沙箱app</p>
-</blockquote>
+        <h4 id="1、悲观锁和乐观锁是什么？分别在什么场景下使用"><a href="#1、悲观锁和乐观锁是什么？分别在什么场景下使用" class="headerlink" title="1、悲观锁和乐观锁是什么？分别在什么场景下使用"></a>1、悲观锁和乐观锁是什么？分别在什么场景下使用</h4><ul>
+<li><p><strong>悲观锁</strong></p>
+<p>每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁</p>
 <ul>
-<li>登录支付宝开放平台-进入开发者中心-获得沙箱账号</li>
+<li>应用：<br>更新丢失：最后的更新覆盖了其他事务之前的更新，而事务之间并不知道，发生更新丢失。更新丢失，可以完全避免，应用对访问的数据加锁即可。<br>脏读：(针对未提交的数据)一个事务在更新一条记录，未提交前，第二个事务读到了第一个事务更新后的记录，那么第二个事务就读到了脏数据，会产生对第一个未提交,解决方案加锁，或者调整mysql事务隔离级别，数据库的事务隔离越严格，并发负作用越小，代价越高</li>
 </ul>
-<img src="/2019/04/05/三方支付-支付宝/沙箱账号.png" title="沙箱账号">
-
-<blockquote>
-<p>用账号密码登录沙箱app，沙箱app只有支付功能</p>
-</blockquote>
-<h5 id="2、配置支付宝沙箱"><a href="#2、配置支付宝沙箱" class="headerlink" title="2、配置支付宝沙箱"></a>2、配置支付宝沙箱</h5><ul>
-<li>生成沙箱密钥</li>
+</li>
+<li><p><strong>乐观锁</strong></p>
+<p>乐观锁不是数据库自带的，需要我们自己去实现。乐观锁是指操作数据库时(更新操作)，想法很乐观，认为这次的操作不会导致冲突，在操作数据时，并不进行任何其他的特殊处理（也就是不加锁），而在进行更新后，再去判断是否有冲突了。</p>
+</li>
 </ul>
-<blockquote>
-<p>使用支付宝密钥生成工具生成公钥和私钥.</p>
-<p>注意python要选择非java适用</p>
-</blockquote>
-<img src="/2019/04/05/三方支付-支付宝/生成公钥私钥.png" title="公钥私钥">
-
-<ul>
-<li>上传应用公钥到支付宝沙箱配置</li>
+<h4 id="2、请详细说明数据库的三范式"><a href="#2、请详细说明数据库的三范式" class="headerlink" title="2、请详细说明数据库的三范式"></a>2、请详细说明数据库的三范式</h4><ul>
+<li><p>第一范式1NF：字段原子性，字段不可再分割。</p>
+</li>
+<li><p>第二范式：消除对主键的部分依赖 即在表中加上一个与业务逻辑无关的字段作为主键 主键：可以唯一标识记录的字段或者字段集合。</p>
+</li>
+<li><p>第三范式：消除对主键的传递依赖 传递依赖：B字段依赖于A，C字段又依赖于B。</p>
+</li>
 </ul>
-<img src="/2019/04/05/三方支付-支付宝/上传公钥.png" title="上传公钥">
-
-<img src="/2019/04/05/三方支付-支付宝/获取支付宝公钥.png" title="支付宝公钥">
-
-<ul>
-<li>将本地文件里的公钥替换为获得的支付宝公钥</li>
-<li>配置应用网关为<a href="https://127.0.0.1:8000" target="_blank" rel="noopener">https://127.0.0.1:8000</a></li>
-<li>配置授权回调地址为<a href="http://127.0.0.1:8000/api/user/pay_result/" target="_blank" rel="noopener">http://127.0.0.1:8000/api/user/pay_result/</a></li>
+<h4 id="3、什么是SQL注入？如何防范SQL注入"><a href="#3、什么是SQL注入？如何防范SQL注入" class="headerlink" title="3、什么是SQL注入？如何防范SQL注入"></a>3、什么是SQL注入？如何防范SQL注入</h4><ul>
+<li><p>QL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据(比如用户敏感数据)隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。典型的例子就是当对SQL语句进行字符串拼接的时候，直接使用未转义的用户输入内容作为变量。这时，只要在sql语句的中间做修改，比如加上drop、delete等关键字，执行之后后果不堪设想。</p>
+<p>说到这里，那么该怎么处理这种情况呢?三个方面：</p>
+<p>1、过滤用户输入参数中的特殊字符，降低风险。</p>
+<p>2、禁止通过字符串拼接sql语句，要严格使用参数绑定来传入参数。</p>
+<p>3、合理使用数据库框架提供的机制。就比如Mybatis提供的传入参数的方式 #{}，禁止使用${}，后者相当于是字符串拼接sql，要使用参数化的语句。</p>
+<p>总结下，就是要正确使用参数化绑定sql变量</p>
+</li>
 </ul>
-<h5 id="3、Django完成与alipay连接"><a href="#3、Django完成与alipay连接" class="headerlink" title="3、Django完成与alipay连接"></a>3、Django完成与alipay连接</h5><ul>
-<li>下载alipay SDK 或者 下载源码</li>
+<h4 id="4、请详细说明如何配置MySQL主从复制"><a href="#4、请详细说明如何配置MySQL主从复制" class="headerlink" title="4、请详细说明如何配置MySQL主从复制"></a>4、请详细说明如何配置MySQL主从复制</h4><ul>
+<li><p><strong>主节点：</strong></p>
+<p>启用二进制日志。</p>
+<p>为当前节点设置一个全局唯一的server_id。</p>
+<p>创建有复制权限的用户账号 REPLIACTION SLAVE ,REPLIATION CLIENT。</p>
+</li>
+<li><p><strong>从节点：</strong></p>
+<p>启动中继日志。</p>
+<p>为当前节点设置一个全局唯一的server_id。</p>
+<p>使用有复制权限的用户账号连接至主节点，并启动复制线程。</p>
+</li>
 </ul>
-<blockquote>
-<p>pip install alipay-sdk-python</p>
-<p>或者使用api源码pay1.py</p>
-</blockquote>
-<ul>
-<li>views.py</li>
+<h4 id="5、请列举五个以上的MySQL索引"><a href="#5、请列举五个以上的MySQL索引" class="headerlink" title="5、请列举五个以上的MySQL索引"></a>5、请列举五个以上的MySQL索引</h4><ul>
+<li>普通索引：仅加速查询</li>
+<li>唯一索引：加速查询 + 列值唯一（可以有null）</li>
+<li>主键索引：加速查询 + 列值唯一（不可以有null）+ 表中只有一个</li>
+<li>组合索引：多列值组成一个索引，专门用于组合搜索，其效率大于索引合并</li>
+<li>全文索引：对文本的内容进行分词，进行搜索</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> eduapi.settings <span class="keyword">import</span> BASE_DIR</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">APPID = <span class="number">2016100200644078</span></span><br><span class="line"><span class="keyword">from</span> .pay1 <span class="keyword">import</span> AliPay</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apay</span><span class="params">()</span>:</span></span><br><span class="line">      <span class="keyword">return</span> AliPay(</span><br><span class="line">            appid=str(APPID),</span><br><span class="line">            app_notify_url=<span class="string">'http://127.0.0.1:8000/api/user/pay_result/'</span>,</span><br><span class="line">            app_private_key_path = os.path.join(BASE_DIR,<span class="string">'./keys/private.txt'</span>),</span><br><span class="line">            alipay_public_key_path = os.path.join(BASE_DIR,<span class="string">'./keys/public.txt'</span>),</span><br><span class="line">            return_url = <span class="string">'http://127.0.0.1:8000/api/user/pay_result/'</span>,</span><br><span class="line">            debug= <span class="literal">True</span>,</span><br><span class="line">      )</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testpay</span><span class="params">(request)</span>:</span></span><br><span class="line">      ap=apay()</span><br><span class="line">      price=<span class="number">1000</span></span><br><span class="line">      subject=<span class="string">'aaa'</span></span><br><span class="line">      ordering_str=ap.direct_pay(</span><br><span class="line">            subject=subject, <span class="comment">#商品名称</span></span><br><span class="line">            out_trade_no=<span class="string">'aaa12321'</span>, <span class="comment">#订单号</span></span><br><span class="line">            total_amount=price,	<span class="comment">#金额</span></span><br><span class="line">      )</span><br><span class="line">      print(ordering_str)</span><br><span class="line">      pay_url = <span class="string">'https://openapi.alipaydev.com/gateway.do?'</span>+ ordering_str</span><br><span class="line">      print(pay_url)</span><br><span class="line">      <span class="keyword">return</span> Response(&#123;</span><br><span class="line">            <span class="string">'pay_url'</span>:pay_url</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意:</p>
-<p>1.生成连接要复制到浏览器里打开</p>
-<p>2.APPID要转成字符串格式</p>
-</blockquote>
+<h4 id="6、最左原则是什么？在什么时候遵循"><a href="#6、最左原则是什么？在什么时候遵循" class="headerlink" title="6、最左原则是什么？在什么时候遵循"></a>6、最左原则是什么？在什么时候遵循</h4><p>最左优先，在检索数据时从联合索引的最左边开始匹配,类似于给(a,b,c)这三个字段加上联合索引就等于同时加上了 (a) (ab) (abc) 这三种组合的查询优化</p>
 
       
     </div>
@@ -413,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/跨域/" rel="next" title="配置跨域的方式（Vue-Django）">
-                <i class="fa fa-chevron-left"></i> 配置跨域的方式（Vue-Django）
+              <a href="/2019/10/16/redis面试/" rel="next" title="redis知识点（面试）">
+                <i class="fa fa-chevron-left"></i> redis知识点（面试）
               </a>
             
           </div>
@@ -422,10 +410,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/19/微博三方登录/" rel="prev" title="微博三方登录">
-                微博三方登录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -539,7 +523,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、下载Android版本支付宝沙箱app"><span class="nav-number">1.</span> <span class="nav-text">1、下载Android版本支付宝沙箱app</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、配置支付宝沙箱"><span class="nav-number">2.</span> <span class="nav-text">2、配置支付宝沙箱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、Django完成与alipay连接"><span class="nav-number">3.</span> <span class="nav-text">3、Django完成与alipay连接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、悲观锁和乐观锁是什么？分别在什么场景下使用"><span class="nav-number">1.</span> <span class="nav-text">1、悲观锁和乐观锁是什么？分别在什么场景下使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、请详细说明数据库的三范式"><span class="nav-number">2.</span> <span class="nav-text">2、请详细说明数据库的三范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、什么是SQL注入？如何防范SQL注入"><span class="nav-number">3.</span> <span class="nav-text">3、什么是SQL注入？如何防范SQL注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、请详细说明如何配置MySQL主从复制"><span class="nav-number">4.</span> <span class="nav-text">4、请详细说明如何配置MySQL主从复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、请列举五个以上的MySQL索引"><span class="nav-number">5.</span> <span class="nav-text">5、请列举五个以上的MySQL索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、最左原则是什么？在什么时候遵循"><span class="nav-number">6.</span> <span class="nav-text">6、最左原则是什么？在什么时候遵循</span></a></li></ol></div>
             
 
           </div>

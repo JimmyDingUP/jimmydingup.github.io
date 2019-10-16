@@ -94,22 +94,17 @@
 
 
 
-<meta name="description" content="支付宝沙箱环境测试支付功能  1、下载Android版本支付宝沙箱app 支付宝开放文档   点击沙箱工具，扫码下载沙箱app   登录支付宝开放平台-进入开发者中心-获得沙箱账号     用账号密码登录沙箱app，沙箱app只有支付功能  2、配置支付宝沙箱 生成沙箱密钥   使用支付宝密钥生成工具生成公钥和私钥. 注意python要选择非java适用     上传应用公钥到支付宝沙箱配置">
+<meta name="description" content="1、为什么redis需要把所有数据放到内存中?​        Redis为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以redis具有快速和数据持久化的特征。如果不将数据放在内存中，磁盘I/O速度为严重影响redis的性能。在内存越来越便宜的今天，redis将会越来越受欢迎。如果设置了最大使用的内存，则数据已有记录数达到内存限值后不能继续插入新值。 2、假如Redi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django配置支付宝沙箱支付功能">
-<meta property="og:url" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/index.html">
+<meta property="og:title" content="redis知识点（面试）">
+<meta property="og:url" content="http://dingyifan.tech/2019/10/16/redis面试/index.html">
 <meta property="og:site_name" content="TcFans&#39;s blog">
-<meta property="og:description" content="支付宝沙箱环境测试支付功能  1、下载Android版本支付宝沙箱app 支付宝开放文档   点击沙箱工具，扫码下载沙箱app   登录支付宝开放平台-进入开发者中心-获得沙箱账号     用账号密码登录沙箱app，沙箱app只有支付功能  2、配置支付宝沙箱 生成沙箱密钥   使用支付宝密钥生成工具生成公钥和私钥. 注意python要选择非java适用     上传应用公钥到支付宝沙箱配置">
+<meta property="og:description" content="1、为什么redis需要把所有数据放到内存中?​        Redis为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以redis具有快速和数据持久化的特征。如果不将数据放在内存中，磁盘I/O速度为严重影响redis的性能。在内存越来越便宜的今天，redis将会越来越受欢迎。如果设置了最大使用的内存，则数据已有记录数达到内存限值后不能继续插入新值。 2、假如Redi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/沙箱账号.png">
-<meta property="og:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/生成公钥私钥.png">
-<meta property="og:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/上传公钥.png">
-<meta property="og:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/获取支付宝公钥.png">
-<meta property="og:updated_time" content="2019-10-14T02:56:43.931Z">
+<meta property="og:updated_time" content="2019-10-16T03:32:49.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django配置支付宝沙箱支付功能">
-<meta name="twitter:description" content="支付宝沙箱环境测试支付功能  1、下载Android版本支付宝沙箱app 支付宝开放文档   点击沙箱工具，扫码下载沙箱app   登录支付宝开放平台-进入开发者中心-获得沙箱账号     用账号密码登录沙箱app，沙箱app只有支付功能  2、配置支付宝沙箱 生成沙箱密钥   使用支付宝密钥生成工具生成公钥和私钥. 注意python要选择非java适用     上传应用公钥到支付宝沙箱配置">
-<meta name="twitter:image" content="http://dingyifan.tech/2019/04/05/三方支付-支付宝/沙箱账号.png">
+<meta name="twitter:title" content="redis知识点（面试）">
+<meta name="twitter:description" content="1、为什么redis需要把所有数据放到内存中?​        Redis为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以redis具有快速和数据持久化的特征。如果不将数据放在内存中，磁盘I/O速度为严重影响redis的性能。在内存越来越便宜的今天，redis将会越来越受欢迎。如果设置了最大使用的内存，则数据已有记录数达到内存限值后不能继续插入新值。 2、假如Redi">
 
 
 
@@ -138,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://dingyifan.tech/2019/04/05/三方支付-支付宝/">
+  <link rel="canonical" href="http://dingyifan.tech/2019/10/16/redis面试/">
 
 
 
 
 
-  <title>Django配置支付宝沙箱支付功能 | TcFans's blog</title>
+  <title>redis知识点（面试） | TcFans's blog</title>
   
 
 
@@ -267,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2019/04/05/三方支付-支付宝/">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2019/10/16/redis面试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
@@ -284,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Django配置支付宝沙箱支付功能</h1>
+          <h1 class="post-title" itemprop="name headline">redis知识点（面试）</h1>
         
 
         <div class="post-meta">
@@ -296,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T00:00:00+08:00">
-                2019-04-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-16T11:21:14+08:00">
+                2019-10-16
               </time>
             
 
@@ -334,61 +329,42 @@
       
 
       
-        <blockquote>
-<p>支付宝沙箱环境测试支付功能</p>
-</blockquote>
-<h5 id="1、下载Android版本支付宝沙箱app"><a href="#1、下载Android版本支付宝沙箱app" class="headerlink" title="1、下载Android版本支付宝沙箱app"></a>1、下载Android版本支付宝沙箱app</h5><ul>
-<li>支付宝开放文档</li>
+        <h4 id="1、为什么redis需要把所有数据放到内存中"><a href="#1、为什么redis需要把所有数据放到内存中" class="headerlink" title="1、为什么redis需要把所有数据放到内存中?"></a>1、为什么redis需要把所有数据放到内存中?</h4><p>​        Redis为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以redis具有快速和数据持久化的特征。如果不将数据放在内存中，磁盘I/O速度为严重影响redis的性能。在内存越来越便宜的今天，redis将会越来越受欢迎。如果设置了最大使用的内存，则数据已有记录数达到内存限值后不能继续插入新值。</p>
+<h4 id="2、假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如果将它们全部找出来？"><a href="#2、假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如果将它们全部找出来？" class="headerlink" title="2、假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如果将它们全部找出来？"></a>2、假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如果将它们全部找出来？</h4><ul>
+<li><p>KEYS pattern 一次性返回所有的符合模式的数据。往往数据量巨大，会卡顿。</p>
+</li>
+<li><p>SCAN cursor [MATCH pattern] [COUNT count],指令指定返回条数，所以能用在生产环境下m基于游标的迭代器，基于上一次的游标延续之前的迭代过程。以0作为游标开始一次新的迭代，知道命令返回游标0完成一次遍历。不保证每次执行都返回某个给定数量的元素，支持模糊查询。一次返回的数量不可控，只能大概率符合count参数。</p>
+</li>
 </ul>
-<blockquote>
-<p>点击沙箱工具，扫码下载沙箱app</p>
-</blockquote>
-<ul>
-<li>登录支付宝开放平台-进入开发者中心-获得沙箱账号</li>
+<h4 id="3、单线程的redis为什么这么快？"><a href="#3、单线程的redis为什么这么快？" class="headerlink" title="3、单线程的redis为什么这么快？"></a>3、单线程的redis为什么这么快？</h4><ul>
+<li>redis利用队列技术将并发访问变为串行访问，消除了传统数据库串行控制的开销</li>
 </ul>
-<img src="/2019/04/05/三方支付-支付宝/沙箱账号.png" title="沙箱账号">
-
-<blockquote>
-<p>用账号密码登录沙箱app，沙箱app只有支付功能</p>
-</blockquote>
-<h5 id="2、配置支付宝沙箱"><a href="#2、配置支付宝沙箱" class="headerlink" title="2、配置支付宝沙箱"></a>2、配置支付宝沙箱</h5><ul>
-<li>生成沙箱密钥</li>
+<h4 id="4、Redis的数据淘汰策略有哪些，分别在什么情况下会用到"><a href="#4、Redis的数据淘汰策略有哪些，分别在什么情况下会用到" class="headerlink" title="4、Redis的数据淘汰策略有哪些，分别在什么情况下会用到"></a>4、Redis的数据淘汰策略有哪些，分别在什么情况下会用到</h4><ul>
+<li><p><strong>定时删除</strong></p>
+<p>策略 : 在设置键的过期时间的同时，创建一个定时器，让定时器在键的过期时间来临时，立即执行对键的删除操作。</p>
+<p>优点 : 对内存友好，保证过期键会尽可能快地被删除，并释放过期键所占用的内存。</p>
+<p>缺点 : 对CPU时间不友好，占用太多CPU时间，影响服务器的响应时间和吞吐量。</p>
+</li>
+<li><p><strong>惰性删除</strong></p>
+<p>策略 : 放任过期键不管，每次从键空间读写操作时，都检查键是否过期，如果过期，删除该键，如果没有过期，返回该键。</p>
+<p>优点 : 对CPU时间友好，读写操作键时才对键进行过期检查，删除过期键的操作只会在非做不可的情况下进行。</p>
+<p>缺点 : 对内存不友好，只要键不删除，就不会释放内存，浪费太多内存，有内存泄漏风险。</p>
+</li>
+<li><p><strong>定期删除</strong></p>
+<p>策略：对定时删除策略和惰性删除策略的一种整合和折中。每隔一段时间执行一次定时删除，并通过限制删除操作执行的总时长和总频率来限制删除操作对CPU占用时间的影响。通过定期删除过期键，有效减少了因为过期键而带来的内存浪费。</p>
+<p>难点：确定删除操作执行的总时长和总频率。执行太频繁，执行时间过长，就会退化成定时删除策略，影响客户端请求效率；执行得太少，执行时间太短，会演变为惰性删除，存在内存浪费的情况。</p>
+<p>Redis服务器使用惰性删除和定期删除两种策略，通过配合使用，很好地在合理使用CPU时间和避免浪费内存之间取得平衡。举例:从过期键中随机选取 20 个 key，遍历这 20 个 key，并对过期的 key进行删除操作如果过期的 key 比率超过25%，则重复步骤 1，同时，为了保证过期扫描不会出现循环过度，导致线程卡死现象，增加了扫描时间的上限，默认不会超过 25ms以及频次上线10次。</p>
+</li>
+<li><p><strong>主动清理</strong></p>
+<p>当前已用内存超过maxmemory限定时，触发主动清理策略。清理时会根据用户配置的maxmemory-policy来做适当的清理。主动清理策略主要有一下六种:</p>
+<p>volatile-lru : 从已设置过期时间的数据集(server.db[i].expires)中挑选最近最少使用 的数据淘汰。</p>
+<p>volatile-ttl : 从已设置过期时间的数据集(server.db[i].expires)中挑选将要过期的数 据淘汰。</p>
+<p>volatile-random : 从已设置过期时间的数据集(server.db[i].expires)中任意选择数据 淘汰。</p>
+<p>allkeys-lru : 从数据集(server.db[i].dict)中挑选最近最少使用的数据淘汰。</p>
+<p>allkeys-random : 从数据集(server.db[i].dict)中任意选择数据淘汰。</p>
+<p>no-enviction : 禁止驱逐数据。</p>
+</li>
 </ul>
-<blockquote>
-<p>使用支付宝密钥生成工具生成公钥和私钥.</p>
-<p>注意python要选择非java适用</p>
-</blockquote>
-<img src="/2019/04/05/三方支付-支付宝/生成公钥私钥.png" title="公钥私钥">
-
-<ul>
-<li>上传应用公钥到支付宝沙箱配置</li>
-</ul>
-<img src="/2019/04/05/三方支付-支付宝/上传公钥.png" title="上传公钥">
-
-<img src="/2019/04/05/三方支付-支付宝/获取支付宝公钥.png" title="支付宝公钥">
-
-<ul>
-<li>将本地文件里的公钥替换为获得的支付宝公钥</li>
-<li>配置应用网关为<a href="https://127.0.0.1:8000" target="_blank" rel="noopener">https://127.0.0.1:8000</a></li>
-<li>配置授权回调地址为<a href="http://127.0.0.1:8000/api/user/pay_result/" target="_blank" rel="noopener">http://127.0.0.1:8000/api/user/pay_result/</a></li>
-</ul>
-<h5 id="3、Django完成与alipay连接"><a href="#3、Django完成与alipay连接" class="headerlink" title="3、Django完成与alipay连接"></a>3、Django完成与alipay连接</h5><ul>
-<li>下载alipay SDK 或者 下载源码</li>
-</ul>
-<blockquote>
-<p>pip install alipay-sdk-python</p>
-<p>或者使用api源码pay1.py</p>
-</blockquote>
-<ul>
-<li>views.py</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> eduapi.settings <span class="keyword">import</span> BASE_DIR</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">APPID = <span class="number">2016100200644078</span></span><br><span class="line"><span class="keyword">from</span> .pay1 <span class="keyword">import</span> AliPay</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apay</span><span class="params">()</span>:</span></span><br><span class="line">      <span class="keyword">return</span> AliPay(</span><br><span class="line">            appid=str(APPID),</span><br><span class="line">            app_notify_url=<span class="string">'http://127.0.0.1:8000/api/user/pay_result/'</span>,</span><br><span class="line">            app_private_key_path = os.path.join(BASE_DIR,<span class="string">'./keys/private.txt'</span>),</span><br><span class="line">            alipay_public_key_path = os.path.join(BASE_DIR,<span class="string">'./keys/public.txt'</span>),</span><br><span class="line">            return_url = <span class="string">'http://127.0.0.1:8000/api/user/pay_result/'</span>,</span><br><span class="line">            debug= <span class="literal">True</span>,</span><br><span class="line">      )</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testpay</span><span class="params">(request)</span>:</span></span><br><span class="line">      ap=apay()</span><br><span class="line">      price=<span class="number">1000</span></span><br><span class="line">      subject=<span class="string">'aaa'</span></span><br><span class="line">      ordering_str=ap.direct_pay(</span><br><span class="line">            subject=subject, <span class="comment">#商品名称</span></span><br><span class="line">            out_trade_no=<span class="string">'aaa12321'</span>, <span class="comment">#订单号</span></span><br><span class="line">            total_amount=price,	<span class="comment">#金额</span></span><br><span class="line">      )</span><br><span class="line">      print(ordering_str)</span><br><span class="line">      pay_url = <span class="string">'https://openapi.alipaydev.com/gateway.do?'</span>+ ordering_str</span><br><span class="line">      print(pay_url)</span><br><span class="line">      <span class="keyword">return</span> Response(&#123;</span><br><span class="line">            <span class="string">'pay_url'</span>:pay_url</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意:</p>
-<p>1.生成连接要复制到浏览器里打开</p>
-<p>2.APPID要转成字符串格式</p>
-</blockquote>
 
       
     </div>
@@ -413,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/跨域/" rel="next" title="配置跨域的方式（Vue-Django）">
-                <i class="fa fa-chevron-left"></i> 配置跨域的方式（Vue-Django）
+              <a href="/2019/08/19/微博三方登录/" rel="next" title="微博三方登录">
+                <i class="fa fa-chevron-left"></i> 微博三方登录
               </a>
             
           </div>
@@ -423,8 +399,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/19/微博三方登录/" rel="prev" title="微博三方登录">
-                微博三方登录 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/16/MySql面试/" rel="prev" title="MySql知识点（面试）">
+                MySql知识点（面试） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -539,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、下载Android版本支付宝沙箱app"><span class="nav-number">1.</span> <span class="nav-text">1、下载Android版本支付宝沙箱app</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、配置支付宝沙箱"><span class="nav-number">2.</span> <span class="nav-text">2、配置支付宝沙箱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、Django完成与alipay连接"><span class="nav-number">3.</span> <span class="nav-text">3、Django完成与alipay连接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、为什么redis需要把所有数据放到内存中"><span class="nav-number">1.</span> <span class="nav-text">1、为什么redis需要把所有数据放到内存中?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如果将它们全部找出来？"><span class="nav-number">2.</span> <span class="nav-text">2、假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如果将它们全部找出来？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、单线程的redis为什么这么快？"><span class="nav-number">3.</span> <span class="nav-text">3、单线程的redis为什么这么快？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Redis的数据淘汰策略有哪些，分别在什么情况下会用到"><span class="nav-number">4.</span> <span class="nav-text">4、Redis的数据淘汰策略有哪些，分别在什么情况下会用到</span></a></li></ol></div>
             
 
           </div>

@@ -1,6 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>超简单的个人博客之hexo</title>
+    <url>/2019/10/18/%E8%B6%85%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bhexo/</url>
+    <content><![CDATA[<p>搭建一个博客只要5分钟？没错，就是hexo</p>
+<p>在开始搭建hexo之前，你需要准备两个东西</p>
+<ul>
+<li>node.js &gt;&gt;&gt; npm/cnpm</li>
+<li>github &gt;&gt;&gt; git</li>
+</ul>
+<h4 id="第一步-本地创建hexo博客项目"><a href="#第一步-本地创建hexo博客项目" class="headerlink" title="第一步    本地创建hexo博客项目"></a>第一步    本地创建hexo博客项目</h4><p>1、安装hexo</p>
+<blockquote>
+<p>新建一个用于存储博客资料的文件夹——blog，在gitbash进入这个目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>2、创建博客项目</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+
+<p>3、创建第一篇文章 cd到刚才创建好的博客目录下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new myfirstblog</span><br></pre></td></tr></table></figure>
+
+<p>4、运行hexo服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>hexo服务的本地端口号默认是4000，访问localhost:4000可以看到默认的页面hello hexo。到此我们本地的博客就搭建成功了。</p>
+<h4 id="第二步-用github管理我们的博客"><a href="#第二步-用github管理我们的博客" class="headerlink" title="第二步    用github管理我们的博客"></a>第二步    用github管理我们的博客</h4><p>在github上为我们的博客创建一个仓库，将hexo打包上传到github上，这样就可以通过浏览器访问我们的博客了。</p>
+<p>注意：仓库名称一定始要以自己github的名字开头，例如 abcd1234.github.io</p>
+<p>1、下载安装插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>2、修改配置文件_config.yml（指明仓库路径）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/abcd1234/abcd1234.github.io.git</span><br><span class="line">  brach: master</span><br></pre></td></tr></table></figure>
+
+<p>3、执行上传命令</p>
+<ul>
+<li>清除本地缓存</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上传</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>至此在浏览器里输入abcd1234.github.io.git就可以在线访问我们的博客了</p>
+<h4 id="第三步-域名-博客"><a href="#第三步-域名-博客" class="headerlink" title="第三步    域名-博客"></a>第三步    域名-博客</h4><p>为我们的博客配置域名，首先我们需要购买一个域名和DNS域名解析，将两者关联以后修改一下我们github上博客的配置，设置允许我们自己域名访问。</p>
+<blockquote>
+<p>Settings里Custom domain添加我们的域名点击Save即可</p>
+</blockquote>
+<p>至此，输入我们自己域名就可以访问博客了。</p>
+<h4 id="第四步-个性化"><a href="#第四步-个性化" class="headerlink" title="第四步    个性化"></a>第四步    个性化</h4><p>1、修改主题</p>
+<p>hexo支持主题修改，主题的位置在themes目录下。hexo默认的主题是landscape，我们可以直接克隆免费的hexo主题，网址：</p>
+<ul>
+<li><p><strong>以next主题为例</strong></p>
+<ul>
+<li>在themes目录下新建文件夹next</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone --branch v5.1.2 https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改配置文件_config.yml，将theme改为next</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>2、添加图片</p>
+<ul>
+<li>下载插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-asset-image</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改配置文件_config.yml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder:true</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改图片路径</li>
+</ul>
+<p>运行hexo new xxx 生成博文时，/source/_posts文件j夹内除了xxx.md文件还有一个同名的文件夹，把这篇文章要用的图片放入这个文件夹内，插入图片路径时直接输入xxx/xxx.png</p>
+]]></content>
+      <categories>
+        <category>博客</category>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>next主题个性化</title>
+    <url>/2019/10/17/next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96/</url>
+    <content><![CDATA[<h4 id="添加搜索功能"><a href="#添加搜索功能" class="headerlink" title="添加搜索功能"></a>添加搜索功能</h4><ul>
+<li>下载插件（博客根目录下执行命令）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>主题配置文件添加</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>主题配置文件修改    </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>博客</category>
+        <category>hexo</category>
+        <category>next主题</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>hexo</tag>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MongoDB面试</title>
     <url>/2019/10/17/MongoDB%E9%9D%A2%E8%AF%95/</url>
     <content><![CDATA[<h4 id="1、什么是MongoDB？"><a href="#1、什么是MongoDB？" class="headerlink" title="1、什么是MongoDB？"></a>1、什么是MongoDB？</h4><p>MongoDB 类似 MySQL，支持字段索引、游标操作，其优势在于查询功能比较强大<strong>，</strong>擅长查询 JSON 数据<strong>，</strong>能存储海量数据<strong>，</strong>但是不支持事务。MySQL 在大数据量时效率显著下降，MongoDB 更多时候作为关系数据库的一种替代。</p>
@@ -16,6 +137,14 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>面试</category>
+        <category>MongoDB</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>MongoDB</tag>
+      </tags>
   </entry>
   <entry>
     <title>MySql知识点（面试）</title>
@@ -69,6 +198,14 @@
 </ul>
 <h4 id="6、最左原则是什么？在什么时候遵循"><a href="#6、最左原则是什么？在什么时候遵循" class="headerlink" title="6、最左原则是什么？在什么时候遵循"></a>6、最左原则是什么？在什么时候遵循</h4><p>最左优先，在检索数据时从联合索引的最左边开始匹配,类似于给(a,b,c)这三个字段加上联合索引就等于同时加上了 (a) (ab) (abc) 这三种组合的查询优化</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+        <category>MongoDB</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>MongoDB</tag>
+      </tags>
   </entry>
   <entry>
     <title>redis知识点（面试）</title>
@@ -110,6 +247,14 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>面试</category>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>Redis</tag>
+      </tags>
   </entry>
   <entry>
     <title>微博三方登录</title>
@@ -169,6 +314,14 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checkemail</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,requests)</span>:</span></span><br><span class="line">            email = requests.data[<span class="string">'email'</span>]</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                  user = models.User.objects.get(email=email)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'邮箱可以使用'</span></span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">0</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'邮箱已被占用'</span></span><br><span class="line">                  &#125;)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bindweibo</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,requests)</span>:</span></span><br><span class="line">            email = requests.data[<span class="string">'email'</span>]</span><br><span class="line">            passwd = requests.data[<span class="string">'passwd'</span>]</span><br><span class="line">            uid = requests.data[<span class="string">'uid'</span>]</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                  user = models.User.objects.create(</span><br><span class="line">                        email = email,</span><br><span class="line">                        password = make_password(passwd)</span><br><span class="line">                  )</span><br><span class="line">                  s = models.Social.objects.create(</span><br><span class="line">                        user=user,</span><br><span class="line">                        plantform =<span class="number">3</span>,</span><br><span class="line">                        open_id = uid</span><br><span class="line">                  )</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">0</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'绑定失败'</span></span><br><span class="line">                  &#125;)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  data = &#123;</span><br><span class="line">                        <span class="string">'id'</span>:user.id,</span><br><span class="line">                        <span class="string">'expire'</span>:time.time()+ EXPIRE</span><br><span class="line">                  &#125;</span><br><span class="line">                  token = encrypt_oracle(json.dumps(data))</span><br><span class="line">                  <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                        <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                        <span class="string">'message'</span>:<span class="string">'绑定成功'</span>,</span><br><span class="line">                        <span class="string">'token'</span>:token,</span><br><span class="line">                        <span class="string">'email'</span>:user.email   <span class="comment"># 欢迎你XXX</span></span><br><span class="line">                  &#125;)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>项目</category>
+        <category>Online_Education</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>微博</tag>
+      </tags>
   </entry>
   <entry>
     <title>Django配置支付宝沙箱支付功能</title>
@@ -229,6 +382,14 @@
 <p>2.APPID要转成字符串格式</p>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>项目</category>
+        <category>Online_Education</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>支付宝</tag>
+      </tags>
   </entry>
   <entry>
     <title>配置跨域的方式（Vue-Django）</title>
@@ -258,6 +419,13 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Web</category>
+        <category>跨域</category>
+      </categories>
+      <tags>
+        <tag>跨域</tag>
+      </tags>
   </entry>
   <entry>
     <title>Celery异步发送邮件</title>
@@ -433,6 +601,14 @@
 
 <p>##### </p>
 ]]></content>
+      <categories>
+        <category>Celery</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Celery</tag>
+        <tag>发邮件</tag>
+      </tags>
   </entry>
   <entry>
     <title>Docker+fastDFS</title>
@@ -659,6 +835,14 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="string">'Remote file_id'</span>].replace(<span class="string">'\\'</span>,<span class="string">'/'</span>)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Docker</tag>
+        <tag>FastDFS</tag>
+      </tags>
   </entry>
   <entry>
     <title>登录</title>
@@ -712,6 +896,13 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>项目</category>
+        <category>Online_Education</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
   </entry>
   <entry>
     <title>注册</title>
@@ -882,6 +1073,13 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>项目</category>
+        <category>Online_Education</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue+xterm.js 实现Linux command界面</title>
@@ -925,6 +1123,16 @@
 <li>配置路由后就可以在页面上看到了</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Web</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>xterm</tag>
+        <tag>Django</tag>
+        <tag>Vue</tag>
+        <tag>websocket</tag>
+      </tags>
   </entry>
   <entry>
     <title>Course课程详情页</title>
@@ -1005,6 +1213,13 @@
 <h3 id="四、Django"><a href="#四、Django" class="headerlink" title="四、Django"></a>四、Django</h3><h5 id="1、课程页展示数据"><a href="#1、课程页展示数据" class="headerlink" title="1、课程页展示数据"></a>1、课程页展示数据</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> serializer</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Course</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            <span class="comment"># 获取request里头部数据</span></span><br><span class="line">            <span class="comment"># token = request.META.get('HTTP_AUTHORIZATION')</span></span><br><span class="line">            name = models.Classtype.objects.all()</span><br><span class="line">            name_data = serializer.ClasstypeSerializer(name,many=<span class="literal">True</span>)</span><br><span class="line">            </span><br><span class="line">            courses = models.Course.objects.all()</span><br><span class="line">            course_data = serializer.CourseSerializer(courses,many=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                  <span class="string">'course_data'</span>:course_data.data,</span><br><span class="line">                  <span class="string">'course_type'</span>:name_data.data,</span><br><span class="line">                  <span class="string">'pay_type'</span>: [</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">1</span>,<span class="string">'name'</span>:<span class="string">'免费'</span>&#125;,</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">2</span>,<span class="string">'name'</span>:<span class="string">'限免'</span>&#125;,</span><br><span class="line">                        &#123;<span class="string">'id'</span>:<span class="number">3</span>,<span class="string">'name'</span>:<span class="string">'会员'</span>&#125;,</span><br><span class="line">                        ]</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coursedetail</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            cid = request.query_params.get(<span class="string">'cid'</span>)</span><br><span class="line">            <span class="comment"># print(cid)</span></span><br><span class="line">            <span class="keyword">return</span> Response(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Getcourse</span><span class="params">(APIView)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            pay_id = request.data.get(<span class="string">'pay_id'</span>,<span class="string">''</span>)</span><br><span class="line">            language_id = request.data.get(<span class="string">'language_id'</span>,<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> pay_id <span class="keyword">and</span> <span class="keyword">not</span> language_id:</span><br><span class="line">                  courses = models.Course.objects.all()</span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> language_id <span class="keyword">and</span> pay_id:</span><br><span class="line">                  courses = models.Course.objects.filter(pay_attr=pay_id)</span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> pay_id <span class="keyword">and</span> language_id:</span><br><span class="line">                  courses = models.Course.objects.filter(coursetype__id = language_id)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                  courses = models.Course.objects.filter(pay_attr=pay_id,coursetype__id = language_id)</span><br><span class="line">            course_data = serializer.CourseSerializer(courses,many=<span class="literal">True</span>)      </span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                  <span class="string">'code'</span>:<span class="number">1</span>,</span><br><span class="line">                  <span class="string">'course_data'</span>:course_data.data</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>项目</category>
+        <category>Online_Education</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
   </entry>
   <entry>
     <title>前期准备</title>
@@ -1065,6 +1280,13 @@
 <li>设置为如下内容：</li>
 </ol>
 <img src="/2017/09/19/前期准备/添加安全组.png" title="添加安全组">]]></content>
+      <categories>
+        <category>项目</category>
+        <category>Online_Education</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
   </entry>
   <entry>
     <title>在线学习网站Django+VUE</title>
@@ -1098,5 +1320,12 @@
 <li>表结构</li>
 </ul>
 <img src="/1000/09/19/在线学习网站Django+VUE/表结构.png" title="表结构">]]></content>
+      <categories>
+        <category>项目</category>
+        <category>Online_Education</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
   </entry>
 </search>

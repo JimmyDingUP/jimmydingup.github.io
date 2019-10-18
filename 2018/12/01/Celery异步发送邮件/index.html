@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Django,Celery,发邮件,">
 
 
 
@@ -95,6 +95,7 @@
 
 
 <meta name="description" content="一、安装 异步邮件验证需要使用celery以及django的celery框架  12pip install celery  #版本3.1.15pip install django-celery   celery需要中间任务队列支持，这里使用rabbitmq  rabbitmq MQ全称为Message Queue, 是一种分布式应用程序的的通信方法 它是消费-生产者模型的一个典型的代表，produ">
+<meta name="keywords" content="Django,Celery,发邮件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Celery异步发送邮件">
 <meta property="og:url" content="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/index.html">
@@ -104,7 +105,7 @@
 <meta property="og:image" content="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160728150635559.png">
 <meta property="og:image" content="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5Clienze%5CDesktop%5C%E7%8E%B0%E5%9C%A8%E5%86%99%E7%9A%84%E8%AF%BE%E4%BB%B6%5CMD%E6%A0%BC%E5%BC%8F%5C%E5%A4%A7%E5%AE%9E%E8%AE%AD%5C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%5C20160702162151906.png">
 <meta property="og:image" content="http://dingyifan.tech/2018/12/01/Celery异步发送邮件/C:%5CUsers%5C60952%5CDesktop%5Cblog%5Cimgs%5CSnipaste_2019-09-28_08-13-22.png">
-<meta property="og:updated_time" content="2019-10-14T00:58:59.440Z">
+<meta property="og:updated_time" content="2019-10-18T11:50:47.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Celery异步发送邮件">
 <meta name="twitter:description" content="一、安装 异步邮件验证需要使用celery以及django的celery框架  12pip install celery  #版本3.1.15pip install django-celery   celery需要中间任务队列支持，这里使用rabbitmq  rabbitmq MQ全称为Message Queue, 是一种分布式应用程序的的通信方法 它是消费-生产者模型的一个典型的代表，produ">
@@ -214,6 +215,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -303,7 +314,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ding YiFan">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/kobe.jpg">
+      <meta itemprop="image" content="/images/qq.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -337,6 +348,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Celery/" itemprop="url" rel="index">
+                    <span itemprop="name">Celery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -550,6 +583,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag"># Django</a>
+          
+            <a href="/tags/Celery/" rel="tag"># Celery</a>
+          
+            <a href="/tags/发邮件/" rel="tag"># 发邮件</a>
+          
+        </div>
+      
 
       
       
@@ -635,7 +678,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/kobe.jpg" alt="Ding YiFan">
+          <img class="site-author-image" itemprop="image" src="/images/qq.jpg" alt="Ding YiFan">
           <p class="site-author-name" itemprop="name">Ding YiFan</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -646,14 +689,32 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -717,13 +778,13 @@
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  友情链接：
 </div>
 
 <div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Gemini
+  
+  <a class="theme-link" href="/">
+    by: JimmyD
   </a>
 </div>
 

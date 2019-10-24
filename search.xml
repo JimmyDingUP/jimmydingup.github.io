@@ -881,20 +881,20 @@
 
 <p>在这里我们假设登录的用户记录‘id’为1，’expire’为过期时间，生成token值以后我们传递给前端</p>
 </li>
-<li><p>#</p>
-</li>
 </ol>
 <h5 id="3、自定义中间件拦截token未认证或token已过期的用户"><a href="#3、自定义中间件拦截token未认证或token已过期的用户" class="headerlink" title="3、自定义中间件拦截token未认证或token已过期的用户"></a>3、自定义中间件拦截token未认证或token已过期的用户</h5><blockquote>
 <p>为提高我们代码的复用率，可以使用django中间件来实现用户拦截的功能。我们自定义中间件LoginRequired，重写process_request方法，在该方法中完成token值获取以及验证，将验证结果返回给前端。</p>
 </blockquote>
-<ol>
-<li><p>在子应用（userapp）下新建文件middleware.py</p>
+<ul>
+<li>在子应用（userapp）下新建文件middleware.py</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> reverse</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> decrypt_oracle   <span class="comment">#导入view.py里我们自定义的解码函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要登录的页面列表，反向解析得到连接 </span></span><br><span class="line">LOGIN_REQUIRE_LIST = [reverse(var) <span class="keyword">for</span> var <span class="keyword">in</span> [<span class="string">'course'</span>,]]</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginRequired</span><span class="params">(MiddlewareMixin)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    如果token不存在或者已过期返回对应code码</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self,request)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> request.path <span class="keyword">in</span> LOGIN_REQUIRE_LIST:</span><br><span class="line">                  token = request.META.get(<span class="string">'HTTP_AUTHORIZATION'</span>)</span><br><span class="line">                    <span class="comment"># js空值用null表示，python会识别为字符串</span></span><br><span class="line">                  <span class="keyword">if</span> <span class="keyword">not</span> token <span class="keyword">or</span> token == <span class="string">'null'</span>:</span><br><span class="line">                        <span class="keyword">return</span> JsonResponse(&#123;</span><br><span class="line">                              <span class="string">'code'</span> : <span class="number">6207</span>,</span><br><span class="line">                              <span class="string">'message'</span> : <span class="string">'未认证'</span></span><br><span class="line">                        &#125;)</span><br><span class="line">                  <span class="keyword">else</span>:</span><br><span class="line">                        token_data = decrypt_oracle(token)</span><br><span class="line">                        <span class="comment"># eval()函数会将字符串转换为可用python数据类型，相对于的函数repr()</span></span><br><span class="line">                        <span class="keyword">if</span> eval(token_data)[<span class="string">'expire'</span>] &lt; time.time():</span><br><span class="line">                              <span class="keyword">return</span> JsonResponse(&#123;</span><br><span class="line">                                    <span class="string">'code'</span>: <span class="number">70001</span>,</span><br><span class="line">                                    <span class="string">'message'</span> : <span class="string">'token过期'</span></span><br><span class="line">                              &#125;)</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>在settings里将我们的中间件添加到设置里</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">'userapp.middleware.LoginRequired'</span>,</span><br></pre></td></tr></table></figure>
 
-
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>项目</category>
@@ -1128,8 +1128,8 @@
         <category>Vue</category>
       </categories>
       <tags>
-        <tag>Django</tag>
         <tag>xterm</tag>
+        <tag>Django</tag>
         <tag>Vue</tag>
         <tag>websocket</tag>
       </tags>

@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>pipreqs组件</title>
+    <url>/2019/10/28/pipreqs%E7%BB%84%E4%BB%B6/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>开发项目时候遇到搭建、部署环境，但是新环境下需要安装项目使用的依赖包，如何打包处理统一下载，这里有一个组件pipreqs</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install pipreqs</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用方法</li>
+</ul>
+<p>cmd进入项目目录下，输入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pipreqs ./</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果报gbk的错误，则说明项目是utf-8编码格式，需要指明一下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pipreqs ./ --encoding=utf-8</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>结果会生成一个requirements.txt文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>项目打包</category>
+      </categories>
+      <tags>
+        <tag>组件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>超简单的个人博客之hexo</title>
     <url>/2019/10/18/%E8%B6%85%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bhexo/</url>
     <content><![CDATA[<p>搭建一个博客只要5分钟？没错，就是hexo</p>
@@ -321,6 +351,27 @@
       <tags>
         <tag>Django</tag>
         <tag>微博</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序demo</title>
+    <url>/2019/04/10/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fdemo/</url>
+    <content><![CDATA[<h3 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h3><blockquote>
+<p>准备做个微信小程序 玩一下 在这里记录</p>
+<p>开发工具及软件版本:</p>
+<p>微信开发者工具搭建前端页面</p>
+<p>VScode+python3.7+DJango==2.0.4搭建后端逻辑功能</p>
+<p>数据库使用MySQL</p>
+<p>配置项目域名和阿里云服务器</p>
+<p>CDN静态资源加速</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>项目</category>
+        <category>WeChat Miniprogram</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>

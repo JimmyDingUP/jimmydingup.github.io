@@ -1,6 +1,829 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>异常、断言</title>
+    <url>/2020/02/08/%E5%BC%82%E5%B8%B8%E3%80%81%E6%96%AD%E8%A8%80/</url>
+    <content><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><ul>
+<li><p>所谓的异常就是我们代码中的BUG，想必大家都不陌生，比如逻辑错误，语法错误。也就是我们常见的ERROR。异常的出现会导致程序无法继续向下执行。</p>
+</li>
+<li><p>程序测试阶段，异常出现，我们要根据抛出的异常来修改我们的造成错误的代码。</p>
+</li>
+<li><p>异常的处理除去根据报错信息进行修改代码外，还可以使用<strong>try</strong>/<strong>except</strong>来捕获异常</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2019/07/try_except.png" alt="异常捕获"></p>
+<ul>
+<li>异常捕获的目的是为了提高我们代码的健壮性。保证我们代码的可执行性。异常捕获可以帮助我们做好留痕工作，对有问题的数据进行收集处理。 </li>
+</ul>
+</li>
+</ul>
+<h2 id="常见的几种异常"><a href="#常见的几种异常" class="headerlink" title="常见的几种异常"></a>常见的几种异常</h2><ul>
+<li><p><strong>NAMEError</strong>(使用未定义变量)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>keys<span class="comment">##在这儿我们使用了未定义的变量，引发了NAMEError的错误，并且告诉我们在代码的第一行</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">'keys'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="comment">#解决办法，根据提示找到对应的变量，在使用前先定义。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>ModuleNotFoundError</strong>(引入错误)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> a <span class="comment">##我们尝试导入未有的模块a，引发了ModuleNotFoundError的错误</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">ModuleNotFoundError: No module named <span class="string">'a'</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="comment">#解决办法，导入正确的模块</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>IndexError</strong>(索引错误）</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]<span class="comment">##我们定义列表</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(list1[<span class="number">5</span>])<span class="comment">##输出列表中索引5的元素引发IndexError的错误</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br><span class="line"><span class="comment">##解决办法，不要超出列表索引范围</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>KeyError</strong>(字典错误)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1=&#123;<span class="string">'1'</span>:<span class="number">2</span>,<span class="string">'3'</span>:<span class="number">4</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(dict1[<span class="string">'2'</span>])<span class="comment">##输出未定义key，引发KeyError错误</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">KeyError: <span class="string">'2'</span></span><br><span class="line"><span class="comment">##解决办法，使用存在的key</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>*<em>IndentationError *</em>(缩进错误)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="number">1</span>==<span class="literal">True</span>:<span class="comment">#判断条件下午缩进，引发IndentationError 错误</span></span><br><span class="line"><span class="meta">... </span>print(<span class="string">'True'</span>)</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">2</span></span><br><span class="line">    print(<span class="string">'True'</span>)</span><br><span class="line">        ^</span><br><span class="line">IndentationError: expected an indented block</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="comment">##解决办法，注意缩进问题。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>*<em>SyntaxError *</em>(语法错误)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="number">1</span>==<span class="literal">True</span><span class="comment">##缺少冒号，引发SyntaxError </span></span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> <span class="number">1</span>==<span class="literal">True</span></span><br><span class="line">             ^</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="comment">#解决办法，正确使用python语法</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>*<em>TypeError *</em>(类型错误)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span>+<span class="string">'1'</span><span class="comment">#整型字符串相加，引发TypeError </span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: unsupported operand type(s) <span class="keyword">for</span> +: <span class="string">'int'</span> <span class="keyword">and</span> <span class="string">'str'</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="comment">##正确使用数据类型</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>*<em>ZeroDivisionError *</em>(除数为0)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span>/<span class="number">0</span><span class="comment">#除数为0，引发ZeroDivisionError 错误</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">ZeroDivisionError: division by zero</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="comment">##0不能为除数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>AttributeError</strong>(位置对象属性)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1.open()<span class="comment">#列表没有open（）属性</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">AttributeError: <span class="string">'list'</span> object has no attribute <span class="string">'open'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>ValueError</strong>(传给函数的参数不正确)</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">"99 years ago."</span>)<span class="comment">#字符串不能int</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">ValueError: invalid literal <span class="keyword">for</span> int() <span class="keyword">with</span> base <span class="number">10</span>: <span class="string">'99 years ago.'</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">demo = &#123;<span class="string">"China"</span>: <span class="string">"Beijing"</span>, <span class="string">"Japan"</span>: <span class="string">"Tokyo"</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> k, v <span class="keyword">in</span> demo:<span class="comment">#这样只能遍历出key</span></span><br><span class="line"><span class="meta">... </span>    print(k, v)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">ValueError: too many values to unpack (expected <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="python标准异常"><a href="#python标准异常" class="headerlink" title="python标准异常"></a>python标准异常</h2><table>
+<thead>
+<tr>
+<th align="left">异常名称</th>
+<th align="right">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">BaseException</td>
+<td align="right">所有异常的基类</td>
+</tr>
+<tr>
+<td align="left">SystemExit</td>
+<td align="right">解释器请求退出</td>
+</tr>
+<tr>
+<td align="left">KeyboardInterrupt</td>
+<td align="right">用户中断执行(通常是输入^C)</td>
+</tr>
+<tr>
+<td align="left">Exception</td>
+<td align="right">常规错误的基类</td>
+</tr>
+<tr>
+<td align="left">StopIteration</td>
+<td align="right">迭代器没有更多的值</td>
+</tr>
+<tr>
+<td align="left">GeneratorExit</td>
+<td align="right">生成器(generator)发生异常来通知退出</td>
+</tr>
+<tr>
+<td align="left">StandardError</td>
+<td align="right">所有的内建标准异常的基类</td>
+</tr>
+<tr>
+<td align="left">ArithmeticError</td>
+<td align="right">所有数值计算错误的基类</td>
+</tr>
+<tr>
+<td align="left">FloatingPointError</td>
+<td align="right">浮点计算错误</td>
+</tr>
+<tr>
+<td align="left">OverflowError</td>
+<td align="right">数值运算超出最大限制</td>
+</tr>
+<tr>
+<td align="left">ZeroDivisionError</td>
+<td align="right">除(或取模)零 (所有数据类型)</td>
+</tr>
+<tr>
+<td align="left">AssertionError</td>
+<td align="right">断言语句失败</td>
+</tr>
+<tr>
+<td align="left">AttributeError</td>
+<td align="right">对象没有这个属性</td>
+</tr>
+<tr>
+<td align="left">EOFError</td>
+<td align="right">没有内建输入,到达EOF 标记</td>
+</tr>
+<tr>
+<td align="left">EnvironmentError</td>
+<td align="right">操作系统错误的基类</td>
+</tr>
+<tr>
+<td align="left">IOError</td>
+<td align="right">输入/输出操作失败</td>
+</tr>
+<tr>
+<td align="left">OSError</td>
+<td align="right">操作系统错误</td>
+</tr>
+<tr>
+<td align="left">WindowsError</td>
+<td align="right">系统调用失败</td>
+</tr>
+<tr>
+<td align="left">ImportError</td>
+<td align="right">导入模块/对象失败</td>
+</tr>
+<tr>
+<td align="left">LookupError</td>
+<td align="right">无效数据查询的基类</td>
+</tr>
+<tr>
+<td align="left">IndexError</td>
+<td align="right">序列中没有此索引(index)</td>
+</tr>
+<tr>
+<td align="left">KeyError</td>
+<td align="right">映射中没有这个键</td>
+</tr>
+<tr>
+<td align="left">MemoryError</td>
+<td align="right">内存溢出错误(对于Python 解释器不是致命的)</td>
+</tr>
+<tr>
+<td align="left">NameError</td>
+<td align="right">未声明/初始化对象 (没有属性)</td>
+</tr>
+<tr>
+<td align="left">UnboundLocalError</td>
+<td align="right">访问未初始化的本地变量</td>
+</tr>
+<tr>
+<td align="left">ReferenceError</td>
+<td align="right">弱引用(Weak reference)试图访问已经垃圾回收了的对象</td>
+</tr>
+<tr>
+<td align="left">RuntimeError</td>
+<td align="right">一般的运行时错误</td>
+</tr>
+<tr>
+<td align="left">NotImplementedError</td>
+<td align="right">尚未实现的方法</td>
+</tr>
+<tr>
+<td align="left">SyntaxError</td>
+<td align="right">Python 语法错误</td>
+</tr>
+<tr>
+<td align="left">IndentationError</td>
+<td align="right">缩进错误</td>
+</tr>
+<tr>
+<td align="left">TabError</td>
+<td align="right">Tab 和空格混用</td>
+</tr>
+<tr>
+<td align="left">SystemError</td>
+<td align="right">一般的解释器系统错误</td>
+</tr>
+<tr>
+<td align="left">TypeError</td>
+<td align="right">对类型无效的操作</td>
+</tr>
+<tr>
+<td align="left">ValueError</td>
+<td align="right">传入无效的参数</td>
+</tr>
+<tr>
+<td align="left">UnicodeError</td>
+<td align="right">Unicode 相关的错误</td>
+</tr>
+<tr>
+<td align="left">UnicodeDecodeError</td>
+<td align="right">Unicode 解码时的错误</td>
+</tr>
+<tr>
+<td align="left">UnicodeEncodeError</td>
+<td align="right">Unicode 编码时错误</td>
+</tr>
+<tr>
+<td align="left">UnicodeTranslateError</td>
+<td align="right">Unicode 转换时错误</td>
+</tr>
+<tr>
+<td align="left">Warning</td>
+<td align="right">警告的基类</td>
+</tr>
+<tr>
+<td align="left">DeprecationWarning</td>
+<td align="right">关于被弃用的特征的警告</td>
+</tr>
+<tr>
+<td align="left">FutureWarning</td>
+<td align="right">关于构造将来语义会有改变的警告</td>
+</tr>
+<tr>
+<td align="left">OverflowWarning</td>
+<td align="right">旧的关于自动提升为长整型(long)的警告</td>
+</tr>
+<tr>
+<td align="left">PendingDeprecationWarning</td>
+<td align="right">关于特性将会被废弃的警告</td>
+</tr>
+<tr>
+<td align="left">RuntimeWarning</td>
+<td align="right">可疑的运行时行为(runtime behavior)的警告</td>
+</tr>
+<tr>
+<td align="left">SyntaxWarning</td>
+<td align="right">可疑的语法的警告</td>
+</tr>
+<tr>
+<td align="left">UserWarning</td>
+<td align="right">用户代码生成的警告</td>
+</tr>
+</tbody></table>
+<h2 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h2><ul>
+<li><p>异常捕获也就是上面说过的<strong>try</strong>/<strong>except</strong>，也可加上<strong>else</strong>或者<strong>finally</strong>一起使用</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    正常的操作</span><br><span class="line">   ......................</span><br><span class="line"><span class="keyword">except</span>:<span class="comment">##如果后面不添加错误类型，则捕获所有错误，也可以使用(Exception1[, Exception2[,...ExceptionN]]])将需要捕获的错误类型写入</span></span><br><span class="line">    发生异常，执行这块代码</span><br><span class="line">   ......................</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    如果没有异常执行这块代码</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    不管异常是否发生，都会执行</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><ul>
+<li>有时候系统提供的异常类型不能满足开发的需求。这时候你可以通过创建一个新的异常类来拥有自己的异常。异常类继承自 Exception 类，可以直接继承，或者间接继承。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#1.用户自定义异常类型，只要该类继承了Exception类即可，至于类的主题内容用户自定义，可参考官方异常类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyError</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'测试'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text</span><span class="params">()</span>:</span></span><br><span class="line">    </span><br><span class="line">    rasie MyError()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>系统的自带的异常只要触发会自动抛出，比如NameError，但用户自定义的异常需要用户自己决定什么时候抛出。 raise 唯一的一个参数指定了要被抛出的异常。它必须是一个异常的实例或者是异常的类（也就是 Exception 的子类）。大多数的异常的名字都以”Error”结尾，所以实际命名时尽量跟标准的异常命名一样。</li>
+</ul>
+<h2 id="断言（assert"><a href="#断言（assert" class="headerlink" title="断言（assert)"></a>断言（<strong>assert</strong>)</h2><ul>
+<li><strong>assert</strong>用于判断一个表达式，在表达式条件为flase的时候触发异常</li>
+</ul>
+<p><img src="https://www.runoob.com/wp-content/uploads/2019/07/assert.png" alt="断言"></p>
+<ul>
+<li><p>语法格式 assert  expression 等价于</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> expression:</span><br><span class="line">    <span class="keyword">raise</span> AssertionError</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以下实例判断当前系统是否为 Linux，如果不满足条件则直接触发异常，不必执行接下来的代码： </p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">assert</span> (<span class="string">'linux'</span> <span class="keyword">in</span> sys.platform), <span class="string">"该代码只能在 Linux 下执行"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 接下来要执行的代码</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>python基础</category>
+      </categories>
+      <tags>
+        <tag>python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python四大模块</title>
+    <url>/2020/02/08/python%E5%9B%9B%E5%A4%A7%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><ul>
+<li><p><strong>OS</strong>是Operating System的缩写，是操作系统的意思，<strong>OS</strong>模块是python标准库中的一个用于访问操作系统功能的模块。</p>
+</li>
+<li><p>os.name，指示你使用的工作平台 Windows（nt），Linux（posix）</p>
+</li>
+<li><p>os.environ，返回环境相关的信息，主要是各类环境变量</p>
+</li>
+<li><p>os.walk（），这个函数需要传入一个路径作为<code>top</code>参数，函数的作用是在以<code>top</code>为根节点的目录树中游走，对树中的每个目录生成一个由<code>(dirpath, dirnames, filenames)</code>三项组成的三元组。 </p>
+</li>
+<li><p>os.listdir（）列出（当前）目录下的全部路径（及文件）。该函数存在一个参数，用以指定要列出子目录的路径，默认为<code>“.”</code>，即“当前路径”。 </p>
+</li>
+<li><p>os.mkdir（）用处是“新建一个路径”。需要传入一个类路径参数用以指</p>
+</li>
+<li><p>定新建路径的位置和名称，如果指定路径已存在，则会抛出<code>FileExistsError</code>异常。 新建一级路径 </p>
+</li>
+<li><p>os.remove（）用于删除文件，如果指定路径是目录而非文件的话，就会抛出<code>IsADirectoryError</code>异常。 </p>
+</li>
+<li><p>os.rmdir（）用于删除目录</p>
+</li>
+<li><p>os.makedirs() 新建多级路径 ，函数<code>os.makedirs()</code>执行的是递归创建 </p>
+</li>
+<li><p>os.removedirs() 递归删除 ，该函数会尝试从最下级目录开始，逐级删除指定的路径，几乎就是一个<code>os.makedirs()</code>的逆过程；一旦遇到非空目录即停止。 </p>
+</li>
+<li><p>os.rename（）该函数的作用是将文件或路径重命名，一般调用格式为<code>os.rename(src, dst)</code>，即将<code>src</code>指向的文件或路径重命名为<code>dst</code>指定的名称。 </p>
+</li>
+<li><p>os.getcwd（）获取当前工作路径 </p>
+</li>
+<li><p>os.chdir（）切换当前工作路径为指定路径。 </p>
+<h3 id="OS-PATH模块"><a href="#OS-PATH模块" class="headerlink" title="OS.PATH模块"></a><strong>OS.PATH模块</strong></h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>os.path.abspath(path)</td>
+<td>返回绝对路径</td>
+</tr>
+<tr>
+<td>os.path.basename(path)</td>
+<td>返回文件名</td>
+</tr>
+<tr>
+<td>os.path.commonprefix(list)</td>
+<td>返回list(多个路径)中，所有path共有的最长的路径</td>
+</tr>
+<tr>
+<td>os.path.dirname(path)</td>
+<td>返回文件路径</td>
+</tr>
+<tr>
+<td>os.path.exists(path)</td>
+<td>如果路径 path 存在，返回 True；如果路径 path 不存在，返回 False。</td>
+</tr>
+<tr>
+<td>os.path.lexists</td>
+<td>路径存在则返回True,路径损坏也返回True</td>
+</tr>
+<tr>
+<td>os.path.expanduser(path)</td>
+<td>把path中包含的”<del>“和”</del>user”转换成用户目录</td>
+</tr>
+<tr>
+<td>os.path.expandvars(path)</td>
+<td>根据环境变量的值替换path中包含的”$name”和”${name}”</td>
+</tr>
+<tr>
+<td>os.path.getatime(path)</td>
+<td>返回最近访问时间（浮点型秒数）</td>
+</tr>
+<tr>
+<td>os.path.getmtime(path)</td>
+<td>返回最近文件修改时间</td>
+</tr>
+<tr>
+<td>os.path.getctime(path)</td>
+<td>返回文件 path 创建时间</td>
+</tr>
+<tr>
+<td>os.path.getsize(path)</td>
+<td>返回文件大小，如果文件不存在就返回错误</td>
+</tr>
+<tr>
+<td>os.path.isabs(path)</td>
+<td>判断是否为绝对路径</td>
+</tr>
+<tr>
+<td>os.path.isfile(path)</td>
+<td>判断路径是否为文件</td>
+</tr>
+<tr>
+<td>os.path.isdir(path)</td>
+<td>判断路径是否为目录</td>
+</tr>
+<tr>
+<td>os.path.islink(path)</td>
+<td>判断路径是否为链接</td>
+</tr>
+<tr>
+<td>os.path.ismount(path)</td>
+<td>判断路径是否为挂载点</td>
+</tr>
+<tr>
+<td>os.path.join(path1[, path2[, …]])</td>
+<td>把目录和文件名合成一个路径</td>
+</tr>
+<tr>
+<td>os.path.normcase(path)</td>
+<td>转换path的大小写和斜杠</td>
+</tr>
+<tr>
+<td>os.path.normpath(path)</td>
+<td>规范path字符串形式</td>
+</tr>
+<tr>
+<td>os.path.realpath(path)</td>
+<td>返回path的真实路径</td>
+</tr>
+<tr>
+<td>os.path.relpath(path[, start])</td>
+<td>从start开始计算相对路径</td>
+</tr>
+<tr>
+<td>os.path.samefile(path1, path2)</td>
+<td>判断目录或文件是否相同</td>
+</tr>
+<tr>
+<td>os.path.sameopenfile(fp1, fp2)</td>
+<td>判断fp1和fp2是否指向同一文件</td>
+</tr>
+<tr>
+<td>os.path.samestat(stat1, stat2)</td>
+<td>判断stat tuple stat1和stat2是否指向同一个文件</td>
+</tr>
+<tr>
+<td>os.path.split(path)</td>
+<td>把路径分割成 dirname 和 basename，返回一个元组</td>
+</tr>
+<tr>
+<td>os.path.splitdrive(path)</td>
+<td>一般用在 windows 下，返回驱动器名和路径组成的元组</td>
+</tr>
+<tr>
+<td>os.path.splitext(path)</td>
+<td>分割路径，返回路径名和文件扩展名的元组</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>os.path.supports_unicode_filenames</td>
+<td>设置是否支持unicode路径名</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法及描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><a href="https://www.runoob.com/python/os-access.html" target="_blank" rel="noopener">os.access(path, mode)</a> 检验权限模式</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://www.runoob.com/python/os-chdir.html" target="_blank" rel="noopener">os.chdir(path)</a> 改变当前工作目录</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://www.runoob.com/python/os-chflags.html" target="_blank" rel="noopener">os.chflags(path, flags)</a> 设置路径的标记为数字标记。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://www.runoob.com/python/os-chmod.html" target="_blank" rel="noopener">os.chmod(path, mode)</a> 更改权限</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://www.runoob.com/python/os-chown.html" target="_blank" rel="noopener">os.chown(path, uid, gid)</a> 更改文件所有者</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="https://www.runoob.com/python/os-chroot.html" target="_blank" rel="noopener">os.chroot(path)</a> 改变当前进程的根目录</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="https://www.runoob.com/python/os-close.html" target="_blank" rel="noopener">os.close(fd)</a> 关闭文件描述符 fd</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="https://www.runoob.com/python/os-closerange.html" target="_blank" rel="noopener">os.closerange(fd_low, fd_high)</a> 关闭所有文件描述符，从 fd_low (包含) 到 fd_high (不包含), 错误会忽略</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="https://www.runoob.com/python/os-dup.html" target="_blank" rel="noopener">os.dup(fd)</a> 复制文件描述符 fd</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="https://www.runoob.com/python/os-dup2.html" target="_blank" rel="noopener">os.dup2(fd, fd2)</a> 将一个文件描述符 fd 复制到另一个 fd2</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="https://www.runoob.com/python/os-fchdir.html" target="_blank" rel="noopener">os.fchdir(fd)</a> 通过文件描述符改变当前工作目录</td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="https://www.runoob.com/python/os-fchmod.html" target="_blank" rel="noopener">os.fchmod(fd, mode)</a> 改变一个文件的访问权限，该文件由参数fd指定，参数mode是Unix下的文件访问权限。</td>
+</tr>
+<tr>
+<td>13</td>
+<td><a href="https://www.runoob.com/python/os-fchown.html" target="_blank" rel="noopener">os.fchown(fd, uid, gid)</a> 修改一个文件的所有权，这个函数修改一个文件的用户ID和用户组ID，该文件由文件描述符fd指定。</td>
+</tr>
+<tr>
+<td>14</td>
+<td><a href="https://www.runoob.com/python/os-fdatasync.html" target="_blank" rel="noopener">os.fdatasync(fd)</a> 强制将文件写入磁盘，该文件由文件描述符fd指定，但是不强制更新文件的状态信息。</td>
+</tr>
+<tr>
+<td>15</td>
+<td>[os.fdopen(fd[, mode[, bufsize]])](<a href="https://www.runoob.com/python/os-fdopen.html" target="_blank" rel="noopener">https://www.runoob.com/python/os-fdopen.html</a>) 通过文件描述符 fd 创建一个文件对象，并返回这个文件对象</td>
+</tr>
+<tr>
+<td>16</td>
+<td><a href="https://www.runoob.com/python/os-fpathconf.html" target="_blank" rel="noopener">os.fpathconf(fd, name)</a> 返回一个打开的文件的系统配置信息。name为检索的系统配置的值，它也许是一个定义系统值的字符串，这些名字在很多标准中指定（POSIX.1, Unix 95, Unix 98, 和其它）。</td>
+</tr>
+<tr>
+<td>17</td>
+<td><a href="https://www.runoob.com/python/os-fstat.html" target="_blank" rel="noopener">os.fstat(fd)</a> 返回文件描述符fd的状态，像stat()。</td>
+</tr>
+<tr>
+<td>18</td>
+<td><a href="https://www.runoob.com/python/os-fstatvfs.html" target="_blank" rel="noopener">os.fstatvfs(fd)</a> 返回包含文件描述符fd的文件的文件系统的信息，像 statvfs()</td>
+</tr>
+<tr>
+<td>19</td>
+<td><a href="https://www.runoob.com/python/os-fsync.html" target="_blank" rel="noopener">os.fsync(fd)</a> 强制将文件描述符为fd的文件写入硬盘。</td>
+</tr>
+<tr>
+<td>20</td>
+<td><a href="https://www.runoob.com/python/os-ftruncate.html" target="_blank" rel="noopener">os.ftruncate(fd, length)</a> 裁剪文件描述符fd对应的文件, 所以它最大不能超过文件大小。</td>
+</tr>
+<tr>
+<td>21</td>
+<td><a href="https://www.runoob.com/python/os-getcwd.html" target="_blank" rel="noopener">os.getcwd()</a> 返回当前工作目录</td>
+</tr>
+<tr>
+<td>22</td>
+<td><a href="https://www.runoob.com/python/os-getcwdu.html" target="_blank" rel="noopener">os.getcwdu()</a> 返回一个当前工作目录的Unicode对象</td>
+</tr>
+<tr>
+<td>23</td>
+<td><a href="https://www.runoob.com/python/os-isatty.html" target="_blank" rel="noopener">os.isatty(fd)</a> 如果文件描述符fd是打开的，同时与tty(-like)设备相连，则返回true, 否则False。</td>
+</tr>
+<tr>
+<td>24</td>
+<td><a href="https://www.runoob.com/python/os-lchflags.html" target="_blank" rel="noopener">os.lchflags(path, flags)</a> 设置路径的标记为数字标记，类似 chflags()，但是没有软链接</td>
+</tr>
+<tr>
+<td>25</td>
+<td><a href="https://www.runoob.com/python/os-lchmod.html" target="_blank" rel="noopener">os.lchmod(path, mode)</a> 修改连接文件权限</td>
+</tr>
+<tr>
+<td>26</td>
+<td><a href="https://www.runoob.com/python/os-lchown.html" target="_blank" rel="noopener">os.lchown(path, uid, gid)</a> 更改文件所有者，类似 chown，但是不追踪链接。</td>
+</tr>
+<tr>
+<td>27</td>
+<td><a href="https://www.runoob.com/python/os-link.html" target="_blank" rel="noopener">os.link(src, dst)</a> 创建硬链接，名为参数 dst，指向参数 src</td>
+</tr>
+<tr>
+<td>28</td>
+<td><a href="https://www.runoob.com/python/os-listdir.html" target="_blank" rel="noopener">os.listdir(path)</a> 返回path指定的文件夹包含的文件或文件夹的名字的列表。</td>
+</tr>
+<tr>
+<td>29</td>
+<td><a href="https://www.runoob.com/python/os-lseek.html" target="_blank" rel="noopener">os.lseek(fd, pos, how)</a> 设置文件描述符 fd当前位置为pos, how方式修改: SEEK_SET 或者 0 设置从文件开始的计算的pos; SEEK_CUR或者 1 则从当前位置计算; os.SEEK_END或者2则从文件尾部开始. 在unix，Windows中有效</td>
+</tr>
+<tr>
+<td>30</td>
+<td><a href="https://www.runoob.com/python/os-lstat.html" target="_blank" rel="noopener">os.lstat(path)</a> 像stat(),但是没有软链接</td>
+</tr>
+<tr>
+<td>31</td>
+<td><a href="https://www.runoob.com/python/os-major.html" target="_blank" rel="noopener">os.major(device)</a> 从原始的设备号中提取设备major号码 (使用stat中的st_dev或者st_rdev field)。</td>
+</tr>
+<tr>
+<td>32</td>
+<td><a href="https://www.runoob.com/python/os-makedev.html" target="_blank" rel="noopener">os.makedev(major, minor)</a> 以major和minor设备号组成一个原始设备号</td>
+</tr>
+<tr>
+<td>33</td>
+<td><a href="https://www.runoob.com/python/os-makedirs.html" target="_blank" rel="noopener">os.makedirs(path[, mode])</a> 递归文件夹创建函数。像mkdir(), 但创建的所有intermediate-level文件夹需要包含子文件夹。</td>
+</tr>
+<tr>
+<td>34</td>
+<td><a href="https://www.runoob.com/python/os-minor.html" target="_blank" rel="noopener">os.minor(device)</a> 从原始的设备号中提取设备minor号码 (使用stat中的st_dev或者st_rdev field )。</td>
+</tr>
+<tr>
+<td>35</td>
+<td><a href="https://www.runoob.com/python/os-mkdir.html" target="_blank" rel="noopener">os.mkdir(path[, mode])</a> 以数字mode的mode创建一个名为path的文件夹.默认的 mode 是 0777 (八进制)。</td>
+</tr>
+<tr>
+<td>36</td>
+<td><a href="https://www.runoob.com/python/os-mkfifo.html" target="_blank" rel="noopener">os.mkfifo(path[, mode])</a> 创建命名管道，mode 为数字，默认为 0666 (八进制)</td>
+</tr>
+<tr>
+<td>37</td>
+<td><a href="https://www.runoob.com/python/os-mknod.html" target="_blank" rel="noopener">os.mknod(filename[, mode=0600, device])</a> 创建一个名为filename文件系统节点（文件，设备特别文件或者命名pipe）。</td>
+</tr>
+<tr>
+<td>38</td>
+<td><a href="https://www.runoob.com/python/os-open.html" target="_blank" rel="noopener">os.open(file, flags[, mode])</a> 打开一个文件，并且设置需要的打开选项，mode参数是可选的</td>
+</tr>
+<tr>
+<td>39</td>
+<td><a href="https://www.runoob.com/python/os-openpty.html" target="_blank" rel="noopener">os.openpty()</a> 打开一个新的伪终端对。返回 pty 和 tty的文件描述符。</td>
+</tr>
+<tr>
+<td>40</td>
+<td><a href="https://www.runoob.com/python/os-pathconf.html" target="_blank" rel="noopener">os.pathconf(path, name)</a> 返回相关文件的系统配置信息。</td>
+</tr>
+<tr>
+<td>41</td>
+<td><a href="https://www.runoob.com/python/os-pipe.html" target="_blank" rel="noopener">os.pipe()</a> 创建一个管道. 返回一对文件描述符(r, w) 分别为读和写</td>
+</tr>
+<tr>
+<td>42</td>
+<td>[os.popen(command[, mode[, bufsize]])](<a href="https://www.runoob.com/python/os-popen.html" target="_blank" rel="noopener">https://www.runoob.com/python/os-popen.html</a>) 从一个 command 打开一个管道</td>
+</tr>
+<tr>
+<td>43</td>
+<td><a href="https://www.runoob.com/python/os-read.html" target="_blank" rel="noopener">os.read(fd, n)</a> 从文件描述符 fd 中读取最多 n 个字节，返回包含读取字节的字符串，文件描述符 fd对应文件已达到结尾, 返回一个空字符串。</td>
+</tr>
+<tr>
+<td>44</td>
+<td><a href="https://www.runoob.com/python/os-readlink.html" target="_blank" rel="noopener">os.readlink(path)</a> 返回软链接所指向的文件</td>
+</tr>
+<tr>
+<td>45</td>
+<td><a href="https://www.runoob.com/python/os-remove.html" target="_blank" rel="noopener">os.remove(path)</a> 删除路径为path的文件。如果path 是一个文件夹，将抛出OSError; 查看下面的rmdir()删除一个 directory。</td>
+</tr>
+<tr>
+<td>46</td>
+<td><a href="https://www.runoob.com/python/os-removedirs.html" target="_blank" rel="noopener">os.removedirs(path)</a> 递归删除目录。</td>
+</tr>
+<tr>
+<td>47</td>
+<td><a href="https://www.runoob.com/python/os-rename.html" target="_blank" rel="noopener">os.rename(src, dst)</a> 重命名文件或目录，从 src 到 dst</td>
+</tr>
+<tr>
+<td>48</td>
+<td><a href="https://www.runoob.com/python/os-renames.html" target="_blank" rel="noopener">os.renames(old, new)</a> 递归地对目录进行更名，也可以对文件进行更名。</td>
+</tr>
+<tr>
+<td>49</td>
+<td><a href="https://www.runoob.com/python/os-rmdir.html" target="_blank" rel="noopener">os.rmdir(path)</a> 删除path指定的空目录，如果目录非空，则抛出一个OSError异常。</td>
+</tr>
+<tr>
+<td>50</td>
+<td><a href="https://www.runoob.com/python/os-stat.html" target="_blank" rel="noopener">os.stat(path)</a> 获取path指定的路径的信息，功能等同于C API中的stat()系统调用。</td>
+</tr>
+<tr>
+<td>51</td>
+<td><a href="https://www.runoob.com/python/os-stat_float_times.html" target="_blank" rel="noopener">os.stat_float_times([newvalue])</a> 决定stat_result是否以float对象显示时间戳</td>
+</tr>
+<tr>
+<td>52</td>
+<td><a href="https://www.runoob.com/python/os-statvfs.html" target="_blank" rel="noopener">os.statvfs(path)</a> 获取指定路径的文件系统统计信息</td>
+</tr>
+<tr>
+<td>53</td>
+<td><a href="https://www.runoob.com/python/os-symlink.html" target="_blank" rel="noopener">os.symlink(src, dst)</a> 创建一个软链接</td>
+</tr>
+<tr>
+<td>54</td>
+<td><a href="https://www.runoob.com/python/os-tcgetpgrp.html" target="_blank" rel="noopener">os.tcgetpgrp(fd)</a> 返回与终端fd（一个由os.open()返回的打开的文件描述符）关联的进程组</td>
+</tr>
+<tr>
+<td>55</td>
+<td><a href="https://www.runoob.com/python/os-tcsetpgrp.html" target="_blank" rel="noopener">os.tcsetpgrp(fd, pg)</a> 设置与终端fd（一个由os.open()返回的打开的文件描述符）关联的进程组为pg。</td>
+</tr>
+<tr>
+<td>56</td>
+<td>[os.tempnam([dir[, prefix]])](<a href="https://www.runoob.com/python/os-tempnam.html" target="_blank" rel="noopener">https://www.runoob.com/python/os-tempnam.html</a>) 返回唯一的路径名用于创建临时文件。</td>
+</tr>
+<tr>
+<td>57</td>
+<td><a href="https://www.runoob.com/python/os-tmpfile.html" target="_blank" rel="noopener">os.tmpfile()</a> 返回一个打开的模式为(w+b)的文件对象 .这文件对象没有文件夹入口，没有文件描述符，将会自动删除。</td>
+</tr>
+<tr>
+<td>58</td>
+<td><a href="https://www.runoob.com/python/os-tmpnam.html" target="_blank" rel="noopener">os.tmpnam()</a> 为创建一个临时文件返回一个唯一的路径</td>
+</tr>
+<tr>
+<td>59</td>
+<td><a href="https://www.runoob.com/python/os-ttyname.html" target="_blank" rel="noopener">os.ttyname(fd)</a> 返回一个字符串，它表示与文件描述符fd 关联的终端设备。如果fd 没有与终端设备关联，则引发一个异常。</td>
+</tr>
+<tr>
+<td>60</td>
+<td><a href="https://www.runoob.com/python/os-unlink.html" target="_blank" rel="noopener">os.unlink(path)</a> 删除文件路径</td>
+</tr>
+<tr>
+<td>61</td>
+<td><a href="https://www.runoob.com/python/os-utime.html" target="_blank" rel="noopener">os.utime(path, times)</a> 返回指定的path文件的访问和修改的时间。</td>
+</tr>
+<tr>
+<td>62</td>
+<td>[os.walk(top[, topdown=True[, onerror=None[, followlinks=False]]])](<a href="https://www.runoob.com/python/os-walk.html" target="_blank" rel="noopener">https://www.runoob.com/python/os-walk.html</a>) 输出在文件夹中的文件名通过在树中游走，向上或者向下。</td>
+</tr>
+<tr>
+<td>63</td>
+<td><a href="https://www.runoob.com/python/os-write.html" target="_blank" rel="noopener">os.write(fd, str)</a> 写入字符串到文件描述符 fd中. 返回实际写入的字符串长度</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>##SYS模块</p>
+<ul>
+<li><strong>SYS</strong>是system的缩写，即系统的意思。该模块提供对解释器使用或维护的一些变量的访问，以及与解释器强烈交互的函数。它始终可用 </li>
+<li>sys.argv          获取当前正在执行的命令行参数的参数列表（list）</li>
+<li>sys.modules.keys()   返回所有已经导入的模块列表</li>
+<li>sys.platform     获取当前执行环境的平台</li>
+<li>sys.path   path是一个目录列表，供Python从中查找第三方扩展模块。</li>
+<li>sys.exit(n)     调用sys,exit(n)可以中途退出程序，sys.exit(0)表示正常退出，n不为0时，会引发SystemExit异常，从而在主程序中可以捕获该异常。 </li>
+<li>sys.version  获取python解释程序的版本信息</li>
+<li>sys.stdin 标准输入，标准输入：一般为键盘输入，stdin对象为解释器提供输入字符流，一般使用raw_input()和input()函数 </li>
+<li>sys.stdout 标准输出，标准输出：一般为屏幕。stdout对象接收到print语句产生的输出 </li>
+<li>sys.stderr 错误输出，错误输出：一般是错误信息，stderr对象接收出错的信息 。</li>
+<li><a href="https://blog.csdn.net/qq_38526635/article/details/81739321" target="_blank" rel="noopener">更多</a></li>
+</ul>
+<h2 id="Time模块"><a href="#Time模块" class="headerlink" title="Time模块"></a>Time模块</h2><ul>
+<li>time.time()函数获取的是Unix时间戳。 返回的是一个float类型的数值。 </li>
+<li>time.struct_time () 它是一个具有命名元组接口的对象：可以通过索引和属性名访问值 </li>
+<li>time.localtime() 这个函数可以接受一个unix时间戳，然后转换为struct_time。 如果不传入second参数，则会返回当前时间的时间戳的struct_time对象 </li>
+<li>time.gmtime() 和localtime函数类似，默认情况gmtime函数获取当前时间的utc时间。 返回当前时间的utc时间的struct_time对象。 也可以传入任意的unix时间戳，来得到utc时间。 </li>
+<li>time.mktime(struct_time)  将一个时间戳struct_time对象转换为时间戳。 </li>
+<li>time.asctime() 传入一个struct_time对象，返回”Sun Jun 20 23:21:05 1993”这种格式的字符串。不传参数，返回当前时间的这种格式的字符串。 </li>
+<li>time.strftime(format ,[struct_time] ) 传入格式和struct_time，返回按照format格式格式化后的时间字符串。 </li>
+<li>time.sleep(<em>second</em> ) 暂停程序，接收参数为秒</li>
+<li><a href="https://www.cnblogs.com/pal-duan/p/10568829.html" target="_blank" rel="noopener">更多</a></li>
+</ul>
+<h2 id="Datetime模块"><a href="#Datetime模块" class="headerlink" title="Datetime模块"></a>Datetime模块</h2><ul>
+<li><p>datetime.date.ctime(),返回格式如 Sun Apr 16 00:00:00 2017</p>
+</li>
+<li><p>datetime.date.fromtimestamp(timestamp),根据给定的时间戮，返回一个date对象；datetime.date.today()作用相同</p>
+</li>
+<li><p>datetime.date.isocalendar():返回格式如(year，month，day)的元组,(2017, 15, 6)</p>
+</li>
+<li><p>datetime.date.isoformat()：返回格式如YYYY-MM-DD</p>
+</li>
+<li><p>datetime.date.isoweekday()：返回给定日期的星期（0-6），星期一=0，星期日=6</p>
+</li>
+<li><p>datetime.date.replace(year,month,day)：替换给定日期，但不改变原日期</p>
+</li>
+<li><p>datetime.date.strftime(format):把日期时间按照给定的format进行格式化。</p>
+</li>
+<li><p>datetime.date.timetuple()：返回日期对应的time.struct_time对象</p>
+</li>
+<li><p>datetime.datetime.now().date()：返回当前日期时间的日期部分</p>
+</li>
+<li><p>datetime.datetime.now().time()：返回当前日期时间的时间部分</p>
+</li>
+<li><p>datetime.datetime.fromtimestamp()</p>
+</li>
+<li><p>datetime.datetime.now()：返回当前系统时间</p>
+</li>
+<li><p>datetime.datetime.replace()</p>
+</li>
+<li><p>datetime.datetime.strftime()：由日期格式转化为字符串格式</p>
+<ul>
+<li>datetime.datetime.now().strftime(‘%b-%d-%Y %H:%M:%S’)</li>
+</ul>
+</li>
+<li><p>datetime.datetime.strptime():由字符串格式转化为日期格式</p>
+<ul>
+<li>datetime.datetime.strptime(‘Apr-16-2017 21:01:35’, ‘%b-%d-%Y %H:%M:%S’)</li>
+</ul>
+</li>
+<li><p>datetime.datetime.timedelta用于计算两个日期之间的差值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=datetime.datetime.now()</span><br><span class="line">&gt;&gt;&gt; b=datetime.datetime.now()</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">datetime.datetime(<span class="number">2017</span>, <span class="number">4</span>, <span class="number">16</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">871000</span>)</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">datetime.datetime(<span class="number">2017</span>, <span class="number">4</span>, <span class="number">16</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">29</span>, <span class="number">603000</span>)</span><br><span class="line">&gt;&gt;&gt; b-a</span><br><span class="line">datetime.timedelta(<span class="number">0</span>, <span class="number">8</span>, <span class="number">732000</span>)</span><br><span class="line">&gt;&gt;&gt; (b-a).seconds</span><br><span class="line"><span class="number">8</span></span><br><span class="line">time1 = datetime.datetime(<span class="number">2016</span>, <span class="number">10</span>, <span class="number">20</span>)</span><br><span class="line">time2 = datetime.datetime(<span class="number">2015</span>, <span class="number">11</span>, <span class="number">2</span>)</span><br><span class="line"><span class="string">"""计算天数差值"""</span></span><br><span class="line">print(time1-time2).days</span><br><span class="line"><span class="string">"""计算两个日期之间相隔的秒数"""</span></span><br><span class="line"><span class="keyword">print</span> (time1-time2).total_seconds()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>datetime.time.replace() 返回一个替换指定日期字段的新date对象。参数3个可选参数，分别为year,month,day。注意替换是产生新对象，不影响原date对象。 </p>
+</li>
+<li><p>datetime.time.strftime(format):按照format格式返回时间</p>
+</li>
+<li><p>datetime.time.tzname()：返回时区名字</p>
+</li>
+<li><p>datetime.time.utcoffset()：返回时区的时间偏移量</p>
+</li>
+<li><p>datetime.date.max 表示的最大的年、月、日的数值 </p>
+</li>
+<li><p>datetime.date.min  表示的最小的年、月、日的数值 </p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>python基础</category>
+      </categories>
+      <tags>
+        <tag>python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL存储引擎如何选择</title>
     <url>/2020/02/08/mysql%E5%BC%95%E6%93%8E/</url>
     <content><![CDATA[<h4 id="定义以及作用"><a href="#定义以及作用" class="headerlink" title="定义以及作用"></a>定义以及作用</h4><blockquote>
@@ -552,8 +1375,11 @@
 <h2 id="断开主从复制"><a href="#断开主从复制" class="headerlink" title="断开主从复制"></a>断开主从复制</h2><p>​    通过<strong>slaveof <masterip> <masterport></masterport></masterip></strong>命令建立主从复制关系以后，可以通过slaveof no one断开。</p>
 <p>从节点断开复制后，不会删除已有的数据，只是不再接受主节点新的数据变化。</p>
 ]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
       <tags>
-        <tag>redis</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -1343,6 +2169,9 @@
 <p>systemctl stop mysqld   停止</p>
 <p>systemctl start mysqld  开启</p>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -1945,6 +2774,9 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
 <p>第一条SQL语句根据id进行范围查询，因为(5000, 20000)范围内的记录在磁盘上按顺序存储，顺序读取磁盘很快就能读到这批数据。</p>
 <p>第二条SQL语句查询（’Alie’, ‘John’）范围内的记录，主键id分布可能是离散的1，100，20001，5000…..；增加了随机读取数据页几率；所以普通索引的范围查询效率被聚集索引甩开几条街都不止；非聚集索引的精确查询效率还是可以的，比聚集索引查询只增加了一次IO开销。</p>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>

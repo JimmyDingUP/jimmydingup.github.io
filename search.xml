@@ -101,10 +101,10 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>Mysql</category>
+        <category>MySQL</category>
       </categories>
       <tags>
-        <tag>Mysql</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -380,8 +380,11 @@
 <li>redis 支持同时开启开启两种持久化方式，我们可以综合使用 AOF 和 RDB 两种持久化机制，用 AOF 来保证数据不丢失，作为数据恢复的第一选择; 用 RDB 来做不同程度的冷备，在 AOF 文件都丢失或损坏不可用的时候，还可以使用 RDB 来进行快速的数据恢复。</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
       <tags>
-        <tag>redis</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -650,8 +653,11 @@
 <p>注意事项：</p>
 <p>用docker启动redis时，要把此时redis的进程杀死</p>
 ]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
       <tags>
-        <tag>redis</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -729,6 +735,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A:准备两个终端，在此命名为 mysql 终端 A 和 mysql 终端 B，分别登入 mysql，准备一张测试表 test 并调整隔离级别为 SERIALIZABLE，任意一个终端执行即可。</span><br><span class="line">set session transaction isolation level serializable;</span><br><span class="line">create database test;</span><br><span class="line">use test;</span><br><span class="line">create table test(id int primary key);</span><br><span class="line">insert into test(id) values(1);</span><br><span class="line"></span><br><span class="line">A:登录 mysql 终端 A，开启一个事务，并写入一条数据。</span><br><span class="line">start transaction;</span><br><span class="line">select * from test;</span><br><span class="line"></span><br><span class="line">B:登录 mysql 终端 B，开启一个事务。</span><br><span class="line">start transaction;</span><br><span class="line">select * from test; </span><br><span class="line"> delete from test;</span><br><span class="line"></span><br><span class="line">A:立马切换到 mysql 终端 A,提交事务。</span><br><span class="line">commit;</span><br><span class="line"></span><br><span class="line">一旦事务提交，msyql 终端 B 会立马返回 ID 为 1 的记录，否则会一直卡住，直到超时，其中超时参数是由 innodb_lock_wait_timeout 控制</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -1050,6 +1059,9 @@
 <p>总结：</p>
 <p>工具很给力，工作中常常在使用。注意使用该工具需要授权，一般SELECT, PROCESS, SUPER, REPLICATION SLAVE等权限就已经足够了。</p>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -1472,6 +1484,9 @@
 <p>\8. 使用存储过程进行测试。</p>
 <p>略</p>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -1535,6 +1550,9 @@
 <p>​        <a href="https://www.cnblogs.com/sharpest/p/10390035.html" target="_blank" rel="noopener">https://www.cnblogs.com/sharpest/p/10390035.html</a> </p>
 <p>​        <a href="https://blog.csdn.net/skiwnc/article/details/87351038" target="_blank" rel="noopener">https://blog.csdn.net/skiwnc/article/details/87351038</a> </p>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -1595,6 +1613,9 @@
 <p>mysqldumpslow -s t -t 10 -g “left join” /database/mysql/mysql06_slow.log<br>另外建议在使用这些命令时结合 | 和more 使用 ，否则有可能出现刷屏的情况。</p>
 <p>mysqldumpslow -s r -t 20 /mysqldata/mysql/mysql06-slow.log | more</p>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -1678,6 +1699,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- use information_schema;</span><br><span class="line">-- show processlist;</span><br><span class="line">或者：</span><br><span class="line">-- select * from information_schema.`PROCESSLIST` where info is not null;</span><br></pre></td></tr></table></figure>
 
 <h6 id="2、开启日志模式"><a href="#2、开启日志模式" class="headerlink" title="2、开启日志模式"></a>2、开启日志模式</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 1、设置</span><br><span class="line">-- SET GLOBAL log_output = &apos;TABLE&apos;;  SET GLOBAL general_log = &apos;ON&apos;;</span><br><span class="line">-- SET GLOBAL log_output = &apos;TABLE&apos;;  SET GLOBAL general_log = &apos;OFF&apos;;</span><br><span class="line"></span><br><span class="line">-- 2、查询</span><br><span class="line">SELECT * from mysql.general_log ORDER BY    event_time DESC</span><br><span class="line"></span><br><span class="line">-- 3、清空表（delete对于这个表，不允许使用，只能用truncate）</span><br><span class="line">-- truncate table mysql.general_log;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -1891,6 +1915,9 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
 <p>1) “pmessage”<br>2) “<strong>key*@0</strong>:*”<br>3) “<strong>keyspace@0</strong>:msg”<br>4) “set”</p>
 <p>1) “pmessage”<br>2) “<strong>key*@0</strong>:*”<br>3) “<strong>keyspace@0</strong>:msg”<br>4) “del”<br>         可见，尽管客户端A订阅了所有消息，但是Redis仅发布了keyspace事件。而且，在客户端B上执行了两次del操作，而只有第一个del成功执行了，从而产生了一个事件。</p>
 ]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
       <tags>
         <tag>Redis</tag>
       </tags>
@@ -2022,6 +2049,9 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
 <p><img src="https://pic3.zhimg.com/80/v2-0338708bbaccb594a48e731d0dacdb46_hd.jpg" alt="img"></p>
 <p>这样，B+树的删除操作也就完成了</p>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -2496,6 +2526,9 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
       <tags>
         <tag>MySQL</tag>
       </tags>
@@ -2505,8 +2538,10 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
     <url>/2020/02/08/redis%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5/</url>
     <content><![CDATA[<h2 id="Redis内存淘汰策略"><a href="#Redis内存淘汰策略" class="headerlink" title="Redis内存淘汰策略"></a>Redis内存淘汰策略</h2><p>Redis作为当前最常用的开源内存数据库，性能十分高，Redis读的速度是110000次/s,写的速度是81000次/s 。而且Redis支持数据持久化，众多数据结构存储，master-slave模式数据备份等多种功能。</p>
 <h3>为何使用淘汰策略</h3>
+如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Redis性能急剧下降。此时就需要淘汰无用数据释放空间。对此，Redis在生产环境中，采用配置参数    的方式来限制内存大小。当实际存储内存超出maxmemory 参数值时，开发者可以通过这几种方法——Redis内存淘汰策略，来决定如何腾出新空间继续支持读写工作。\# maxmemory <bytes>
 
-<p>如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Redis性能急剧下降。此时就需要淘汰无用数据释放空间。对此，Redis在生产环境中，采用配置参数    的方式来限制内存大小。当实际存储内存超出maxmemory 参数值时，开发者可以通过这几种方法——Redis内存淘汰策略，来决定如何腾出新空间继续支持读写工作。# maxmemory <bytes></bytes></p>
+
+
 <p>Redis采用定期删除+惰性删除策略：</p>
 <p>定期删除：redis每过一段时间（默认100ms）进行随机抽取检查，有过期key则删除；</p>
 <p>惰性删除：任过期键不管，在每次获取键时检查是否过期，过期则删除。</p>
@@ -2530,7 +2565,10 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
 <p>LRU是什么？</p>
 <p>*<em>最近使用的数据会在未来一段时期内仍然被使用,已经很久没有使用的页面很有可能在未来较长的一段时间内仍然不会被使用  *</em></p>
 <p><strong>基于这个思想,会存在一种缓存淘汰机制，每次从内存中找到最久未使用的数据然后置换出来，从而存入新的数据！</strong></p>
-]]></content>
+</bytes>]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
       <tags>
         <tag>Redis</tag>
       </tags>
@@ -2574,6 +2612,9 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
       <tags>
         <tag>Redis</tag>
       </tags>
@@ -3602,8 +3643,8 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
         <category>MySQL</category>
       </categories>
       <tags>
-        <tag>MySQL</tag>
         <tag>面试</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -4548,8 +4589,8 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
         <category>Vue</category>
       </categories>
       <tags>
-        <tag>Django</tag>
         <tag>xterm</tag>
+        <tag>Django</tag>
         <tag>Vue</tag>
         <tag>websocket</tag>
       </tags>

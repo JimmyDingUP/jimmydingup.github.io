@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Redis内存淘汰策略Redis作为当前最常用的开源内存数据库，性能十分高，Redis读的速度是110000次/s,写的速度是81000次/s 。而且Redis支持数据持久化，众多数据结构存储，master-slave模式数据备份等多种功能。 为何使用淘汰策略  如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Re">
+<meta name="description" content="Redis内存淘汰策略Redis作为当前最常用的开源内存数据库，性能十分高，Redis读的速度是110000次/s,写的速度是81000次/s 。而且Redis支持数据持久化，众多数据结构存储，master-slave模式数据备份等多种功能。 为何使用淘汰策略 如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Red">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis内存淘汰策略">
 <meta property="og:url" content="http://dingyifan.tech/2020/02/08/redis内存淘汰策略/index.html">
 <meta property="og:site_name" content="苍山有酒">
-<meta property="og:description" content="Redis内存淘汰策略Redis作为当前最常用的开源内存数据库，性能十分高，Redis读的速度是110000次/s,写的速度是81000次/s 。而且Redis支持数据持久化，众多数据结构存储，master-slave模式数据备份等多种功能。 为何使用淘汰策略  如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Re">
+<meta property="og:description" content="Redis内存淘汰策略Redis作为当前最常用的开源内存数据库，性能十分高，Redis读的速度是110000次/s,写的速度是81000次/s 。而且Redis支持数据持久化，众多数据结构存储，master-slave模式数据备份等多种功能。 为何使用淘汰策略 如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Red">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-08T05:55:04.098Z">
+<meta property="og:updated_time" content="2020-02-08T06:23:46.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis内存淘汰策略">
-<meta name="twitter:description" content="Redis内存淘汰策略Redis作为当前最常用的开源内存数据库，性能十分高，Redis读的速度是110000次/s,写的速度是81000次/s 。而且Redis支持数据持久化，众多数据结构存储，master-slave模式数据备份等多种功能。 为何使用淘汰策略  如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Re">
+<meta name="twitter:description" content="Redis内存淘汰策略Redis作为当前最常用的开源内存数据库，性能十分高，Redis读的速度是110000次/s,写的速度是81000次/s 。而且Redis支持数据持久化，众多数据结构存储，master-slave模式数据备份等多种功能。 为何使用淘汰策略 如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Red">
 
 
 
@@ -355,6 +355,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -384,8 +406,10 @@
       
         <h2 id="Redis内存淘汰策略"><a href="#Redis内存淘汰策略" class="headerlink" title="Redis内存淘汰策略"></a>Redis内存淘汰策略</h2><p>Redis作为当前最常用的开源内存数据库，性能十分高，Redis读的速度是110000次/s,写的速度是81000次/s 。而且Redis支持数据持久化，众多数据结构存储，master-slave模式数据备份等多种功能。</p>
 <h3>为何使用淘汰策略</h3>
+如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Redis性能急剧下降。此时就需要淘汰无用数据释放空间。对此，Redis在生产环境中，采用配置参数    的方式来限制内存大小。当实际存储内存超出maxmemory 参数值时，开发者可以通过这几种方法——Redis内存淘汰策略，来决定如何腾出新空间继续支持读写工作。\# maxmemory <bytes>
 
-<p>如果长期将Redis作为缓存使用，难免会遇到内存空间存储瓶颈，当Redis内存超出物理内存限制时，内存数据就会与磁盘产生频繁交换，使Redis性能急剧下降。此时就需要淘汰无用数据释放空间。对此，Redis在生产环境中，采用配置参数    的方式来限制内存大小。当实际存储内存超出maxmemory 参数值时，开发者可以通过这几种方法——Redis内存淘汰策略，来决定如何腾出新空间继续支持读写工作。# maxmemory <bytes></bytes></p>
+
+
 <p>Redis采用定期删除+惰性删除策略：</p>
 <p>定期删除：redis每过一段时间（默认100ms）进行随机抽取检查，有过期key则删除；</p>
 <p>惰性删除：任过期键不管，在每次获取键时检查是否过期，过期则删除。</p>
@@ -409,7 +433,7 @@
 <p>LRU是什么？</p>
 <p>*<em>最近使用的数据会在未来一段时期内仍然被使用,已经很久没有使用的页面很有可能在未来较长的一段时间内仍然不会被使用  *</em></p>
 <p><strong>基于这个思想,会存在一种缓存淘汰机制，每次从内存中找到最久未使用的数据然后置换出来，从而存入新的数据！</strong></p>
-
+</bytes>
       
     </div>
     
@@ -566,7 +590,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

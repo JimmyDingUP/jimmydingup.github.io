@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="MySQL,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="pt-table-checksum（检查主从的一致性）   工具命令 工具作用 备注     pt-duplicate-key-checker 列出并删除重复的索引和外键     pt-online-schema-change 在线修改表结构     pt-query-advisor 分析查询语句，并给出建议，有bug 已废弃    pt-show-grants 规范化和打印权限     pt-u">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql主从不一致">
+<meta property="og:url" content="http://dingyifan.tech/2020/02/08/mysql主从不一致/index.html">
+<meta property="og:site_name" content="苍山有酒">
+<meta property="og:description" content="pt-table-checksum（检查主从的一致性）   工具命令 工具作用 备注     pt-duplicate-key-checker 列出并删除重复的索引和外键     pt-online-schema-change 在线修改表结构     pt-query-advisor 分析查询语句，并给出建议，有bug 已废弃    pt-show-grants 规范化和打印权限     pt-u">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-08T06:09:24.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql主从不一致">
+<meta name="twitter:description" content="pt-table-checksum（检查主从的一致性）   工具命令 工具作用 备注     pt-duplicate-key-checker 列出并删除重复的索引和外键     pt-online-schema-change 在线修改表结构     pt-query-advisor 分析查询语句，并给出建议，有bug 已废弃    pt-show-grants 规范化和打印权限     pt-u">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dingyifan.tech/2020/02/08/mysql主从不一致/">
+
+
+
+
+
+  <title>mysql主从不一致 | 苍山有酒</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">苍山有酒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Passion will never die.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2020/02/08/mysql主从不一致/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="苍山有酒">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/qq.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苍山有酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql主从不一致</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T14:09:12+08:00">
+                2020-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="pt-table-checksum（检查主从的一致性）"><a href="#pt-table-checksum（检查主从的一致性）" class="headerlink" title="pt-table-checksum（检查主从的一致性）"></a>pt-table-checksum（检查主从的一致性）</h2><table>
+<thead>
+<tr>
+<th>工具命令</th>
+<th>工具作用</th>
+<th>备注</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pt-duplicate-key-checker</td>
+<td>列出并删除重复的索引和外键</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-online-schema-change</td>
+<td>在线修改表结构</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-query-advisor</td>
+<td>分析查询语句，并给出建议，有bug</td>
+<td>已废弃</td>
+<td></td>
+</tr>
+<tr>
+<td>pt-show-grants</td>
+<td>规范化和打印权限</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-upgrade</td>
+<td>在多个服务器上执行查询，并比较不同</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-index-usage</td>
+<td>分析日志中索引使用情况，并出报告</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-pmp</td>
+<td>为查询结果跟踪，并汇总跟踪结果</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-visual-explain</td>
+<td>格式化执行计划</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-table-usage</td>
+<td>分析日志中查询并分析表使用情况</td>
+<td>pt 2.2新增命令</td>
+<td></td>
+</tr>
+<tr>
+<td>pt-config-diff</td>
+<td>比较配置文件和参数</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-mysql-summary</td>
+<td>对mysql配置和status进行汇总</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-variable-advisor</td>
+<td>分析参数，并提出建议</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-deadlock-logger</td>
+<td>提取和记录mysql死锁信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-fk-error-logger</td>
+<td>提取和记录外键信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-mext</td>
+<td>并行查看status样本信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-query-digest</td>
+<td>分析查询日志，并产生报告</td>
+<td>常用命令</td>
+<td></td>
+</tr>
+<tr>
+<td>pt-trend</td>
+<td>按照时间段读取slow日志信息</td>
+<td>已废弃</td>
+<td></td>
+</tr>
+<tr>
+<td>pt-heartbeat</td>
+<td>监控mysql复制延迟</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-slave-delay</td>
+<td>设定从落后主的时间</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-slave-find</td>
+<td>查找和打印所有mysql复制层级关系</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-slave-restart</td>
+<td>监控salve错误，并尝试重启salve</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-table-checksum</td>
+<td>校验主从复制一致性</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-table-sync</td>
+<td>高效同步表数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-diskstats</td>
+<td>查看系统磁盘状态</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-fifo-split</td>
+<td>模拟切割文件并输出</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-summary</td>
+<td>收集和显示系统概况</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-stalk</td>
+<td>出现问题时，收集诊断数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-sift</td>
+<td>浏览由pt-stalk创建的文件</td>
+<td>pt 2.2新增命令</td>
+<td></td>
+</tr>
+<tr>
+<td>pt-ioprofile</td>
+<td>查询进程IO并打印一个IO活动表</td>
+<td>pt 2.2新增命令</td>
+<td></td>
+</tr>
+<tr>
+<td>pt-archiver</td>
+<td>将表数据归档到另一个表或文件中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-find</td>
+<td>查找表并执行命令</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pt-kill</td>
+<td>Kill掉符合条件的sql</td>
+<td>常用命令</td>
+<td></td>
+</tr>
+<tr>
+<td>pt-align</td>
+<td>对齐其他工具的输出</td>
+<td>pt 2.2新增命令</td>
+<td></td>
+</tr>
+<tr>
+<td>pt-fingerprint</td>
+<td>将查询转成密文</td>
+<td>pt 2.2新增命令</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>环境</strong></p>
+<p>master主机（47.97.218.145）              slave主机（39.106.84.122）</p>
+<p>​    3306端口，                                                    3306端口</p>
+<p>binlog_format = ROW</p>
+<p>（mysql复制主要有三种方式：基于SQL语句的复制(statement-based replication, SBR)，基于行的复制(row-based replication, RBR)，混合模式复制(mixed-based replication, MBR)。对应的，binlog的格式也有三种：STATEMENT，ROW，MIXED。</p>
+<p><strong>① STATEMENT模式（SBR）</strong></p>
+<p>每一条会修改数据的sql语句会记录到binlog中。优点是并不需要记录每一条sql语句和每一行的数据变化，减少了binlog日志量，节约IO，提高性能。缺点是在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及user-defined functions(udf)等会出现问题)</p>
+<p><strong>② ROW模式（RBR）</strong></p>
+<p>不记录每条sql语句的上下文信息，仅需记录哪条数据被修改了，修改成什么样了。而且不会出现某些特定情况下的存储过程、或function、或trigger的调用和触发无法被正确复制的问题。缺点是会产生大量的日志，尤其是alter table的时候会让日志暴涨。</p>
+<p><strong>③ MIXED模式（MBR）</strong></p>
+<p>以上两种模式的混合使用，一般的复制使用STATEMENT模式保存binlog，对于STATEMENT模式无法复制的操作使用ROW模式保存binlog，MySQL会根据执行的SQL语句选择日志保存方式。）</p>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li><p>为了减少不必要的麻烦，确保你的 ptuser@’xxx’ 用户能同时登陆主库和从库；</p>
+</li>
+<li><p>只能指定一个host，必须为主库的IP；</p>
+</li>
+<li><p>在检查时会向表加S锁；</p>
+</li>
+<li><p>如果master和slave的binlog日志不是STATEMENT格式，要用–no-check-binlog-format选项</p>
+</li>
+<li><p>运行之前需要从库的同步IO和SQL进程是YES状态。</p>
+</li>
+<li><p>表要有主键索引或唯一键索引</p>
+</li>
+</ul>
+<h3 id="工具安装："><a href="#工具安装：" class="headerlink" title="工具安装："></a><strong>工具安装：</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">安装：</span><br><span class="line"></span><br><span class="line">         依赖包：yum install perl perl-devel perl-Time-HiRes perl-DBI perl-DBD-MySQL</span><br><span class="line">	     yum install perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker perl-Digest-MD5</span><br><span class="line"></span><br><span class="line">         工具包：percona-toolkit</span><br><span class="line"></span><br><span class="line">         wget http://www.percona.com/get/percona-toolkit.tar.gz</span><br><span class="line">		</span><br><span class="line">		tar zxvf percona-toolkit-2.2.13.tar.gz</span><br><span class="line">		cd percona-toolkit-2.2.13</span><br><span class="line">		perl Makefile.PL</span><br><span class="line">		make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a><strong>使用方法：</strong></h3><p>pt-table-checksum [OPTIONS] [DSN]</p>
+<p><code>pt-table-checksum</code>：在主（master）上通过执行校验的查询对复制的一致性进行检查，对比主从的校验值，从而产生结</p>
+<h4 id="分别在主库和从库授权："><a href="#分别在主库和从库授权：" class="headerlink" title="分别在主库和从库授权："></a>分别在主库和从库授权：</h4><p>​    <strong>在主库执行授权（一定要对主库  <em>ip</em>   授权，授权的用户名和密码可以自行定义，不过要保证这个权限能同时登陆主库和从库）</strong></p>
+<figure class="highlight plain"><figcaption><span>GRANT SELECT, PROCESS, SUPER, REPLICATION SLAVE,CREATE,DELETE,INSERT,UPDATE ON *.* TO 'root'@'47.97.218.145' identified by '123456';```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>在从库上执行授权</strong></p>
+<figure class="highlight plain"><figcaption><span>GRANT SELECT, PROCESS, SUPER, REPLICATION SLAVE ON *.* TO 'root'@'39.106.84.122' IDENTIFIED BY '123456';```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p><strong>创集表</strong>（注意：第一次运行的时候需要加上–create-replicate-table参数，生成checksums表！）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">create databse pt charset=utf8;</span><br><span class="line"></span><br><span class="line">use pt;</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS checksums (</span><br><span class="line">db char(64) NOT NULL,</span><br><span class="line">tbl char(64) NOT NULL,</span><br><span class="line">chunk int NOT NULL,</span><br><span class="line">chunk_time float NULL,</span><br><span class="line">chunk_index varchar(200) NULL,</span><br><span class="line">lower_boundary text NULL,</span><br><span class="line">upper_boundary text NULL,</span><br><span class="line">this_crc char(40) NOT NULL,</span><br><span class="line">this_cnt int NOT NULL,</span><br><span class="line">master_crc char(40) NULL,</span><br><span class="line">master_cnt int NULL,</span><br><span class="line">ts timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">PRIMARY KEY (db, tbl, chunk),</span><br><span class="line">INDEX ts_db_tbl (ts, db, tbl)</span><br><span class="line">) ENGINE=InnoDB;</span><br></pre></td></tr></table></figure>
+
+<p><strong>检测数据一致性：</strong></p>
+<p>​    <figure class="highlight plain"><figcaption><span>--nocheck-binlog-format --nocheck-plan --nocheck-replication-filters --replicate</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```shell</span><br><span class="line">--check</span><br><span class="line">   检查从的延迟，检查一次就退出，除非指定了--recurse会递归的检查所有的从服务器。</span><br><span class="line"></span><br><span class="line">--monitor</span><br><span class="line">   持续监控从的延迟情况。通过--interval指定的间隔时间，打印出从的延迟信息--daemonize</span><br><span class="line">   执行时，放入到后台执行</span><br><span class="line"></span><br><span class="line">--file </span><br><span class="line">   打印--monitor最新的记录到指定的文件，很好的防止满屏幕都是数据的烦恼。</span><br><span class="line"></span><br><span class="line">--frames</span><br><span class="line">   在--monitor里输出的[]里的记录段，默认是1m,5m,15m。可以指定1个，如：--frames=1s，多个用逗号隔开。可用单位有秒（s）、分钟（m）、小时（h）、天（d）。</span><br><span class="line"></span><br><span class="line">--interval</span><br><span class="line">   检查、更新的间隔时间。默认是见是1s。最小的单位是0.01s，最大精度为小数点后两位，因此0.015将调整至0.02。</span><br><span class="line"></span><br><span class="line">--log</span><br><span class="line">   开启daemonized模式的所有日志将会被打印到制定的文件中。</span><br><span class="line"></span><br><span class="line">--update</span><br><span class="line">   更新主上的心跳表。</span><br><span class="line"></span><br><span class="line">--replace</span><br><span class="line">   使用--replace代替--update模式更新心跳表里的时间字段，这样的好处是不用管表里是否有行。</span><br><span class="line"></span><br><span class="line">--stop</span><br><span class="line">  停止运行该工具（--daemonize），在/tmp/目录下创建一个“pt-heartbeat-sentinel” 文件。后面想重新开启则需要把该临时文件删除，才能开启（--daemonize）。</span><br><span class="line"></span><br><span class="line">--table</span><br><span class="line">  指定心跳表名，默认heartbeat。</span><br><span class="line"></span><br><span class="line">--create-table</span><br><span class="line">  在主上创建心跳监控的表，如果该表不存在。可以自己建立，建议存储引擎改成memory。通过更新该表知道主从延迟的差距。</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">pt-table-checksum参数解释</span><br><span class="line"></span><br><span class="line">--replicate-check：</span><br><span class="line"></span><br><span class="line">    执行完 checksum 查询在percona.checksums表中，不一定马上查看结果呀 —— yes则马上比较chunk的crc32值并输出DIFFS列，否则不输出。默认yes，如果指定为--noreplicate-check，一般后续使用下面的--replicate-check-only去输出DIFF结果。</span><br><span class="line">    </span><br><span class="line">--nocheck-replication-filters ：</span><br><span class="line">	不检查复制过滤器，建议启用。后面可以用--databases来指定需要检查的数据库。</span><br><span class="line">	</span><br><span class="line">--no-check-binlog-format :</span><br><span class="line">    不检测日志格式。这个选项对于 ROW 模式的复制很重要，因为pt-table-checksum会在 Master和Slave 上设置binlog_format=STATEMENT（确保从库也会执行 checksum SQL），MySQL限制从库是无法设置的，所以假如行复制从库，再作为主库复制出新从库时（A-&gt;B-&gt;C），B的checksums数据将无法传输。（没验证）</span><br><span class="line">    </span><br><span class="line">--replicate-check-only :</span><br><span class="line">不在主从库做 checksum 查询，只在原有 percona.checksums 表中查询结果，并输出数据不一致的信息。周期性的检测一致性时可能用到。</span><br><span class="line"></span><br><span class="line">--replicate= ：</span><br><span class="line">把checksum的信息写入到指定表中，如果没有指定，默认是 percona.checksums ;建议直接写到被检查的数据库当中。</span><br><span class="line"></span><br><span class="line">--databases=,-d ：</span><br><span class="line">要检查的数据库，逗号分隔;--databases-regex 正则匹配要检测的数据库，--ignore-databases[-regex]忽略检查的库。Filter选项。</span><br><span class="line"></span><br><span class="line">--tables=，-t</span><br><span class="line">：要检查的表，逗号分隔。如果要检查的表分布在不同的db中，可以用--		tables=dbname1.table1,dbnamd2.table2的形式。同理有--tables-regex，--ignore-tables，--ignore-tables-regex。--replicate指定的checksum表始终会被过滤。</span><br><span class="line"></span><br><span class="line">--tables= ：</span><br><span class="line">指定需要被检查的表，多个用逗号隔开</span><br><span class="line"></span><br><span class="line">h=192.168.1.101 ：Master的地址</span><br><span class="line"></span><br><span class="line">u=ptuser ：用户名</span><br><span class="line"></span><br><span class="line">p=123456 ：密码</span><br><span class="line"></span><br><span class="line">P=3306 ：端口</span><br><span class="line"></span><br><span class="line">--create-replicate-table </span><br><span class="line">选项会自动创建 percona.checksums 表，但也意味着赋予额外的 CREATE TABLE权限给 percona_tk@&apos;xxx&apos; 用户。默认yes</span><br><span class="line"></span><br><span class="line">--no-check-replication-filters </span><br><span class="line">表示不需要检查 Master 配置里是否指定了 Filter。 默认会检查，如果配置了 Filter，如 replicate_do_db,replicate-wild-ignore-table,binlog_ignore_db 等，在从库checksum就与遇到表不存在而报错退出，所以官方默认是yes（--check-replication-filters）但我们实际在检测中时指定--databases=，所以就不存在这个问题，干脆不检测；</span><br><span class="line"></span><br><span class="line">--empty-replicate-table：</span><br><span class="line">每个表checksum开始前，清空它之前的检测数据（不影响其它表的checksum数据），默认yes。当然如果使用--resume启动检测数据不会清空。当启用--noempty-replicate-table即不清空时，不计算计算chunk,只计算。</span><br><span class="line"></span><br><span class="line">-recursion-method：</span><br><span class="line">发现从库的方式。pt-table-checksum 默认可以在主库的 processlist 中找到从库复制进程，从而识别出有哪些从库，但如果使用是非标准3306端口，会导致找不到从库信息。此时就会自动采用host方式，但需要提前在从库 my.cnf 里面配置report_host、report_port信息，如：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">report_host = 39.106.84.122</span><br><span class="line">report_port = 3306</span><br></pre></td></tr></table></figure></p>
+<p>​        </p>
+<p>如果 报错：  <strong>Diffs cannot be detected because no slaves were found.  Please read the —recursion-method documentation for information.</strong></p>
+<p>​        <strong>缺少  –recursion-method参数</strong></p>
+<p>上面的提示信息很清楚，因为找不到从，所以执行失败。用参数—recursion-method 可以指定模式解决，关于—recursion-method参数的设置有：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">METHOD       USES</span><br><span class="line">===========  =============================================</span><br><span class="line">processlist  SHOW PROCESSLIST</span><br><span class="line">hosts        SHOW SLAVE HOSTS</span><br><span class="line">cluster      SHOW STATUS LIKE 'wsrep\_incoming\_addresses'</span><br><span class="line">dsn=DSN      DSNs from a table</span><br><span class="line">none         Do not find slaves</span><br></pre></td></tr></table></figure>
+
+<p>默认是通过show processlist 找到host的值或show slave hosts 找到host的值。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> show processlist\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">     Id: 3</span><br><span class="line">   User: slave</span><br><span class="line">   Host: 192.168.0.20:52352</span><br><span class="line">     db: NULL</span><br><span class="line">Command: Binlog Dump</span><br><span class="line">   Time: 4164</span><br><span class="line">  State: Master has sent all binlog to slave; waiting for binlog to be updated</span><br><span class="line">   Info: NULL</span><br><span class="line">*************************** 2. row ***************************</span><br><span class="line">     Id: 33</span><br><span class="line">   User: root</span><br><span class="line">   Host: localhost</span><br><span class="line">     db: NULL</span><br><span class="line">Command: Query</span><br><span class="line">   Time: 0</span><br><span class="line">  State: NULL</span><br><span class="line">   Info: show processlist</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>还有一种方法是show slave hosts；前提从库配置文件里面已经配置自己的地址和端口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@MySQL-02 ~]# grep 'report' /etc/my.cnf </span><br><span class="line">report_host = 192.168.0.20</span><br><span class="line">report_port = 3306</span><br><span class="line">[root@MySQL-02 ~]# </span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span> show slave hosts;</span><br><span class="line">+-----------+--------------+------+-----------+</span><br><span class="line">| Server_id | Host         | Port | Master_id |</span><br><span class="line">+-----------+--------------+------+-----------+</span><br><span class="line">|         2 | 192.168.0.20 | 3306 |         1 |</span><br><span class="line">+-----------+--------------+------+-----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>所以找不到从服务器时。在从库配置文件添加</p>
+<p>report_host=39.106.84.122</p>
+<p>report_port=3306</p>
+<p>现在我们再来检测数据一致性：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@MySQL-01 ~]# pt-table-checksum --nocheck-binlog-format --nocheck-plan --nocheck-replication-filters --replicate=pt.checksums --set-vars innodb_lock_wait_timeout=120 --recursion-method=hosts --databases test -u'root' -p'123456' -h47.97.218.145 -P3306</span><br><span class="line">            TS ERRORS  DIFFS     ROWS  CHUNKS SKIPPED    TIME TABLE</span><br><span class="line">04-13T15:59:31      0      1        3       1       0   0.080 yayun.t1</span><br><span class="line"></span><br><span class="line">TS            ：完成检查的时间。</span><br><span class="line">ERRORS        ：检查时候发生错误和警告的数量。</span><br><span class="line">DIFFS         ：0表示一致，1表示不一致。当指定--no-replicate-check时，会一直为0，当指定--replicate-check-only会显示不同的信息。</span><br><span class="line">ROWS          ：表的行数。</span><br><span class="line">CHUNKS        ：被划分到表中的块的数目。</span><br><span class="line">SKIPPED       ：由于错误或警告或过大，则跳过块的数目。</span><br><span class="line">TIME          ：执行的时间。</span><br><span class="line">TABLE         ：被检查的表名。</span><br></pre></td></tr></table></figure>
+
+<p>参数的意思：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--nocheck-replication-filters ：不检查复制过滤器，建议启用。后面可以用--databases来指定需要检查的数据库。</span><br><span class="line">--no-check-binlog-format      : 不检查复制的binlog模式，要是binlog模式是ROW，则会报错。</span><br><span class="line">--replicate-check-only :只显示不同步的信息。</span><br><span class="line">--replicate=   ：把checksum的信息写入到指定表中，建议直接写到被检查的数据库当中。 </span><br><span class="line">--databases=   ：指定需要被检查的数据库，多个则用逗号隔开。</span><br><span class="line">--tables=      ：指定需要被检查的表，多个用逗号隔开</span><br><span class="line">h=127.0.0.1    ：Master的地址</span><br><span class="line">u=root         ：用户名</span><br><span class="line">p=123456       ：密码</span><br><span class="line">P=3306         ：端口</span><br></pre></td></tr></table></figure>
+
+<p>好了，命令以及常用参数都介绍了，一起解释下上面执行的效果：</p>
+<p>通过DIFFS 是1 就可以看出主从的表数据不一致。怎么不一致呢？ 通过指定—replicate=pt.checksums 参数，就说明把检查信息都写到了checksums表中。</p>
+<p>进入SLAVE相应的库中查看checksums表的信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> select * from checksums\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">            db: yayun</span><br><span class="line">           tbl: t1</span><br><span class="line">         chunk: 1</span><br><span class="line">    chunk_time: 0.010735</span><br><span class="line">   chunk_index: NULL</span><br><span class="line">lower_boundary: NULL</span><br><span class="line">upper_boundary: NULL</span><br><span class="line">      this_crc: babf1dc0    #slave</span><br><span class="line">      this_cnt: 5           #slave</span><br><span class="line">    master_crc: 8727436a    #master</span><br><span class="line">    master_cnt: 3           #master                 可以发现表t1中从库比主库多2条记录</span><br><span class="line">            ts: 2014-04-13 16:05:16</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过上面找到了这些不一致的数据表，如何同步数据呢？即如何修复MySQL主从不一致的数据，让他们保持一致性呢？利用另外一个工具 pt-table-sync。</strong></p>
+<h2 id="pt-table-sync（修复MySQL主从不一致的数据）"><a href="#pt-table-sync（修复MySQL主从不一致的数据）" class="headerlink" title="pt-table-sync（修复MySQL主从不一致的数据）"></a>pt-table-sync（修复MySQL主从不一致的数据）</h2><p>使用方法：</p>
+<p>pt-table-sync [OPTIONS] DSN [DSN]</p>
+<p><code>pt-table-sync</code>: 高效的同步MySQL表之间的数据，他可以做单向和双向同步的表数据。他可以同步单个表，也可以同步整个库。它不同步表结构、索引、或任何其他模式对象。所以在修复一致性之前需要保证他们表存在。</p>
+<p>接着上面的复制情况，主和从的t1表数据不一致，需要修复，</p>
+<p>执行：</p>
+<p><strong>先master的ip，用户，密码，然后是slave的ip，用户，密码</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@MySQL-01 ~]# pt-table-sync --replicate=pt.checksums h=47.97.218.145,u=root,p=123456 h=39.106.84.122,u=root,p=123456 --print</span><br><span class="line">DELETE FROM `test`.`t` WHERE `id`='4' LIMIT 1 /*percona-toolkit src_db:test src_tbl:t src_dsn:h=47.97.218.145,p=...,u=root dst_db:test dst_tbl:t dst_dsn:h=39.106.84.122,p=...,u=root lock:1 transaction:1 changing_src:pt.checksums replicate:pt.checksums bidirectional:0 pid:21596 user:root host:izbp13ke316g8b9btrd3dnz*/;</span><br></pre></td></tr></table></figure>
+
+<p>参数的意义：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">--replicate=  ：指定通过pt-table-checksum得到的表，这2个工具差不多都会一直用。</span><br><span class="line">--databases=  : 指定执行同步的数据库，多个用逗号隔开。</span><br><span class="line">--tables=     ：指定执行同步的表，多个用逗号隔开。</span><br><span class="line">--sync-to-master ：指定一个DSN，即从的IP，他会通过show processlist或show slave status 去自动的找主。</span><br><span class="line">h=127.0.0.1   ：服务器地址，命令里有2个ip，第一次出现的是Master的地址，第2次是Slave的地址。</span><br><span class="line">u=root        ：帐号。</span><br><span class="line">p=123456      ：密码。</span><br><span class="line">--print       ：打印，但不执行命令。</span><br><span class="line">--execute     ：执行命令。</span><br></pre></td></tr></table></figure>
+
+<p>命令介绍完了，一起解释下执行的效果：通过（—print）打印出来了修复数据的sql语句，可以手动的去从行执行，让他们数据保持一致性。那能否直接执行？当然可以，通过(—execute)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@MySQL-01 ~]#  pt-table-sync --replicate=pt.checksums h=47.97.218.145,u=root,p=123456 h=39.106.84.122,u=root,p=123456 --execute</span><br></pre></td></tr></table></figure>
+
+<p>没发现任何异常，然后检查主从数据的一致性：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@MySQL-01 ~]# pt-table-checksum --nocheck-binlog-format --nocheck-plan --nocheck-replication-filters --replicate=pt.checksums --set-vars innodb_lock_wait_timeout=120 --recursion-method=hosts --databases test -u'root' -p'123456' -h47.97.218.145 -P3306</span><br><span class="line">            TS ERRORS  DIFFS     ROWS  CHUNKS SKIPPED    TIME TABLE</span><br><span class="line">04-13T16:27:28      0      0        3       1       0   0.097 yayun.t1</span><br></pre></td></tr></table></figure>
+
+<p>主库：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> select * from t1;</span><br><span class="line">+----+-------+</span><br><span class="line">| id | name  |</span><br><span class="line">+----+-------+</span><br><span class="line">|  1 | yayun |</span><br><span class="line">|  2 | atlas |</span><br><span class="line">|  3 | mysql |</span><br><span class="line">+----+-------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>备库：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> select * from t1;</span><br><span class="line">+----+-------+</span><br><span class="line">| id | name  |</span><br><span class="line">+----+-------+</span><br><span class="line">|  1 | yayun |</span><br><span class="line">|  2 | atlas |</span><br><span class="line">|  3 | mysql |</span><br><span class="line">+----+-------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>OK，数据已经保持一致了。</p>
+<p>不过建议还是用—print 打印出来的好，这样就可以知道那些数据有问题，可以人为的干预下。</p>
+<p>不然直接执行了，出现问题之后更不好处理。总之还是在处理之前做好数据的备份工作。</p>
+<p><strong>注意：要是表中没有唯一索引或则主键则会报错：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Can't make changes on the master because no unique index exists at /usr/local/bin/pt-table-sync line 10591.</span><br></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<p>工具很给力，工作中常常在使用。注意使用该工具需要授权，一般SELECT, PROCESS, SUPER, REPLICATION SLAVE等权限就已经足够了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    苍山有酒
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://dingyifan.tech/2020/02/08/mysql主从不一致/" title="mysql主从不一致">http://dingyifan.tech/2020/02/08/mysql主从不一致/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/08/mysql索引/" rel="next" title="mysql索引类型及创建索引">
+                <i class="fa fa-chevron-left"></i> mysql索引类型及创建索引
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/08/mysql事务和隔离级别/" rel="prev" title="mysql事务和隔离级别">
+                mysql事务和隔离级别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/qq.jpg" alt="苍山有酒">
+          <p class="site-author-name" itemprop="name">苍山有酒</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pt-table-checksum（检查主从的一致性）"><span class="nav-number">1.</span> <span class="nav-text">pt-table-checksum（检查主从的一致性）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工具安装："><span class="nav-number">1.1.</span> <span class="nav-text">工具安装：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法："><span class="nav-number">1.2.</span> <span class="nav-text">使用方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分别在主库和从库授权："><span class="nav-number">1.2.1.</span> <span class="nav-text">分别在主库和从库授权：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pt-table-sync（修复MySQL主从不一致的数据）"><span class="nav-number">2.</span> <span class="nav-text">pt-table-sync（修复MySQL主从不一致的数据）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-id-card"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">苍山有酒</span>
+</div>
+
+
+<div class="powered-by">
+  友情链接：
+</div>
+
+<div class="theme-info">
+  
+  <a class="theme-link" href="/">
+    by: JimmyD
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

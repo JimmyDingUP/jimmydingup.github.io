@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="MySQL,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="【压力测试】使用mysqlslap进行mysql基准测试为什么要进行压力测试？PS：在运维工作中，压力测试是一项很重要的工作。比如在一个网站上线之前，能承受多大访问量、在大访问量情况下性能怎样，这些数据指标好坏将会直接影响用户体验。但是，在压力测试中存在一个共性，那就是压力测试的结果与实际负载结果不会完全相同，就算压力测试工作做的再好，也不能保证100%和线上性能指标相同。面对这些问题，我们只能尽">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysqlslap压力测试">
+<meta property="og:url" content="http://dingyifan.tech/2020/02/08/mysqlslap压力测试/index.html">
+<meta property="og:site_name" content="苍山有酒">
+<meta property="og:description" content="【压力测试】使用mysqlslap进行mysql基准测试为什么要进行压力测试？PS：在运维工作中，压力测试是一项很重要的工作。比如在一个网站上线之前，能承受多大访问量、在大访问量情况下性能怎样，这些数据指标好坏将会直接影响用户体验。但是，在压力测试中存在一个共性，那就是压力测试的结果与实际负载结果不会完全相同，就算压力测试工作做的再好，也不能保证100%和线上性能指标相同。面对这些问题，我们只能尽">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-08T06:04:54.518Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysqlslap压力测试">
+<meta name="twitter:description" content="【压力测试】使用mysqlslap进行mysql基准测试为什么要进行压力测试？PS：在运维工作中，压力测试是一项很重要的工作。比如在一个网站上线之前，能承受多大访问量、在大访问量情况下性能怎样，这些数据指标好坏将会直接影响用户体验。但是，在压力测试中存在一个共性，那就是压力测试的结果与实际负载结果不会完全相同，就算压力测试工作做的再好，也不能保证100%和线上性能指标相同。面对这些问题，我们只能尽">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dingyifan.tech/2020/02/08/mysqlslap压力测试/">
+
+
+
+
+
+  <title>mysqlslap压力测试 | 苍山有酒</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">苍山有酒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Passion will never die.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dingyifan.tech/2020/02/08/mysqlslap压力测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="苍山有酒">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/qq.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苍山有酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysqlslap压力测试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T14:04:34+08:00">
+                2020-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="【压力测试】使用mysqlslap进行mysql基准测试"><a href="#【压力测试】使用mysqlslap进行mysql基准测试" class="headerlink" title="【压力测试】使用mysqlslap进行mysql基准测试"></a>【压力测试】使用mysqlslap进行mysql基准测试</h1><h1 id="为什么要进行压力测试？"><a href="#为什么要进行压力测试？" class="headerlink" title="为什么要进行压力测试？"></a>为什么要进行压力测试？</h1><p><strong>PS：在运维工作中，压力测试是一项很重要的工作。比如在一个网站上线之前，能承受多大访问量、在大访问量情况下性能怎样，这些数据指标好坏将会直接影响用户体验。但是，在压力测试中存在一个共性，那就是压力测试的结果与实际负载结果不会完全相同，就算压力测试工作做的再好，也不能保证100%和线上性能指标相同。面对这些问题，我们只能尽量去想方设法去模拟。所以，压力测试非常有必要，有了这些数据，我们就能对自己做维护的平台做到心中有数。</strong></p>
+<p>压力测试考察当前软硬件环境下系统所能承受的最大负荷并帮助找出系统瓶颈所在。压测都是为了系统在线上的处理能力和稳定性维持在一个标准范围内，做到心中有数。 </p>
+<h2 id="一、应用场景"><a href="#一、应用场景" class="headerlink" title="一、应用场景"></a>一、应用场景</h2><p>1、对新的或调整后的数据库服务器进行测试，验证或比较配置结果；<br>2、建立Mysql服务器的性能基准线，即得到健康环境下的指标，协助后续实际使用中的监控、优化；<br>3、模拟多用户并发访问MySQL来进行压力测试，找出系统的扩张瓶颈，增加数据库的并发，观察QPS、TPS变化，确定并发量与性能最优的关系；<br>4、对比多个存储引擎（MyISAM，InnoDB等）在相同环境下的相同并发压力下的性能差别。</p>
+<h2 id="二、测试计划"><a href="#二、测试计划" class="headerlink" title="二、测试计划"></a>二、测试计划</h2><p>1、确定测试工具，根据测试目标和业务制定测试计划、测试场景、测试命令；<br>2、使用生产环境的数据库备份，根据测试用例进行测试；<br>3、分析测试结果。</p>
+<h2 id="三、简介mysqlslap"><a href="#三、简介mysqlslap" class="headerlink" title="三、简介mysqlslap"></a>三、简介mysqlslap</h2><p>mysqlslap是版本高于5.1的mysql自带的工具。</p>
+<p>【参数说明】<br>-a<br>//若命令中没通过语句或文件提供SQL表和数据，则将自动创建SQL表和数据</p>
+<p>–auto-generate-sql-add-autoincrement<br>//给自动创建的表添加一个auto_increment列</p>
+<p>–auto-generate-sql-execute-number=N<br>//对每个模拟用户的自动生成N次查询</p>
+<p>–auto-generate-sql-guid-primary<br>//给自动创建的表添加基于GUID的主键</p>
+<p>–auto-generate-sql-load-type=name<br>//指定测试语句类型：mixed（查询与插入对半）,update（更新主键）,write（插入）,key（读主键）或read（查询），默认为mixed</p>
+<p>–auto-generate-sql-secondary-indexes=N<br>//给自动创建的表增加N个二级索引，默认为0</p>
+<p>–auto-generate-sql-unique-query-number=N<br>//指定自动创建的表中不同查询的数量</p>
+<p>–auto-generate-sql-unique-write-number=N<br>//指定自动创建的表中不同插入的数量</p>
+<p>–auto-generate-sql-write-number=N<br>//自动创建的表中，对每个线程插入N行数据（默认N为100）</p>
+<p>–commit=N<br>//每N条DML提交一次（即一次事务）</p>
+<p>-C，–compress<br>//若server和client的协议都支持压缩，则压缩信息后传送</p>
+<p>-c N,–concurrency-name<br>/模拟N个用户并发执行查询</p>
+<p>–create=”字符串或.sql文件路径”<br>//指定用来创建表的字符串或 .sql文件</p>
+<p>–create-schema=”数据库名”<br>指定测试用的数据库（mysql中的database就是schema）</p>
+<p>-#，–debug<br>–debug-check<br>-T,–debug-info //输出CPU以及内存的相关信息<br>【遇到 [Error]mysqlslap：option ‘…’ used,but is disabled，暂时无法解决】</p>
+<p>-F,–delimiter=name<br>此参数指定的值作为sql语句中使用的分隔符</p>
+<p>–detach=N<br>每执行完N条请求，就断开重连一次</p>
+<p>-e,–engine=name<br>指定测试表使用的存储引擎</p>
+<p>-h,–host=name<br>连接指定host</p>
+<p>-i,–iterations=N<br>指定测试迭代次数</p>
+<p>-x,–number-char-cols=N<br>指定自动创建的表中含N个char类型的字段，默认值为1</p>
+<p>-y,–number-int-cols=N<br>指定自动创建的表中含N个int类型的字段，默认值为1</p>
+<p>–number-of-queries=N<br>生成N次总查询（平均每个用户查询次数=总查询次数/并发数）</p>
+<p>–only-print<br>不实际执行，打印模拟执行的过程</p>
+<p>-u,–user=name<br>连接server用的用户名</p>
+<p>-p,–password[=name]<br>连接server用的密码，参数与值之间没有空格，如-p123</p>
+<p>-P，–port=端口号<br>指定连接server的端口</p>
+<p>–post（/pre）-query=name<br>指定测试完成后（/前）执行的含sql语句的字符串或.sql文件</p>
+<p>–post（/pre）-system=name<br>指定测试完成后（/前）执行的系统语句</p>
+<p>–protocol=name<br>指定用来连接的协议：tcp,socket,pipe,memory</p>
+<p>-q “查询语句或包含查询语句的sql文件”,–query=”查询语句或包含查询语句的sql文件”<br>自定义要运行的查询语句</p>
+<p>–defaults-file=”配置文件路径”<br>指定.cnf配置文件</p>
+<p>【注意】<br>不用-a自动生成数据表或自定义指定，就会报1049 error；<br>命令行中，参数–number-of-queries=N（N为总查询次数）和–auto-generate-sql-execute-number=N（N为每个并发的查询次数）只能存在1个。</p>
+<p><strong>常用参数</strong> </p>
+<p>-a  若命令中没通过语句或文件提供SQL表和数据，则将自动创建SQL表和数据</p>
+<h5 id="–concurrency：代表并发数量，多个用逗号隔开，concurrency-10-50-100-并发连接线程数分别是10、50、100个并发"><a href="#–concurrency：代表并发数量，多个用逗号隔开，concurrency-10-50-100-并发连接线程数分别是10、50、100个并发" class="headerlink" title="–concurrency：代表并发数量，多个用逗号隔开，concurrency=10,50,100, 并发连接线程数分别是10、50、100个并发"></a>–concurrency：代表并发数量，多个用逗号隔开，concurrency=10,50,100, 并发连接线程数分别是10、50、100个并发</h5><p>–engines：代表要测试的引擎，可以有多个，用分隔符隔开<br>–iterations：代表要运行这些测试多少次<br>–commit=N：执行N条DML后提交一次<br>–auto-generate-sql：代表用系统自己生成的SQL脚本来测试<br>–auto-generate-sql-load-type：代表要测试的是读还是写还是两者混合的（read,write,update,mixed）</p>
+<h5 id="–number-of-queries：代表总共要运行多少次查询。每个客户运行的查询数量可以用查询总数-并发数来计算"><a href="#–number-of-queries：代表总共要运行多少次查询。每个客户运行的查询数量可以用查询总数-并发数来计算" class="headerlink" title="–number-of-queries：代表总共要运行多少次查询。每个客户运行的查询数量可以用查询总数/并发数来计算"></a>–number-of-queries：代表总共要运行多少次查询。每个客户运行的查询数量可以用查询总数/并发数来计算</h5><p>–debug-info：代表要额外输出CPU以及内存的相关信息<br>–number-int-cols ：创建测试表的 int 型字段数量<br>–auto-generate-sql-add-autoincrement ：代表对生成的表自动添加auto_increment列，从5.1.18版本开始<br>–number-char-cols：创建测试表的 char 型字段数量<br>–create-schema：测试的schema，MySQL中schema也就是database<br>–query：使用自定义脚本执行测试，例如可以调用自定义的一个存储过程或者sql语句来执行测试<br>–only-print：如果只想打印看看SQL语句是什么，可以用这个选项</p>
+<h2 id="四、测试执行：一些栗子"><a href="#四、测试执行：一些栗子" class="headerlink" title="四、测试执行：一些栗子"></a>四、测试执行：一些栗子</h2><p>1）指定数据库‘test’，自定义sql语句，模拟50个并发用户进行测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlslap -uroot -p000000 -c 50  --create-schema=wzw -q &quot;select * from wzwapp_user;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>2) 自动设置默认查询语句</p>
+<p><code>mysqlslap -uroot -p -a --concurrency=200 --number-of-queries=10000</code> </p>
+<p>当我加大查询量的时候出现下面的错误 mysqlslap: Error when connecting to server: 1040 Too many connections</p>
+<p><strong>参考</strong><a href="https://www.cnblogs.com/phpper/p/9570792.html" target="_blank" rel="noopener">https://www.cnblogs.com/phpper/p/9570792.html</a> </p>
+<p> 解决步骤： 可能是如下两种情况 </p>
+<p>一.查看系统最大限制# ulimit -n 系统的/etc/security/limits.conf 这里面的限制，把限制增大就可以了，前提不能超过系统的最大限制cat /proc/sys/fs/file-max</p>
+<p> 二。mysql&gt; show variables like ‘%connections%’; 临时修改变量（重启mysql后失效，永久的话请修改my.cnf增加max_connections = 100000） mysql&gt; set global max_connections=100000; </p>
+<h1 id="五，mysql优化技巧"><a href="#五，mysql优化技巧" class="headerlink" title="五，mysql优化技巧"></a>五，mysql优化技巧</h1><p>查看mysql存储引擎：show variables like ‘%storage_engine%’; </p>
+<p>​        <a href="https://www.cnblogs.com/sharpest/p/10390035.html" target="_blank" rel="noopener">https://www.cnblogs.com/sharpest/p/10390035.html</a> </p>
+<p>​        <a href="https://blog.csdn.net/skiwnc/article/details/87351038" target="_blank" rel="noopener">https://blog.csdn.net/skiwnc/article/details/87351038</a> </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    苍山有酒
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://dingyifan.tech/2020/02/08/mysqlslap压力测试/" title="mysqlslap压力测试">http://dingyifan.tech/2020/02/08/mysqlslap压力测试/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/08/mysql慢查询/" rel="next" title="mysql慢查询">
+                <i class="fa fa-chevron-left"></i> mysql慢查询
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/08/mysqlslap使用总结/" rel="prev" title="mysqlslap使用总结">
+                mysqlslap使用总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/qq.jpg" alt="苍山有酒">
+          <p class="site-author-name" itemprop="name">苍山有酒</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#【压力测试】使用mysqlslap进行mysql基准测试"><span class="nav-number">1.</span> <span class="nav-text">【压力测试】使用mysqlslap进行mysql基准测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要进行压力测试？"><span class="nav-number">2.</span> <span class="nav-text">为什么要进行压力测试？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、应用场景"><span class="nav-number">2.1.</span> <span class="nav-text">一、应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、测试计划"><span class="nav-number">2.2.</span> <span class="nav-text">二、测试计划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、简介mysqlslap"><span class="nav-number">2.3.</span> <span class="nav-text">三、简介mysqlslap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#–concurrency：代表并发数量，多个用逗号隔开，concurrency-10-50-100-并发连接线程数分别是10、50、100个并发"><span class="nav-number">2.3.0.0.1.</span> <span class="nav-text">–concurrency：代表并发数量，多个用逗号隔开，concurrency=10,50,100, 并发连接线程数分别是10、50、100个并发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#–number-of-queries：代表总共要运行多少次查询。每个客户运行的查询数量可以用查询总数-并发数来计算"><span class="nav-number">2.3.0.0.2.</span> <span class="nav-text">–number-of-queries：代表总共要运行多少次查询。每个客户运行的查询数量可以用查询总数/并发数来计算</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#四、测试执行：一些栗子"><span class="nav-number">2.4.</span> <span class="nav-text">四、测试执行：一些栗子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五，mysql优化技巧"><span class="nav-number">3.</span> <span class="nav-text">五，mysql优化技巧</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-id-card"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">苍山有酒</span>
+</div>
+
+
+<div class="powered-by">
+  友情链接：
+</div>
+
+<div class="theme-info">
+  
+  <a class="theme-link" href="/">
+    by: JimmyD
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -5623,8 +5623,8 @@ ZINTERSTORE 和 ZUNIONSTORE 分别产生 zinterstore 和 zunionstore 两种事�
         <category>Vue</category>
       </categories>
       <tags>
-        <tag>xterm</tag>
         <tag>Django</tag>
+        <tag>xterm</tag>
         <tag>Vue</tag>
         <tag>websocket</tag>
       </tags>
